@@ -11,28 +11,13 @@ import 'babel-polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router';
 // import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 // import { useScroll } from 'react-router-scroll';
-import 'antd/dist/antd.css';
-import 'sanitize.css/sanitize.css';
-// Import root app
-import HomePage from 'containers/HomePage';
-import Content from 'containers/Content';
-// webpack 代码分割 示例
-// require.ensure([], function(require) {
-//     var HomePage = require('containers/HomePage');
-//     // todo ...
-// });
+import routes from './routes';
 
-// Load the favicon, the manifest.json file and the .htaccess file
-/* eslint-disable import/no-webpack-loader-syntax */
-import '!file-loader?name=[name].[ext]!./favicon.ico';
-/* eslint-enable import/no-webpack-loader-syntax */
-
-// Import CSS reset and Global Styles
-import './global-styles';
+import './favicon.ico';
 
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
@@ -50,8 +35,7 @@ openSansObserver.load().then(() => {
 const render = () => {
     ReactDOM.render(
         <Router history={browserHistory}>
-            <Route path="/" component={HomePage} />
-            <Route path="/content" component={Content} />
+            { routes }
         </Router>,
         document.getElementById('app')
     );

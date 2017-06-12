@@ -43,7 +43,7 @@
 
 修改端口号
 
-`server` -> `index.js` -> `const port = argv.port || process.env.PORT || 3000;`
+`server` -> `middlewares` -> `frontendMiddleware.js` -> `const pxhost = '服务端ip'` `const pxport = '服务端端口'`
 
 设置代理请参考  [Express proxy #679](https://github.com/react-boilerplate/react-boilerplate/pull/679)
 
@@ -54,6 +54,8 @@
 ##### 详解 ESLint 规则，规范你的代码
 
 [讲解一](http://blog.guowenfh.com/2016/08/07/ESLint-Rules/)
+[es6 箭头函数语法](http://es6.ruanyifeng.com/#docs/function#箭头函数)
+[Unexpected block statement surrounding arrow body arrow-body-style 报错的解决例子](https://github.com/eslint/eslint/issues/5498)
 
 ##### webpack2
 

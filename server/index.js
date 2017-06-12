@@ -2,7 +2,6 @@
 
 const express = require('express');
 const logger = require('./logger');
-const proxy = require('http-proxy-middleware');
 
 const argv = require('minimist')(process.argv.slice(2));
 const setup = require('./middlewares/frontendMiddleware');
@@ -25,14 +24,8 @@ const customHost = argv.host || process.env.HOST;
 const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
 
-const port = argv.port || process.env.PORT || 8085;
+const port = argv.port || process.env.PORT || 8083;
 
-app.use('/api', proxy({
-    target: `http://${host}:${port}`,
-    changeOrigin: true,
-    logLevel: 'debug',
-    ws: true,
-}));
 
 // Start your app.
 app.listen(port, host, (err) => {

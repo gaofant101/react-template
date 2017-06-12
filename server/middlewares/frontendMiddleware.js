@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
+const proxy = require('http-proxy-middleware');
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
 // Dev middleware
@@ -17,6 +18,15 @@ const addDevMiddlewares = (app, webpackConfig) => {
         silent: true,
         stats: 'errors-only',
     });
+
+    const pxhost = '192.168.30.2'
+    const pxport = '7094'
+    app.use('/datac/fapi', proxy({
+        target: `http://${pxhost}:${pxport}`,
+        changeOrigin: true,
+        logLevel: 'debug',
+        ws: true,
+    }));
 
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler, {

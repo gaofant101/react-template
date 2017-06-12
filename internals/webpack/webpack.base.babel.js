@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const theme = require(path.resolve(process.cwd(), 'theme.js'));
 
 module.exports = (options) => ({
     entry: options.entry,
@@ -41,10 +42,24 @@ module.exports = (options) => ({
                 include: /node_modules/,
                 loaders: ['style-loader', 'css-loader'],
             }, {
+                test: /\.less$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }, {
+                    loader: "less-loader", options: {
+                        paths: [
+                            path.resolve(__dirname, "../../node_modules"),
+                        ],
+                        modifyVars: theme
+                    }
+                }]
+            }, {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 loader: 'file-loader',
             }, {
-                test: /\.(jpg|png|gif)$/,
+                test: /\.(jpg|png|gif|ico)$/,
                 loaders: [
                     'file-loader',
                     {
