@@ -64,7 +64,7 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
                         {this.props.children}
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                        DBAPPSecurity ©2016 Created by DBAPPSecurity UED
+                        react-temp
                     </Footer>
                 </Layout>
             </Layout>
