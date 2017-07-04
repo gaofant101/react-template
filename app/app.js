@@ -18,7 +18,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import routes from './routes';
 
 import './favicon.ico';
-
+import './assets/css/rewrite.css';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)

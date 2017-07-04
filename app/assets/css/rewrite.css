@@ -1,0 +1,22 @@
+
+:global(.verticalcentermodal){
+    text-align: center;
+    white-space: nowrap;
+}
+:global(.ant-modal-wrap){
+    text-align: center;
+    white-space: nowrap;
+}
+:global(.ant-modal-wrap:before){
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+}
+:global(.ant-modal-wrap .ant-modal){
+    display: inline-block;
+    vertical-align: middle;
+    top: 0;
+    text-align: left;
+}

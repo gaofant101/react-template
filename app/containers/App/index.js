@@ -1,38 +1,72 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+/* eslint no-console:0 */
+import { Layout, Breadcrumb, Col, Icon } from 'antd';
 import React from 'react';
 import LeftSider from '../../components/LeftSider';
+import styles from './style.css';
 const { Header, Content, Footer, Sider } = Layout;
 
 class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+    static propTypes = {
+        children: React.PropTypes.object,
+    }
+    state = {
+        collapsed: false,
+        mode: 'inline',
+        breadcrumbName: null,
+        breadcrumbItemName: null,
+    };
+    componentWillMount() {
+        this.setState({
+            breadcrumbName: this.props.children.props.route.breadcrumbName,
+            breadcrumbItemName: this.props.children.props.route.breadcrumbItemName,
+        });
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            breadcrumbName: nextProps.children.props.route.breadcrumbName,
+            breadcrumbItemName: nextProps.children.props.route.breadcrumbItemName,
+        });
+    }
+    onCollapse = (collapsed) => {
+        console.log(collapsed);
+        this.setState({
+            collapsed,
+            mode: collapsed ? 'vertical' : 'inline',
+        });
+    }
     render() {
         return (
-            <Layout style={{ height: '100vh' }}>
-                <Header className="header">
+            <Layout>
+                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} width={260} >
                     <div className="logo" />
-                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} style={{ lineHeight: '64px' }}>
-                        <Menu.Item key="1">nav 1</Menu.Item>
-                        <Menu.Item key="2">nav 2</Menu.Item>
-                        <Menu.Item key="3">nav 3</Menu.Item>
-                    </Menu>
-                </Header>
-                <Content style={{ padding: '0 50px' }}>
-                    <Breadcrumb style={{ margin: '12px 0' }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
+                    <LeftSider mode={this.state.mode} />
+                </Sider>
+                <Layout style={{ minHeight: '100vh' }}>
+                    <Header className={styles.antlayoutheader}>
+                        <Col span={8}>
+                            <Icon type="appstore" style={{ fontSize: '15px', color: '#0e77ca' }} />
+                            <span className={styles.headtitle}>产品名称</span>
+                        </Col>
+                        <Col span={4} offset={12} className={styles.headuserCol}>
+                            <Icon type="user" style={{ fontSize: '14px', color: '#0e77ca' }} />
+                            <span className={styles.headuser}>admin</span>
+                            <a>
+                                <Icon type="logout" style={{ fontSize: '13px', color: '#0e77ca', fontWeight: 'bold' }} />
+                            </a>
+                        </Col>
+                    </Header>
+                    <Breadcrumb className={styles.breadcrumb}>
+                        <Breadcrumb.Item>首页</Breadcrumb.Item>
+                        <Breadcrumb.Item>{this.state.breadcrumbName}</Breadcrumb.Item>
+                        <Breadcrumb.Item>{this.state.breadcrumbItemName}</Breadcrumb.Item>
                     </Breadcrumb>
-                    <Layout style={{ padding: '24px 0', background: '#fff' }}>
-                        <Sider width={250} style={{ background: '#fff' }}>
-                            <LeftSider />
-                        </Sider>
-                        <Content style={{ padding: '0 24px', minHeight: '75vh' }}>
-                            {this.props.children}
-                        </Content>
-                    </Layout>
-                </Content>
-                <Footer style={{ textAlign: 'center' }}>
-                HAHAHA
-                </Footer>
+                    <Content className={styles.antdlayoutcontent}>
+                        {this.props.children}
+                    </Content>
+                    <Footer style={{ textAlign: 'center' }}>
+                        DBAPPSecurity ©2016 Created by DBAPPSecurity UED
+                    </Footer>
+                </Layout>
             </Layout>
         );
     }

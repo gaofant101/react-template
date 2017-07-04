@@ -14,54 +14,44 @@ const routes = (
     <Route>
         <Route path="/" component={App}>
             <IndexRoute
+              breadcrumbName="欢迎"
+              breadcrumbItemName="你好管理员"
               getComponent={(nextState, cb) => {
-                  import('containers/DataCenter/QueryAnalysis')
+                  import('containers/Welcome')
                       .then(loadModule(cb))
                       .catch(errorLoading);
               }}
             />
-            <Route path="queryAnalysis"
+            {/* 中心体 */}
+            <Route path="HelloAdmin"
+              breadcrumbName="欢迎"
+              breadcrumbItemName="你好管理员"
               getComponent={(nextState, cb) => {
-                  import('containers/DataCenter/QueryAnalysis')
+                  import('containers/Welcome')
                       .then(loadModule(cb))
                       .catch(errorLoading);
               }}
             />
-            <Route path="policyCustomization"
+            <Route path="HelloWorld"
+              breadcrumbName="欢迎"
+              breadcrumbItemName="HelloWorld"
               getComponent={(nextState, cb) => {
-                  import('containers/DataCenter/PolicyCustomization')
+                  import('containers/HelloWorld')
                       .then(loadModule(cb))
                       .catch(errorLoading);
               }}
             />
-            <Route path="organization"
+            {/* 中心体 END */}
+            <IndexRoute
+              breadcrumbName="欢迎"
+              breadcrumbItemName="你好管理员"
               getComponent={(nextState, cb) => {
-                  import('containers/SystemManagement/Organization')
+                  import('containers/Welcome')
                       .then(loadModule(cb))
                       .catch(errorLoading);
               }}
             />
-            <Route path="assets"
-              getComponent={(nextState, cb) => {
-                  import('containers/SystemManagement/Assets')
-                      .then(loadModule(cb))
-                      .catch(errorLoading);
-              }}
-            />
-            <Route path="personnel"
-              getComponent={(nextState, cb) => {
-                  import('containers/SystemManagement/Personnel')
-                      .then(loadModule(cb))
-                      .catch(errorLoading);
-              }}
-            />
-            <Route path="*"
-              getComponent={(nextState, cb) => {
-                  import('containers/DataCenter/QueryAnalysis')
-                      .then(loadModule(cb))
-                      .catch(errorLoading);
-              }}
-            />
+            {/* 系统管理 END */}
         </Route>
     </Route>
 );

@@ -16,4 +16,10 @@ module.exports = {
     '@font-size-base': '13px',
     // 字体大小(加大)
     '@font-size-lg': '14px',
+    // sider背景颜色
+    '@layout-sider-background': '#2e3e54',
+    // menu 导航背景颜色
+    '@menu-dark-bg': '#2e3e54',
+    // menu 子导航背景颜色
+    '@menu-dark-submenu-bg': '#243144',
 }

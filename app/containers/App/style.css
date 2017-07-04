@@ -1,0 +1,55 @@
+/* 整体布局 */
+.antdlayoutcontent{
+    margin: 0 20px;
+    padding: 50px 20px;
+    background: #fff;
+}
+.antlayoutheader{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    background: #fff;
+}
+.headtitle{
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 6px;
+}
+.headuserCol{
+    text-align: right;
+}
+.headuser{
+    padding-right: 20px;
+}
+.breadcrumb{
+    padding: 20px;
+}
+/* 导航栏配色 */
+
+:global(.ant-menu-dark.ant-menu-inline .ant-menu-item-selected){
+    background-color: #1eb0f2;
+}
+:global(.ant-layout-sider-trigger){
+    background-color: #2e3e54;
+}
+:global(.ant-layout-sider .logo) {
+    margin: 20px auto;
+    width: 80%;
+    height: 50px;
+    line-height: 4;
+    text-align: center;
+    background: rgba(255, 255, 255, .1);
+    border-radius: 6px;
+    color: #44a7ef;
+}
+:global(.ant-layout-sider-collapsed .logo){
+    width: 0;
+}
+
+/* 面包屑样式 */
+:global(.ant-breadcrumb > span:first-child){
+    color: #999;
+}
+:global(.ant-breadcrumb > span:nth-child(2)){
+    color: #999;
+}
