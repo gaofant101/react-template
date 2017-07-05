@@ -5,7 +5,7 @@ import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
 const { Header, Content, Footer, Sider } = Layout;
 
-class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
     static propTypes = {
         children: React.PropTypes.object,
     }
@@ -71,9 +71,3 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
         );
     }
 }
-
-App.propTypes = {
-    children: React.PropTypes.node,
-};
-
-export default App;
