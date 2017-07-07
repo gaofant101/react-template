@@ -33,6 +33,7 @@
     React-dom 15.4.1
     React-router 3.0.0
     Antd ^2.10.1
+    axios ^0.16.2
 
 ##### 启动
 
