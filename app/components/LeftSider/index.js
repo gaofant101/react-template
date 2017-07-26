@@ -7,13 +7,17 @@ const SubMenu = Menu.SubMenu;
 export default class LeftSider extends React.Component {
     static propTypes = {
         mode: React.PropTypes.string,
+        path: React.PropTypes.string,
     }
     state = {
-        current: '1',
-        openKeys: ['sub1'],
+        current: null,
+        openKeys: [],
     }
     componentWillMount() {
-        // console.log(this.props);
+        this.setMenuOpen(this.props);
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setMenuOpen(nextProps);
     }
     onOpenChange = (openKeys) => {
         const state = this.state;
@@ -28,6 +32,14 @@ export default class LeftSider extends React.Component {
             nextOpenKeys = this.getAncestorKeys(latestCloseKey);
         }
         this.setState({ openKeys: nextOpenKeys });
+    }
+    setMenuOpen = (props) => {
+        const { path } = props;
+        const openKey = [`/${path.split('/')[1]}`];
+        this.setState({
+            openKeys: openKey,
+            current: path,
+        });
     }
     getAncestorKeys = (key) => {
         // 二级导航设置
@@ -48,21 +60,11 @@ export default class LeftSider extends React.Component {
               onClick={this.handleClick}
               defaultSelectedKeys={['1']}
             >
-                <SubMenu key="sub1" title={<span><Icon type="hdd" /><span>Option 1</span></span>}>
-                    <Menu.Item key="1"><Link to="/HelloAdmin">Option 1-1</Link></Menu.Item>
-                    <Menu.Item key="2"><Link to="/HelloWorld">Option 1-2</Link></Menu.Item>
+                <SubMenu key="/Welcome" title={<span><Icon type="hdd" /><span>Option 1</span></span>}>
+                    <Menu.Item key="1"><Link to="/Welcome/HelloAdmin">Option 1-1</Link></Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub3" title={<span><Icon type="database" /><span>Option 2</span></span>}>
-                    <Menu.Item key="7">Option 2-1</Menu.Item>
-                    <Menu.Item key="8">Option 2-2</Menu.Item>
-                    <Menu.Item key="9">Option 2-3</Menu.Item>
-                    <Menu.Item key="10">Option 2-4</Menu.Item>
-                </SubMenu>
-                <SubMenu key="sub4" title={<span><Icon type="safety" /><span>Option 3</span></span>}>
-                    <Menu.Item key="11">Option 3-1</Menu.Item>
-                    <Menu.Item key="12">Option 3-2</Menu.Item>
-                    <Menu.Item key="13">Option 3-3</Menu.Item>
-                    <Menu.Item key="14">Option 3-4</Menu.Item>
+                <SubMenu key="/Hello" title={<span><Icon type="hdd" /><span>Option 1</span></span>}>
+                    <Menu.Item key="2"><Link to="/Hello/HelloWorld">Option 1-2</Link></Menu.Item>
                 </SubMenu>
             </Menu>
         );

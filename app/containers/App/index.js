@@ -8,6 +8,7 @@ const { Header, Content, Footer, Sider } = Layout;
 export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
     static propTypes = {
         children: React.PropTypes.object,
+        location: React.PropTypes.object,
     }
     state = {
         collapsed: false,
@@ -16,15 +17,17 @@ export default class App extends React.Component { // eslint-disable-line react/
         breadcrumbItemName: null,
     };
     componentWillMount() {
+        const route = this.props.children.props.route;
         this.setState({
-            breadcrumbName: this.props.children.props.route.breadcrumbName,
-            breadcrumbItemName: this.props.children.props.route.breadcrumbItemName,
+            breadcrumbName: route.breadcrumbName,
+            breadcrumbItemName: route.breadcrumbItemName,
         });
     }
     componentWillReceiveProps(nextProps) {
+        const route = nextProps.children.props.route;
         this.setState({
-            breadcrumbName: nextProps.children.props.route.breadcrumbName,
-            breadcrumbItemName: nextProps.children.props.route.breadcrumbItemName,
+            breadcrumbName: route.breadcrumbName,
+            breadcrumbItemName: route.breadcrumbItemName,
         });
     }
     onCollapse = (collapsed) => {
@@ -39,7 +42,7 @@ export default class App extends React.Component { // eslint-disable-line react/
             <Layout>
                 <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} width={260} >
                     <div className="logo" />
-                    <LeftSider mode={this.state.mode} />
+                    <LeftSider mode={this.state.mode} path={this.props.location.pathname} />
                 </Sider>
                 <Layout style={{ minHeight: '100vh' }}>
                     <Header className={styles.antlayoutheader}>
