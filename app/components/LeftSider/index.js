@@ -1,10 +1,10 @@
-/* eslint no-console:0 */
 import React from 'react';
 import { Link } from 'react-router';
 import { Menu, Icon } from 'antd';
+import { isOAuth } from '../../utils/isOAuth';
 const SubMenu = Menu.SubMenu;
 
-export default class LeftSider extends React.Component {
+export default class LeftSider extends React.PureComponent {
     static propTypes = {
         mode: React.PropTypes.string,
         path: React.PropTypes.string,
@@ -36,9 +36,10 @@ export default class LeftSider extends React.Component {
     setMenuOpen = (props) => {
         const { path } = props;
         const openKey = [`/${path.split('/')[1]}`];
+        const currentPath = `/${path.split('/')[1]}/${path.split('/')[2]}`;
         this.setState({
             openKeys: openKey,
-            current: path,
+            current: currentPath,
         });
     }
     getAncestorKeys = (key) => {
@@ -58,13 +59,11 @@ export default class LeftSider extends React.Component {
               selectedKeys={[this.state.current]}
               onOpenChange={this.onOpenChange}
               onClick={this.handleClick}
-              defaultSelectedKeys={['1']}
             >
-                <SubMenu key="/Welcome" title={<span><Icon type="hdd" /><span>Option 1</span></span>}>
-                    <Menu.Item key="1"><Link to="/Welcome/HelloAdmin">Option 1-1</Link></Menu.Item>
-                </SubMenu>
-                <SubMenu key="/Hello" title={<span><Icon type="hdd" /><span>Option 1</span></span>}>
-                    <Menu.Item key="2"><Link to="/Hello/HelloWorld">Option 1-2</Link></Menu.Item>
+                <SubMenu key="/Welcome" title={<span><Icon type="smile" /><span>首页</span></span>}>
+                    <Menu.Item key="/Welcome/HelloAdmin">
+                        <Link to="/Welcome/HelloAdmin">您好,{isOAuth.getOAuth('username')}</Link>
+                    </Menu.Item>
                 </SubMenu>
             </Menu>
         );

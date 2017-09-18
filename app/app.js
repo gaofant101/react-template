@@ -16,13 +16,20 @@ import { Router, browserHistory } from 'react-router';
 import FontFaceObserver from 'fontfaceobserver';
 // import { useScroll } from 'react-router-scroll';
 import routes from './routes';
+// localstorage
+import localStoragePolyfill from './utils/localStoragePolyfill';
 
-import './favicon.ico';
+/* eslint-disable */
+import '!file-loader?name=[name].[ext]!./favicon.ico';
+/* eslint-enable */
 import './assets/css/rewrite.css';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
+
+// 实现localstorage
+localStoragePolyfill.polyfill();
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {

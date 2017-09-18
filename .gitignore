@@ -1,5 +1,5 @@
 # Don't check auto-generated stuff into git
-build
+# build
 node_modules
 
 # Cruft

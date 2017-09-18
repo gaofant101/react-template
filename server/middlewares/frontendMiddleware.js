@@ -19,9 +19,9 @@ const addDevMiddlewares = (app, webpackConfig) => {
         stats: 'errors-only',
     });
 
-    const pxhost = '192.168.30.2'
-    const pxport = '7094'
-    app.use('/datac/fapi', proxy({
+    const pxhost = 'ip'
+    const pxport = 'port'
+    app.use('/datac/', proxy({
         target: `http://${pxhost}:${pxport}`,
         changeOrigin: true,
         logLevel: 'debug',

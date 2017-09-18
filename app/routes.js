@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
+// import { isOAuth } from 'utils/isOAuth';
 
 import App from 'containers/App';
 
@@ -10,52 +11,40 @@ const errorLoading = (err) => {
 const loadModule = (cb) => (componentModule) => {
     cb(null, componentModule.default);
 };
+
+// 验证登录
+// const requireAuth = (nextState, replace) => {
+//     if (!isOAuth.hasOAuth('token')) {
+//         replace({ pathname: '/Login' });
+//     }
+// };
+
 const routes = (
     <Route>
+        {/* <Route path="/" component={App} onEnter={requireAuth}> */}
         <Route path="/" component={App}>
             <IndexRoute
               breadcrumbName="欢迎"
               breadcrumbItemName="你好管理员"
               getComponent={(nextState, cb) => {
-                  import('containers/Welcome')
+                  import('containers/Welcome/HelloAdmin')
                       .then(loadModule(cb))
                       .catch(errorLoading);
               }}
             />
-            {/* 中心体 */}
+            {/* 欢迎 */}
             <Route path="Welcome">
                 <Route path="HelloAdmin"
                   breadcrumbName="欢迎"
                   breadcrumbItemName="你好管理员"
                   getComponent={(nextState, cb) => {
-                      import('containers/Welcome')
+                      import('containers/Welcome/HelloAdmin')
                           .then(loadModule(cb))
                           .catch(errorLoading);
                   }}
                 />
             </Route>
-            <Route path="Hello">
-                <Route path="HelloWorld"
-                  breadcrumbName="欢迎"
-                  breadcrumbItemName="HelloWorld"
-                  getComponent={(nextState, cb) => {
-                      import('containers/HelloWorld')
-                          .then(loadModule(cb))
-                          .catch(errorLoading);
-                  }}
-                />
-            </Route>
-            {/* 中心体 END */}
-            <IndexRoute
-              breadcrumbName="欢迎"
-              breadcrumbItemName="你好管理员"
-              getComponent={(nextState, cb) => {
-                  import('containers/Welcome')
-                      .then(loadModule(cb))
-                      .catch(errorLoading);
-              }}
-            />
-            {/* 系统管理 END */}
+            {/* 欢迎 END */}
         </Route>
     </Route>
 );

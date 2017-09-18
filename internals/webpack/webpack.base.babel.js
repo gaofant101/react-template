@@ -11,6 +11,7 @@ module.exports = (options) => ({
     output: Object.assign({ // Compile into js/build.js
         path: path.resolve(process.cwd(), 'build'),
         publicPath: '/',
+        libraryTarget: 'var',
     }, options.output), // Merge with env dependent settings
     module: {
         loaders: [
@@ -70,7 +71,7 @@ module.exports = (options) => ({
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 loader: 'file-loader',
             }, {
-                test: /\.(jpg|png|gif|ico)$/,
+                test: /\.(jpg|png|gif)$/,
                 loaders: [
                     'file-loader',
                     {
@@ -102,11 +103,6 @@ module.exports = (options) => ({
         ],
     },
     plugins: options.plugins.concat([
-        new webpack.ProvidePlugin({
-        // make fetch available
-            fetch: 'exports-loader?self.fetch!whatwg-fetch',
-        }),
-
         // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
         // inside your code for any environment checks; UglifyJS will automatically
         // drop any unreachable code.
@@ -132,6 +128,11 @@ module.exports = (options) => ({
             'jsnext:main',
             'main',
         ],
+    },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        'babel-polyfill': 'window',
     },
     devtool: options.devtool,
     target: 'web', // Make web variables accessible to webpack, e.g. window

@@ -1,20 +1,20 @@
-/* eslint no-console:0 */
-import { Layout, Breadcrumb, Col, Icon } from 'antd';
 import React from 'react';
+import { Layout, Breadcrumb, Col, Icon, BackTop } from 'antd';
 import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
 const { Header, Content, Footer, Sider } = Layout;
 
-export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export default class App extends React.PureComponent {
     static propTypes = {
-        children: React.PropTypes.object,
-        location: React.PropTypes.object,
+        children: React.PropTypes.object.isRequired,
+        location: React.PropTypes.object.isRequired,
     }
     state = {
         collapsed: false,
         mode: 'inline',
         breadcrumbName: null,
         breadcrumbItemName: null,
+        username: '',
     };
     componentWillMount() {
         const route = this.props.children.props.route;
@@ -31,7 +31,6 @@ export default class App extends React.Component { // eslint-disable-line react/
         });
     }
     onCollapse = (collapsed) => {
-        console.log(collapsed);
         this.setState({
             collapsed,
             mode: collapsed ? 'vertical' : 'inline',
@@ -40,7 +39,7 @@ export default class App extends React.Component { // eslint-disable-line react/
     render() {
         return (
             <Layout>
-                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} width={260} >
+                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} width={240} >
                     <div className="logo" />
                     <LeftSider mode={this.state.mode} path={this.props.location.pathname} />
                 </Sider>
@@ -51,8 +50,9 @@ export default class App extends React.Component { // eslint-disable-line react/
                             <span className={styles.headtitle}>产品名称</span>
                         </Col>
                         <Col span={4} offset={12} className={styles.headuserCol}>
-                            <Icon type="user" style={{ fontSize: '14px', color: '#0e77ca' }} />
-                            <span className={styles.headuser}>admin</span>
+                            <a style={{ marginRight: 20 }}>
+                                <Icon type="user" style={{ fontSize: '14px', color: '#0e77ca' }} />
+                            </a>
                             <a>
                                 <Icon type="logout" style={{ fontSize: '13px', color: '#0e77ca', fontWeight: 'bold' }} />
                             </a>
@@ -67,9 +67,10 @@ export default class App extends React.Component { // eslint-disable-line react/
                         {this.props.children}
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                        react-temp
+                        DBAPPSecurity ©2016 Created by DBAPPSecurity UED
                     </Footer>
                 </Layout>
+                <BackTop visibilityHeight={100} />
             </Layout>
         );
     }
