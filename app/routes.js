@@ -45,6 +45,45 @@ const routes = (
                 />
             </Route>
             {/* 欢迎 END */}
+            {/* 计数器 */}
+            <Route path="Counter">
+                <Route path="Counter"
+                  breadcrumbName="计数器"
+                  breadcrumbItemName="计数器"
+                  getComponent={(nextState, cb) => {
+                      import('containers/Counter')
+                          .then(loadModule(cb))
+                          .catch(errorLoading);
+                  }}
+                />
+            </Route>
+            {/* 计数器 END */}
+            {/* 静态数据 */}
+            <Route path="DataList">
+                <Route path="DataList"
+                  breadcrumbName="静态数据"
+                  breadcrumbItemName="静态数据"
+                  getComponent={(nextState, cb) => {
+                      import('containers/DataList')
+                          .then(loadModule(cb))
+                          .catch(errorLoading);
+                  }}
+                />
+            </Route>
+            {/* 静态数据 END */}
+            {/* 获取异步数据 */}
+            <Route path="GetAsyncData">
+                <Route path="GetAsyncData"
+                  breadcrumbName="获取异步数据"
+                  breadcrumbItemName="获取异步数据"
+                  getComponent={(nextState, cb) => {
+                      import('containers/GetAsyncData')
+                          .then(loadModule(cb))
+                          .catch(errorLoading);
+                  }}
+                />
+            </Route>
+            {/* 获取异步数据 END */}
         </Route>
     </Route>
 );

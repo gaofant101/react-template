@@ -1,0 +1,8 @@
+.list{
+    font-size: 14px;
+    color: #666;
+}
+.list li{
+    padding: 10px 10px;
+    border-bottom: 1px solid #ccc;
+}

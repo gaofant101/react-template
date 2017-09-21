@@ -1,0 +1,19 @@
+.list{
+    font-size: 14px;
+    color: #666;
+}
+.list li{
+    padding: 10px 10px;
+    border-bottom: 1px solid #ccc;
+}
+.databtn{
+    display: inline-block;
+    background: transparent;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: 0;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}

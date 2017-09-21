@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Menu, Icon } from 'antd';
-import { isOAuth } from '../../utils/isOAuth';
 const SubMenu = Menu.SubMenu;
 
 export default class LeftSider extends React.PureComponent {
@@ -62,7 +61,22 @@ export default class LeftSider extends React.PureComponent {
             >
                 <SubMenu key="/Welcome" title={<span><Icon type="smile" /><span>首页</span></span>}>
                     <Menu.Item key="/Welcome/HelloAdmin">
-                        <Link to="/Welcome/HelloAdmin">您好,{isOAuth.getOAuth('username')}</Link>
+                        <Link to="/Welcome/HelloAdmin">您好</Link>
+                    </Menu.Item>
+                </SubMenu>
+                <SubMenu key="/Counter" title={<span><Icon type="smile" /><span>计数器</span></span>}>
+                    <Menu.Item key="/Counter/Counter">
+                        <Link to="/Counter/Counter">计数器</Link>
+                    </Menu.Item>
+                </SubMenu>
+                <SubMenu key="/DataList" title={<span><Icon type="smile" /><span>获取静态数据</span></span>}>
+                    <Menu.Item key="/DataList/DataList">
+                        <Link to="/DataList/DataList">获取静态数据</Link>
+                    </Menu.Item>
+                </SubMenu>
+                <SubMenu key="/GetAsyncData" title={<span><Icon type="smile" /><span>获取异步数据</span></span>}>
+                    <Menu.Item key="/GetAsyncData/GetAsyncData">
+                        <Link to="/GetAsyncData/GetAsyncData">获取异步数据</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>

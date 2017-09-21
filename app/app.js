@@ -11,11 +11,17 @@ import 'babel-polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'; // 利用Provider可以使我们的 store 能为下面的组件所用
 import { Router, browserHistory } from 'react-router';
-// import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 // import { useScroll } from 'react-router-scroll';
+
+import finalCreateStore from './reduxs';
+import reducer from './reduxs/reducers';
 import routes from './routes';
+
+import DevTools from './containers/DevTools';  // 引入Redux调试工具DevTools
 // localstorage
 import localStoragePolyfill from './utils/localStoragePolyfill';
 
@@ -38,12 +44,19 @@ openSansObserver.load().then(() => {
     document.body.classList.remove('fontLoaded');
 });
 
+const store = finalCreateStore(reducer);
+const history = syncHistoryWithStore(browserHistory, store);
 
 const render = () => {
     ReactDOM.render(
-        <Router history={browserHistory}>
-            { routes }
-        </Router>,
+        <Provider store={store}>
+            <div>
+                <Router history={history}>
+                    { routes }
+                </Router>
+                <DevTools />
+            </div>
+        </Provider>,
         document.getElementById('app')
     );
 };
