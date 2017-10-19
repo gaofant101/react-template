@@ -14,17 +14,17 @@ module.exports = require('./webpack.base.babel')({
     output: {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].chunk.js',
-        // filename: path.posix.join('js', '[name].[chunkhash].js'),
-        // chunkFilename: path.posix.join('js', '[name].[chunkhash].chunk.js'),
     },
 
     plugins: [
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             children: true,
             minChunks: 2,
             async: true,
         }),
+
         // Minify and optimize the index.html
         new HtmlWebpackPlugin({
             template: 'app/index.html',

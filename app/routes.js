@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-// import { isOAuth } from 'utils/isOAuth';
 
 import App from 'containers/App';
 
@@ -12,16 +11,8 @@ const loadModule = (cb) => (componentModule) => {
     cb(null, componentModule.default);
 };
 
-// 验证登录
-// const requireAuth = (nextState, replace) => {
-//     if (!isOAuth.hasOAuth('token')) {
-//         replace({ pathname: '/Login' });
-//     }
-// };
-
 const routes = (
     <Route>
-        {/* <Route path="/" component={App} onEnter={requireAuth}> */}
         <Route path="/" component={App}>
             <IndexRoute
               breadcrumbName="欢迎"
@@ -34,7 +25,8 @@ const routes = (
             />
             {/* 欢迎 */}
             <Route path="Welcome">
-                <Route path="HelloAdmin"
+                <Route
+                  path="HelloAdmin"
                   breadcrumbName="欢迎"
                   breadcrumbItemName="你好管理员"
                   getComponent={(nextState, cb) => {

@@ -12,24 +12,17 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, browserHistory } from 'react-router';
-// import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
-// import { useScroll } from 'react-router-scroll';
 import routes from './routes';
-// localstorage
-import localStoragePolyfill from './utils/localStoragePolyfill';
 
 /* eslint-disable */
-import '!file-loader?name=[name].[ext]!./favicon.ico';
+import '!file-loader?name=[name].[ext]!./assets/images/favicon.ico';
 /* eslint-enable */
-import './assets/css/rewrite.css';
+import './assets/style/rewrite.css';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
-
-// 实现localstorage
-localStoragePolyfill.polyfill();
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
@@ -37,7 +30,6 @@ openSansObserver.load().then(() => {
 }, () => {
     document.body.classList.remove('fontLoaded');
 });
-
 
 const render = () => {
     ReactDOM.render(

@@ -11,7 +11,7 @@ export default class HelloAdmin extends React.PureComponent { // eslint-disable-
     render() {
         return (
             <div className={styles.hello}>
-                <h1>你好!</h1>
+                <h1>你好1!</h1>
             </div>
         );
     }

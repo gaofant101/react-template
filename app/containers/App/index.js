@@ -44,12 +44,12 @@ export default class App extends React.PureComponent {
                     <LeftSider mode={this.state.mode} path={this.props.location.pathname} />
                 </Sider>
                 <Layout style={{ minHeight: '100vh' }}>
-                    <Header className={styles.antlayoutheader}>
+                    <Header>
                         <Col span={8}>
                             <Icon type="appstore" style={{ fontSize: '15px', color: '#0e77ca' }} />
-                            <span className={styles.headtitle}>产品名称</span>
+                            <span>产品名称</span>
                         </Col>
-                        <Col span={4} offset={12} className={styles.headuserCol}>
+                        <Col span={4} offset={12}>
                             <a style={{ marginRight: 20 }}>
                                 <Icon type="user" style={{ fontSize: '14px', color: '#0e77ca' }} />
                             </a>
@@ -58,7 +58,7 @@ export default class App extends React.PureComponent {
                             </a>
                         </Col>
                     </Header>
-                    <Breadcrumb className={styles.breadcrumb}>
+                    <Breadcrumb>
                         <Breadcrumb.Item>首页</Breadcrumb.Item>
                         <Breadcrumb.Item>{this.state.breadcrumbName}</Breadcrumb.Item>
                         <Breadcrumb.Item>{this.state.breadcrumbItemName}</Breadcrumb.Item>

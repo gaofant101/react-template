@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Menu, Icon } from 'antd';
-import { isOAuth } from '../../utils/isOAuth';
 const SubMenu = Menu.SubMenu;
 
 export default class LeftSider extends React.PureComponent {
@@ -62,7 +61,7 @@ export default class LeftSider extends React.PureComponent {
             >
                 <SubMenu key="/Welcome" title={<span><Icon type="smile" /><span>首页</span></span>}>
                     <Menu.Item key="/Welcome/HelloAdmin">
-                        <Link to="/Welcome/HelloAdmin">您好,{isOAuth.getOAuth('username')}</Link>
+                        <Link to="/Welcome/HelloAdmin">您好</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>

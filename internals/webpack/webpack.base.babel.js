@@ -4,79 +4,83 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const eslintfriendlyformatter = require('eslint-friendly-formatter');
 const theme = require(path.resolve(process.cwd(), 'theme.js'));
+
+// Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
+// 'DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic,
+// see https://github.com/webpack/loader-utils/issues/56 parseQuery() will be replaced with getOptions()
+// in the next major version of loader-utils.'
+process.noDeprecation = true;
 
 module.exports = (options) => ({
     entry: options.entry,
     output: Object.assign({ // Compile into js/build.js
         path: path.resolve(process.cwd(), 'build'),
         publicPath: '/',
-        libraryTarget: 'var',
     }, options.output), // Merge with env dependent settings
     module: {
-        loaders: [
+        rules: [
             {
                 enforce: 'pre',
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'eslint-loader',
                 include: [
-                    path.resolve(__dirname, "../../app"),
+                    path.resolve(__dirname, '../../app'),
                 ],
-                options: {
-                    cache: true,
-                    formatter: require('eslint-friendly-formatter')
-                }
-            },
-            {
-                test: /\.js$/, // Transform all .js files required somewhere with Babel
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: options.babelQuery,
+                use: {
+                    loader: 'eslint-loader',
+                    options: {
+                        cache: true,
+                        formatter: eslintfriendlyformatter,
+                    },
+                },
             }, {
+                test: /\.js$/, // Transform all .js files required somewhere with Babel
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: options.babelQuery,
+                },
+            }, {
+                // Preprocess our own .css files
+                // This is the place to add your own loaders (e.g. sass/less etc.)
+                // for a list of loaders, see https://webpack.js.org/loaders/#styling
                 test: /\.css$/,
                 exclude: /node_modules/,
-                loaders: [
-                    'style-loader',
-                    {
-                        loader: "css-loader",
-                        query: {
+                use: [
+                    'style-loader', {
+                        loader: 'css-loader',
+                        options: {
                             modules: true,
                             importLoaders: 1,
-                            localIdentName: "[name]__[local]__[hash:base64:8]",
+                            localIdentName: '[name]__[local]__[hash:base64:8]',
                         },
                     },
-                    {
-                        loader: "postcss-loader",
-                    },
-                ]
+                    'postcss-loader',
+                ],
             }, {
                 test: /\.less$/,
-                use: [{
-                    loader: "style-loader"
-                }, {
-                    loader: "css-loader"
-                }, {
-                    loader: "postcss-loader",
-                }, {
-                    loader: "less-loader",
-                    options: {
-                        paths: [
-                            path.resolve(__dirname, "../../node_modules"),
-                        ],
-                        modifyVars: theme
-                    }
-                }]
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader', {
+                        loader: 'less-loader',
+                        options: {
+                            paths: [path.resolve(__dirname, '../../node_modules')],
+                            modifyVars: theme,
+                        },
+                    },
+                ],
             }, {
-                test: /\.(eot|svg|ttf|woff|woff2)$/,
-                loader: 'file-loader',
+                test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
+                use: 'file-loader',
             }, {
                 test: /\.(jpg|png|gif)$/,
-                loaders: [
-                    'file-loader',
-                    {
+                use: [
+                    'file-loader', {
                         loader: 'image-webpack-loader',
-                        query: {
+                        options: {
                             progressive: true,
                             optimizationLevel: 7,
                             interlaced: false,
@@ -89,20 +93,23 @@ module.exports = (options) => ({
                 ],
             }, {
                 test: /\.html$/,
-                loader: 'html-loader',
+                use: 'html-loader',
             }, {
                 test: /\.json$/,
-                loader: 'json-loader',
+                use: 'json-loader',
             }, {
                 test: /\.(mp4|webm)$/,
-                loader: 'url-loader',
-                query: {
-                    limit: 10000,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000,
+                    },
                 },
-            }
+            },
         ],
     },
     plugins: options.plugins.concat([
+
         // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
         // inside your code for any environment checks; UglifyJS will automatically
         // drop any unreachable code.
@@ -114,25 +121,20 @@ module.exports = (options) => ({
         new webpack.NamedModulesPlugin(),
     ]),
     resolve: {
-        modules: ['app', 'node_modules'],
+        modules: [
+            'app', 'node_modules',
+        ],
         alias: {
             moment$: 'moment/moment.js',
         },
         extensions: [
-            '.js',
-            '.jsx',
-            '.react.js',
+            '.js', '.jsx', '.react.js',
         ],
         mainFields: [
             'browser',
             'jsnext:main',
             'main',
         ],
-    },
-    externals: {
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'babel-polyfill': 'window',
     },
     devtool: options.devtool,
     target: 'web', // Make web variables accessible to webpack, e.g. window
