@@ -33,7 +33,6 @@
   },
   "lint-staged": {
     "app/**/*.js": "lint:eslint",
-    "app/**/*.css": "lint:eslint",
     "internals/**/*.js": "lint:eslint",
     "server/**/*.js": "lint:eslint"
   },
