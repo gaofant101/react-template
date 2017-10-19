@@ -1,16 +1,16 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.5.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "react-template",
+  "version": "2.0.0",
+  "description": "灵活易用,可拓展,最佳团队开发模板",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "https://github.com/evanhunt/react-template"
   },
   "engines": {
     "npm": ">=3",
     "node": ">=5"
   },
-  "author": "Max Stoiber",
+  "author": "Gao Fan",
   "license": "MIT",
   "scripts": {
     "npmcheckversion": "node ./internals/scripts/npmcheckversion.js",
