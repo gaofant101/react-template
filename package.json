@@ -32,7 +32,10 @@
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "lint-staged": {
-    "app/**/*.js": "lint:eslint"
+    "app/**/*.js": "lint:eslint",
+    "app/**/*.css": "lint:eslint",
+    "internals/**/*.js": "lint:eslint",
+    "server/**/*.js": "lint:eslint"
   },
   "pre-commit": "lint:staged",
   "babel": {
