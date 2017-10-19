@@ -55,9 +55,7 @@
 #### `ESLint` 规则
 
 - 规则 `http://blog.guowenfh.com/2016/08/07/ESLint-Rules`
-
 - `ES6` 箭头函数语法 `http://es6.ruanyifeng.com/#docs/function#箭头函数`
-
 - `Unexpected block statement surrounding arrow body arrow-body-style` 报错 `https://github.com/eslint/eslint/issues/5498`
 
 #### `webpack`
@@ -65,7 +63,9 @@
 - `Webpack2` 的新特性 `http://www.aliued.com/?p=4060`
 - `WebPack 2: Migrate preLoaders and postLoaders`  `http://stackoverflow.com/questions/40653936/webpack-2-migrate-preloaders-and-postloaders`
 
+#### 记`pro-commit`钩子错误
 
+- `lint-staged` 查看匹配规则 `https://github.com/okonet/lint-staged`
 
 ## 官方 `CLI`
 
