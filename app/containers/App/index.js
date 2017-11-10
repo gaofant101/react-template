@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Breadcrumb, Col, Icon, BackTop } from 'antd';
 import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 export default class App extends React.PureComponent {
     static propTypes = {
@@ -46,15 +46,15 @@ export default class App extends React.PureComponent {
                 <Layout style={{ minHeight: '100vh' }}>
                     <Header>
                         <Col span={8}>
-                            <Icon type="appstore" style={{ fontSize: '15px', color: '#0e77ca' }} />
-                            <span>产品名称</span>
+                            <Icon type="appstore" style={{ fontSize: '15px', color: '#fff' }} />
+                            <span className={styles.span1}>产品名称</span>
                         </Col>
-                        <Col span={4} offset={12}>
+                        <Col span={1} offset={15}>
                             <a style={{ marginRight: 20 }}>
-                                <Icon type="user" style={{ fontSize: '14px', color: '#0e77ca' }} />
+                                <Icon type="user" style={{ fontSize: '14px', color: '#fff' }} />
                             </a>
                             <a>
-                                <Icon type="logout" style={{ fontSize: '13px', color: '#0e77ca', fontWeight: 'bold' }} />
+                                <Icon type="logout" style={{ fontSize: '13px', color: '#fff', fontWeight: 'bold' }} />
                             </a>
                         </Col>
                     </Header>
@@ -66,9 +66,6 @@ export default class App extends React.PureComponent {
                     <Content className={styles.antdlayoutcontent}>
                         {this.props.children}
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>
-                        DBAPPSecurity ©2016 Created by DBAPPSecurity UED
-                    </Footer>
                 </Layout>
                 <BackTop visibilityHeight={100} />
             </Layout>

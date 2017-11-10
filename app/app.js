@@ -18,7 +18,7 @@ import routes from './routes';
 /* eslint-disable */
 import '!file-loader?name=[name].[ext]!./assets/images/favicon.ico';
 /* eslint-enable */
-import './assets/style/rewrite.css';
+// import './assets/style/rewrite.css';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)

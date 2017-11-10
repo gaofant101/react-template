@@ -26,8 +26,18 @@
     padding: 10px 20px;
     font-size: 12px;
 }
-/* 导航栏配色 */
+.span1{
+    color: #fff;
+    padding-left: 10px;
+}
 
+:global(.ant-layout){
+    background: #fff;
+}
+:global(.ant-layout-header){
+    padding: 0 10px;
+}
+/* 导航栏配色 */
 :global(.ant-menu-dark.ant-menu-inline .ant-menu-item-selected){
     background-color: #1eb0f2;
 }
@@ -49,6 +59,9 @@
 }
 
 /* 面包屑样式 */
+:global(.ant-breadcrumb){
+    padding: 5px 20px;
+}
 :global(.ant-breadcrumb > span){
     cursor: pointer;
 }
