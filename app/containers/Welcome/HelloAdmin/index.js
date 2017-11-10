@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axioss';
 import styles from './style.css';
 
 export default class HelloAdmin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -7,6 +8,10 @@ export default class HelloAdmin extends React.PureComponent { // eslint-disable-
     }
     componentWillMount() {
         // 1
+        // axios.get('./data.js')
+        //     .then((res) => {
+        //         console.log(res);
+        //     });
     }
     render() {
         return (

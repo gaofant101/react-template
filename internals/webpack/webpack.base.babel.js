@@ -126,6 +126,7 @@ module.exports = (options) => ({
         ],
         alias: {
             moment$: 'moment/moment.js',
+            axioss: path.resolve(__dirname, '../../app/axioss'),
         },
         extensions: [
             '.js', '.jsx', '.react.js',
