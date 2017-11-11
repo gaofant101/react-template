@@ -26,6 +26,11 @@
     padding: 10px 20px;
     font-size: 12px;
 }
+
+.productname{
+    color: #fff;
+    padding-left: 10px;
+}
 /* 导航栏配色 */
 
 :global(.ant-menu-dark.ant-menu-inline .ant-menu-item-selected){

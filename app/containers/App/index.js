@@ -43,18 +43,18 @@ export default class App extends React.PureComponent {
                     <div className="logo" />
                     <LeftSider mode={this.state.mode} path={this.props.location.pathname} />
                 </Sider>
-                <Layout style={{ minHeight: '100vh' }}>
+                <Layout>
                     <Header>
                         <Col span={8}>
-                            <Icon type="appstore" style={{ fontSize: '15px', color: '#0e77ca' }} />
-                            <span>产品名称</span>
+                            <Icon type="appstore" style={{ fontSize: '15px', color: '#fff' }} />
+                            <span className={styles.productname}>产品名称</span>
                         </Col>
-                        <Col span={4} offset={12}>
+                        <Col span={1} offset={15}>
                             <a style={{ marginRight: 20 }}>
-                                <Icon type="user" style={{ fontSize: '14px', color: '#0e77ca' }} />
+                                <Icon type="user" style={{ fontSize: '14px', color: '#fff' }} />
                             </a>
                             <a>
-                                <Icon type="logout" style={{ fontSize: '13px', color: '#0e77ca', fontWeight: 'bold' }} />
+                                <Icon type="logout" style={{ fontSize: '13px', color: '#fff', fontWeight: 'bold' }} />
                             </a>
                         </Col>
                     </Header>
@@ -67,7 +67,7 @@ export default class App extends React.PureComponent {
                         {this.props.children}
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                        DBAPPSecurity ©2016 Created by DBAPPSecurity UED
+                        @Hello World
                     </Footer>
                 </Layout>
                 <BackTop visibilityHeight={100} />
