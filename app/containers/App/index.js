@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Breadcrumb, Col, Icon, BackTop } from 'antd';
 import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 export default class App extends React.PureComponent {
     static propTypes = {
