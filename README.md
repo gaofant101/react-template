@@ -37,6 +37,9 @@
 
 代理设置参考`https://github.com/react-boilerplate/react-boilerplate/pull/679`
 
+#### 配置`https`服务
+
+Express over HTTPS `http://blog.mgechev.com/2014/02/19/create-https-tls-ssl-application-with-express-nodejs/`
 
 ## 文档
 
