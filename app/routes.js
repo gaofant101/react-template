@@ -18,24 +18,22 @@ const routes = (
               breadcrumbName="欢迎"
               breadcrumbItemName="你好管理员"
               getComponent={(nextState, cb) => {
-                  import('containers/Welcome/HelloAdmin')
+                  import('containers/Welcome')
                       .then(loadModule(cb))
                       .catch(errorLoading);
               }}
             />
             {/* 欢迎 */}
-            <Route path="Welcome">
-                <Route
-                  path="HelloAdmin"
-                  breadcrumbName="欢迎"
-                  breadcrumbItemName="你好管理员"
-                  getComponent={(nextState, cb) => {
-                      import('containers/Welcome/HelloAdmin')
-                          .then(loadModule(cb))
-                          .catch(errorLoading);
-                  }}
-                />
-            </Route>
+            <Route
+              path="Welcome"
+              breadcrumbName="欢迎"
+              breadcrumbItemName="你好管理员"
+              getComponent={(nextState, cb) => {
+                  import('containers/Welcome')
+                      .then(loadModule(cb))
+                      .catch(errorLoading);
+              }}
+            />
             {/* 欢迎 END */}
         </Route>
     </Route>

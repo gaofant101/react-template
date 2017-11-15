@@ -1,14 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Breadcrumb, Col, Icon, BackTop } from 'antd';
 import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
 const { Header, Content, Sider, Footer } = Layout;
 
 export default class App extends React.PureComponent {
-    static propTypes = {
-        children: React.PropTypes.object.isRequired,
-        location: React.PropTypes.object.isRequired,
-    }
     state = {
         collapsed: false,
         mode: 'inline',
@@ -39,7 +36,7 @@ export default class App extends React.PureComponent {
     render() {
         return (
             <Layout>
-                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} width={240} >
+                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} width={200} >
                     <div className="logo" />
                     <LeftSider mode={this.state.mode} path={this.props.location.pathname} />
                 </Sider>
@@ -75,3 +72,8 @@ export default class App extends React.PureComponent {
         );
     }
 }
+
+App.propTypes = {
+    children: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+};

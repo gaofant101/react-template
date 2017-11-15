@@ -1,13 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 
 export default class LeftSider extends React.PureComponent {
-    static propTypes = {
-        mode: React.PropTypes.string,
-        path: React.PropTypes.string,
-    }
     state = {
         current: null,
         openKeys: [],
@@ -35,10 +32,14 @@ export default class LeftSider extends React.PureComponent {
     setMenuOpen = (props) => {
         const { path } = props;
         const openKey = [`/${path.split('/')[1]}`];
-        const currentPath = `/${path.split('/')[1]}/${path.split('/')[2]}`;
+        const arr = path.split('/');
+        arr.shift();
+        const current = arr.reduce((key1, key2) =>
+            `${key1}/${key2}`
+        );
         this.setState({
             openKeys: openKey,
-            current: currentPath,
+            current: `/${current}`,
         });
     }
     getAncestorKeys = (key) => {
@@ -60,11 +61,16 @@ export default class LeftSider extends React.PureComponent {
               onClick={this.handleClick}
             >
                 <SubMenu key="/Welcome" title={<span><Icon type="smile" /><span>首页</span></span>}>
-                    <Menu.Item key="/Welcome/HelloAdmin">
-                        <Link to="/Welcome/HelloAdmin">您好</Link>
+                    <Menu.Item key="/Welcome">
+                        <Link to="/Welcome">您好</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>
         );
     }
 }
+
+LeftSider.propTypes = {
+    mode: PropTypes.string,
+    path: PropTypes.string,
+};

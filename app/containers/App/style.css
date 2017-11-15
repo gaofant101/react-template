@@ -1,8 +1,6 @@
 /* 整体布局 */
 .antdlayoutcontent{
-    margin: 0 20px;
-    padding: 50px 20px;
-    background: #fff;
+    min-height: 100vh;
 }
 .antlayoutheader{
     height: 50px;
@@ -46,8 +44,12 @@
 :global(.ant-layout-sider-trigger){
     background-color: #2e3e54;
 }
+:global(.ant-layout-sider-children){
+    padding-top: 20px;
+}
 :global(.ant-layout-sider .logo) {
-    margin: 20px auto;
+    margin: auto;
+    margin-bottom: 20px;
     width: 80%;
     height: 50px;
     line-height: 4;
