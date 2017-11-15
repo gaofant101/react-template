@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 // import axios from 'axioss';
 import styles from './style.css';
 
-export default class HelloAdmin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-    state = {
-        username: '',
+export default class HelloAdmin extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+        };
     }
     componentWillMount() {
-        // 1
-        // axios.get('./data.js')
-        //     .then((res) => {
-        //         console.log(res);
-        //     });
+        // componentWillMount
+    }
+    componentDidMount() {
+        // componentDidMount
     }
     render() {
         return (

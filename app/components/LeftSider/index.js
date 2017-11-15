@@ -62,7 +62,12 @@ export default class LeftSider extends React.PureComponent {
             >
                 <SubMenu key="/Welcome" title={<span><Icon type="smile" /><span>首页</span></span>}>
                     <Menu.Item key="/Welcome">
-                        <Link to="/Welcome">您好</Link>
+                        <Link to="/Welcome"><Icon type="bars" />您好</Link>
+                    </Menu.Item>
+                </SubMenu>
+                <SubMenu key="/LifeCycle" title={<span><Icon type="loading" /><span>生命周期</span></span>}>
+                    <Menu.Item key="/LifeCycle">
+                        <Link to="/LifeCycle"><Icon type="bars" />生命周期</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>

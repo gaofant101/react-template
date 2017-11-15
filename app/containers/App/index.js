@@ -5,14 +5,17 @@ import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
 const { Header, Content, Sider, Footer } = Layout;
 
-export default class App extends React.PureComponent {
-    state = {
-        collapsed: false,
-        mode: 'inline',
-        breadcrumbName: null,
-        breadcrumbItemName: null,
-        username: '',
-    };
+export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            collapsed: false,
+            mode: 'inline',
+            breadcrumbName: null,
+            breadcrumbItemName: null,
+            username: '',
+        };
+    }
     componentWillMount() {
         const route = this.props.children.props.route;
         this.setState({

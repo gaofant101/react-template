@@ -35,6 +35,18 @@ const routes = (
               }}
             />
             {/* 欢迎 END */}
+            {/* 生命周期 */}
+            <Route
+              path="LifeCycle"
+              breadcrumbName="生命周期"
+              breadcrumbItemName="生命周期图"
+              getComponent={(nextState, cb) => {
+                  import('containers/componentLifecycle')
+                      .then(loadModule(cb))
+                      .catch(errorLoading);
+              }}
+            />
+            {/* 生命周期 END */}
         </Route>
     </Route>
 );
