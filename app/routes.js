@@ -16,7 +16,7 @@ const routes = (
         <Route path="/" component={App}>
             <IndexRoute
               breadcrumbName="欢迎"
-              breadcrumbItemName="你好管理员"
+              breadcrumbItemName="Holle React"
               getComponent={(nextState, cb) => {
                   import('containers/Welcome')
                       .then(loadModule(cb))
@@ -36,16 +36,28 @@ const routes = (
             />
             {/* 欢迎 END */}
             {/* 生命周期 */}
-            <Route
-              path="LifeCycle"
-              breadcrumbName="生命周期"
-              breadcrumbItemName="生命周期图"
-              getComponent={(nextState, cb) => {
-                  import('containers/componentLifecycle')
-                      .then(loadModule(cb))
-                      .catch(errorLoading);
-              }}
-            />
+            <Route path="LifeCycle">
+                <Route
+                  path="Function"
+                  breadcrumbName="生命周期"
+                  breadcrumbItemName="生命周期方法"
+                  getComponent={(nextState, cb) => {
+                      import('containers/ComponentLifecycle/Function')
+                          .then(loadModule(cb))
+                          .catch(errorLoading);
+                  }}
+                />
+                <Route
+                  path="Step"
+                  breadcrumbName="生命周期"
+                  breadcrumbItemName="生命周期流程"
+                  getComponent={(nextState, cb) => {
+                      import('containers/ComponentLifecycle/Step')
+                          .then(loadModule(cb))
+                          .catch(errorLoading);
+                  }}
+                />
+            </Route>
             {/* 生命周期 END */}
         </Route>
     </Route>

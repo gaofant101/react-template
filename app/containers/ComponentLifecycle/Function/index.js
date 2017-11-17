@@ -1,10 +1,11 @@
 /* eslint no-console: 0 */
 import React, { PureComponent } from 'react';
 import { Row, Collapse, Button, Spin } from 'antd';
+import styles from './style.css';
 
 const Panel = Collapse.Panel;
 
-export default class LifeCycle extends PureComponent {
+export default class LifeCycleFunction extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,7 +34,7 @@ export default class LifeCycle extends PureComponent {
             this.setState({
                 loading: false,
             });
-        }, 500);
+        }, 100);
     }
     componentWillReceiveProps() {
         /**
@@ -89,21 +90,13 @@ export default class LifeCycle extends PureComponent {
         });
     }
     render() {
-        const styles = {
-            marginBottom: '10px',
-        };
-        const styles1 = {
-            paddingTop: '20px',
-            paddingLeft: '20px',
-            paddingRight: '20px',
-        };
         return (
-            <div style={styles1}>
+            <div className={styles.box}>
                 <Spin spinning={this.state.loading}>
-                    <Row style={styles}><Button type="primary" onClick={this.handlerClick}>触发更新</Button></Row>
-                    <Row style={styles}>{this.state.name}</Row>
-                    <Row style={styles}>
-                        <Collapse accordion>
+                    <Row className={styles.marginBtm20}><Button type="primary" onClick={this.handlerClick}>触发更新</Button></Row>
+                    <Row className={styles.marginBtm20}>{this.state.name}</Row>
+                    <Row className={styles.marginBtm20}>
+                        <Collapse defaultActiveKey={['1']} accordion>
                             <Panel header="componentWillMount 组件装载前立即调用" key="1">
                                 <pre>
                                     {
@@ -235,7 +228,6 @@ componentWillUnmount() {
                         </Collapse>
                     </Row>
                 </Spin>
-                <Row><a href="https://zhuanlan.zhihu.com/purerender/20312691" target="_blank">React 源码剖析系列 － 生命周期的管理艺术</a></Row>
             </div>
         );
     }

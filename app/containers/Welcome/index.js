@@ -18,7 +18,7 @@ export default class HelloAdmin extends PureComponent {
     render() {
         return (
             <div className={styles.hello}>
-                <h1>你好!</h1>
+                <h1>Holle React</h1>
             </div>
         );
     }
