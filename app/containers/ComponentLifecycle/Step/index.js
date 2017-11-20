@@ -17,7 +17,11 @@ export default class LifeCycleStep extends PureComponent {
         super(props);
         this.state = {
             loading: true,
+            num: 0,
         };
+    }
+    componentWillMount() {
+        // 1
     }
     componentDidMount() {
         setTimeout(() => {

@@ -27,7 +27,7 @@ const routes = (
             <Route
               path="Welcome"
               breadcrumbName="欢迎"
-              breadcrumbItemName="你好管理员"
+              breadcrumbItemName="Holle React"
               getComponent={(nextState, cb) => {
                   import('containers/Welcome')
                       .then(loadModule(cb))
@@ -59,6 +59,17 @@ const routes = (
                 />
             </Route>
             {/* 生命周期 END */}
+            {/* setState */}
+            <Route
+              path="setState"
+              breadcrumbName="React.setState"
+              getComponent={(nextState, cb) => {
+                  import('containers/React.setState')
+                      .then(loadModule(cb))
+                      .catch(errorLoading);
+              }}
+            />
+            {/* setState END */}
         </Route>
     </Route>
 );

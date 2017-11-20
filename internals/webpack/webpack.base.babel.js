@@ -5,6 +5,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const eslintfriendlyformatter = require('eslint-friendly-formatter');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const theme = require(path.resolve(process.cwd(), 'theme.js'));
 
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
@@ -12,6 +13,9 @@ const theme = require(path.resolve(process.cwd(), 'theme.js'));
 // see https://github.com/webpack/loader-utils/issues/56 parseQuery() will be replaced with getOptions()
 // in the next major version of loader-utils.'
 process.noDeprecation = true;
+// 创建多个实例
+const extractCSS = new ExtractTextPlugin('layout.[chunkhash].css');
+const extractLESS = new ExtractTextPlugin('antd.[chunkhash].css');
 
 module.exports = (options) => ({
     entry: options.entry,
@@ -48,30 +52,35 @@ module.exports = (options) => ({
                 // for a list of loaders, see https://webpack.js.org/loaders/#styling
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: [
-                    'style-loader', {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            importLoaders: 1,
-                            localIdentName: '[name]__[local]__[hash:base64:8]',
+                use: extractCSS.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                importLoaders: 1,
+                                localIdentName: '[name]__[local]__[hash:base64:8]',
+                            },
                         },
-                    },
-                    'postcss-loader',
-                ],
+                        'postcss-loader',
+                    ]
+                }),
             }, {
                 test: /\.less$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader', {
-                        loader: 'less-loader',
-                        options: {
-                            paths: [path.resolve(__dirname, '../../node_modules')],
-                            modifyVars: theme,
+                use: extractLESS.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader',
+                        'postcss-loader', {
+                            loader: 'less-loader',
+                            options: {
+                                paths: [path.resolve(__dirname, '../../node_modules')],
+                                modifyVars: theme,
+                            },
                         },
-                    },
-                ],
+                    ],
+                }),
             }, {
                 test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
                 use: 'file-loader',
@@ -119,6 +128,14 @@ module.exports = (options) => ({
             },
         }),
         new webpack.NamedModulesPlugin(),
+        extractLESS,
+        extractCSS,
+        new ExtractTextPlugin({
+            filename:  (getPath) => {
+                return getPath('[name].[chunkhash].css').replace('css/js', 'css');
+            },
+            allChunks: true
+        }),
     ]),
     resolve: {
         modules: [

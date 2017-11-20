@@ -73,6 +73,11 @@ export default class LeftSider extends React.PureComponent {
                         <Link to="/LifeCycle/Step"><Icon type="bars" />生命周期流程</Link>
                     </Menu.Item>
                 </SubMenu>
+                <SubMenu key="/setState" title={<span><Icon type="frown-o" /><span>React.setState</span></span>}>
+                    <Menu.Item key="/setState">
+                        <Link to="/setState"><Icon type="bars" />React.setState</Link>
+                    </Menu.Item>
+                </SubMenu>
             </Menu>
         );
     }
