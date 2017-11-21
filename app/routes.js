@@ -70,6 +70,17 @@ const routes = (
               }}
             />
             {/* setState END */}
+            {/* TopLevelApi */}
+            <Route
+              path="TopLevelApi"
+              breadcrumbName="TopLevelApi"
+              getComponent={(nextState, cb) => {
+                  import('containers/TopLevelApi')
+                      .then(loadModule(cb))
+                      .catch(errorLoading);
+              }}
+            />
+            {/* TopLevelApi END */}
         </Route>
     </Route>
 );

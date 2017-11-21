@@ -64,7 +64,7 @@ module.exports = (options) => ({
                             },
                         },
                         'postcss-loader',
-                    ]
+                    ],
                 }),
             }, {
                 test: /\.less$/,
@@ -131,10 +131,9 @@ module.exports = (options) => ({
         extractLESS,
         extractCSS,
         new ExtractTextPlugin({
-            filename:  (getPath) => {
-                return getPath('[name].[chunkhash].css').replace('css/js', 'css');
-            },
-            allChunks: true
+            filename: (getPath) =>
+                getPath('[name].[chunkhash].css').replace('css/js', 'css'),
+            allChunks: true,
         }),
     ]),
     resolve: {

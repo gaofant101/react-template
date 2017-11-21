@@ -78,6 +78,11 @@ export default class LeftSider extends React.PureComponent {
                         <Link to="/setState"><Icon type="bars" />React.setState</Link>
                     </Menu.Item>
                 </SubMenu>
+                <SubMenu key="/TopLevelApi" title={<span><Icon type="tool" /><span>TopLevelApi</span></span>}>
+                    <Menu.Item key="/TopLevelApi">
+                        <Link to="/TopLevelApi"><Icon type="bars" />TopLevelApi</Link>
+                    </Menu.Item>
+                </SubMenu>
             </Menu>
         );
     }

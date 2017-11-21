@@ -1,26 +1,23 @@
 .box{
     padding: 20px;
 }
-.selected{
-    color: #f00;
-}
 .marginBtm20{
     margin-bottom: 20px;
 }
-.box ul{
+.tree{
 
 }
-.box ul li{
+.tree li{
     margin-bottom: 4px;
-    font-size: 14px;
     cursor: pointer;
+}
+.tree li span{
+    margin-bottom: 4px;
+}
+.tree li ul{
+    margin-left: 20px;
 }
 .box pre{
     width: 100%;
     overflow-x: scroll;
-}
-.box code{
-    padding: 2px 6px;
-    background-color: #f3f3f3;
-    border-radius: 2px;
 }
