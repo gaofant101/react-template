@@ -11,30 +11,49 @@ import 'babel-polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, browserHistory } from 'react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import routes from './routes';
+
+import DevTools from './containers/DevTools';  // 引入Redux调试工具DevTools
+
+import finalCreateStore from './reduxs';
+import todoApp from './containers/Todos/reducer';
 
 /* eslint-disable */
 import '!file-loader?name=[name].[ext]!./assets/images/favicon.ico';
 /* eslint-enable */
 
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
+/**
+ * Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+ * the index.html file and this observer)
+ * When Open Sans is loaded, add a font-family using Open Sans to the body
+ */
 const openSansObserver = new FontFaceObserver('Open Sans', {});
-
-// When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
     document.body.classList.add('fontLoaded');
 }, () => {
     document.body.classList.remove('fontLoaded');
 });
 
+/**
+ * inject store
+ */
+const store = finalCreateStore(todoApp);
+const history = syncHistoryWithStore(browserHistory, store);
+
 const render = () => {
     ReactDOM.render(
-        <Router history={browserHistory}>
-            { routes }
-        </Router>,
+        <Provider store={store}>
+            <div>
+                <Router history={history}>
+                    { routes }
+                </Router>
+                <DevTools />
+            </div>
+        </Provider>,
         document.getElementById('app')
     );
 };

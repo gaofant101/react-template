@@ -81,6 +81,28 @@ const routes = (
               }}
             />
             {/* TopLevelApi END */}
+            {/* Redux */}
+            <Route
+              path="Redux"
+              breadcrumbName="Redux"
+              getComponent={(nextState, cb) => {
+                  import('containers/Redux')
+                      .then(loadModule(cb))
+                      .catch(errorLoading);
+              }}
+            />
+            {/* Redux END */}
+            {/* Todos */}
+            <Route
+              path="Todos"
+              breadcrumbName="Todos"
+              getComponent={(nextState, cb) => {
+                  import('containers/Todos')
+                      .then(loadModule(cb))
+                      .catch(errorLoading);
+              }}
+            />
+            {/* Todos END */}
         </Route>
     </Route>
 );
