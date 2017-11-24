@@ -3,6 +3,9 @@ import React, { PureComponent } from 'react';
 import { Row, Col, Card } from 'antd';
 import styles from './style.css';
 
+import Todos from './Todos';
+import DevTools from '../DevTools';
+
 export default class ReactSetState extends PureComponent {
     constructor(props) {
         super(props);
@@ -14,7 +17,7 @@ export default class ReactSetState extends PureComponent {
         // componentWillMount
     }
     componentDidMount() {
-        // componentDidMount
+        console.log(this.props);
     }
     render() {
         return (
@@ -32,7 +35,7 @@ export default class ReactSetState extends PureComponent {
                 <Row gutter={16} className={styles.marginBtm20}>
                     <Col span={8}>
                         <Card title="点击列表查看state">
-                            1
+                            <Todos />
                         </Card>
                     </Col>
                     <Col span={8}>
@@ -48,6 +51,7 @@ export default class ReactSetState extends PureComponent {
                         </Card>
                     </Col>
                 </Row>
+                <DevTools />
             </div>
         );
     }

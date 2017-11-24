@@ -92,17 +92,6 @@ const routes = (
               }}
             />
             {/* Redux END */}
-            {/* Todos */}
-            <Route
-              path="Todos"
-              breadcrumbName="Todos"
-              getComponent={(nextState, cb) => {
-                  import('containers/Todos')
-                      .then(loadModule(cb))
-                      .catch(errorLoading);
-              }}
-            />
-            {/* Todos END */}
         </Route>
     </Route>
 );

@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Row, Col, Card } from 'antd';
 import Tree from './defaultIndex';
 import styles from './style.css';
@@ -8,7 +8,7 @@ import { treeData } from './treeList';
 
 const TreeNode = Tree.TreeNode;
 
-export default class TopLevelApi extends PureComponent {
+export default class TopLevelApi extends Component {
     constructor(props) {
         super(props);
         this.state = {

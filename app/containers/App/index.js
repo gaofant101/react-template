@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Breadcrumb, Col, Icon, BackTop } from 'antd';
 import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
 const { Header, Content, Sider, Footer } = Layout;
 
-export default class App extends React.Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {

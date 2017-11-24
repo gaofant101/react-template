@@ -83,6 +83,11 @@ export default class LeftSider extends React.PureComponent {
                         <Link to="/TopLevelApi"><Icon type="bars" />TopLevelApi</Link>
                     </Menu.Item>
                 </SubMenu>
+                <SubMenu key="/Redux" title={<span><Icon type="tool" /><span>Redux</span></span>}>
+                    <Menu.Item key="/Redux">
+                        <Link to="/Redux"><Icon type="bars" />Redux</Link>
+                    </Menu.Item>
+                </SubMenu>
             </Menu>
         );
     }

@@ -17,10 +17,8 @@ import { Router, browserHistory } from 'react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import routes from './routes';
 
-import DevTools from './containers/DevTools';  // 引入Redux调试工具DevTools
-
 import finalCreateStore from './reduxs';
-import todoApp from './containers/Todos/reducer';
+import reducers from './reduxs/reducers';
 
 /* eslint-disable */
 import '!file-loader?name=[name].[ext]!./assets/images/favicon.ico';
@@ -41,7 +39,7 @@ openSansObserver.load().then(() => {
 /**
  * inject store
  */
-const store = finalCreateStore(todoApp);
+const store = finalCreateStore(reducers);
 const history = syncHistoryWithStore(browserHistory, store);
 
 const render = () => {
@@ -51,7 +49,6 @@ const render = () => {
                 <Router history={history}>
                     { routes }
                 </Router>
-                <DevTools />
             </div>
         </Provider>,
         document.getElementById('app')
