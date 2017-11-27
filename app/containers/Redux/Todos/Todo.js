@@ -6,8 +6,8 @@ export const Todo = ({ TodoList }) => (
     <ul className={styles.list}>
         {
             TodoList.map((item, index) => (
-                <li key={`${item.id} ${index.toString()}`}>
-                    <a href={`${item.link}`} target="_blank">{item.text}</a>
+                <li key={`${item.id}-${index.toString()}`}>
+                    {item.text}
                 </li>
             ))
         }

@@ -16,3 +16,25 @@
 .list{
     margin-bottom: 20px;
 }
+.todosform{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+.todosform input{
+    padding: 2px 4px 3px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+.todosform button{
+    display: block;
+    background-color: #108ee9;
+    border: 1px solid #108ee9;
+    padding: 4px 15px 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+    color: #fff;
+    margin-left: 10px;
+}

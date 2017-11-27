@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styles from './style.css';
 
 import { addTodo } from './actions';
 
@@ -23,7 +22,7 @@ class Todos extends Component {
     }
     render() {
         return (
-            <div className={styles.box}>
+            <div>
                 <AddTodo onSubmitForm={this.props.onAddTodo} />
                 <Todo TodoList={this.props.TodoList} />
             </div>
@@ -47,6 +46,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     onAddTodo: (evt) => {
         if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+        if (evt.target.text.value.trim() === '') return;
         dispatch(addTodo(evt.target.text.value));
     },
 });
