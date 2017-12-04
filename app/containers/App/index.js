@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axioss';
 import { Layout, Breadcrumb, Col, Icon, BackTop } from 'antd';
 import LeftSider from '../../components/LeftSider';
 import styles from './style.css';
@@ -22,6 +23,8 @@ export default class App extends Component {
             breadcrumbName: route.breadcrumbName,
             breadcrumbItemName: route.breadcrumbItemName,
         });
+        console.log('app componentWillMount');
+        this.loadAxios();
     }
     componentWillReceiveProps(nextProps) {
         const route = nextProps.children.props.route;
@@ -35,6 +38,20 @@ export default class App extends Component {
             collapsed,
             mode: collapsed ? 'vertical' : 'inline',
         });
+    }
+    loadGithub = (githubName) => {
+        axios.get(`https://api.github.com/users/${githubName}/repos?type=all&sort=updated?name='app'`)
+                .then((data) => {
+                    console.log(data);
+                })
+                .catch((err) => {
+                    throw String(err);
+                });
+    }
+    loadAxios = async () => {
+        const githubName = 'evanhunt';
+        const data = await this.loadGithub(githubName);
+        console.log(data);
     }
     render() {
         return (
