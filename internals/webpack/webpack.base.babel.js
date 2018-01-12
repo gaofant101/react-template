@@ -39,14 +39,16 @@ module.exports = (options) => ({
                         formatter: eslintfriendlyformatter,
                     },
                 },
-            }, {
+            },
+            {
                 test: /\.js$/, // Transform all .js files required somewhere with Babel
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: options.babelQuery,
                 },
-            }, {
+            },
+            {
                 // Preprocess our own .css files
                 // This is the place to add your own loaders (e.g. sass/less etc.)
                 // for a list of loaders, see https://webpack.js.org/loaders/#styling
@@ -66,13 +68,15 @@ module.exports = (options) => ({
                         'postcss-loader',
                     ],
                 }),
-            }, {
+            },
+            {
                 test: /\.less$/,
                 use: extractLESS.extract({
                     fallback: 'style-loader',
                     use: [
                         'css-loader',
-                        'postcss-loader', {
+                        'postcss-loader',
+                        {
                             loader: 'less-loader',
                             options: {
                                 paths: [path.resolve(__dirname, '../../node_modules')],
@@ -81,13 +85,16 @@ module.exports = (options) => ({
                         },
                     ],
                 }),
-            }, {
+            },
+            {
                 test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
                 use: 'file-loader',
-            }, {
+            },
+            {
                 test: /\.(jpg|png|gif)$/,
                 use: [
-                    'file-loader', {
+                    'file-loader',
+                    {
                         loader: 'image-webpack-loader',
                         options: {
                             progressive: true,
@@ -100,13 +107,16 @@ module.exports = (options) => ({
                         },
                     },
                 ],
-            }, {
+            },
+            {
                 test: /\.html$/,
                 use: 'html-loader',
-            }, {
+            },
+            {
                 test: /\.json$/,
                 use: 'json-loader',
-            }, {
+            },
+            {
                 test: /\.(mp4|webm)$/,
                 use: {
                     loader: 'url-loader',

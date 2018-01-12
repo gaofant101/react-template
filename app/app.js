@@ -11,14 +11,16 @@ import 'babel-polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
-import { Router, browserHistory } from 'react-router';
-import FontFaceObserver from 'fontfaceobserver';
-import routes from './routes';
 
-import finalCreateStore from './reduxs';
-import reducers from './reduxs/reducers';
+// import { Provider } from 'react-redux';
+// import { syncHistoryWithStore } from 'react-router-redux';
+// import { Router, browserHistory } from 'react-router';
+import FontFaceObserver from 'fontfaceobserver';
+// import routes from './routes';
+
+import App from './containers/App';
+// import finalCreateStore from './reduxs';
+// import reducers from './reduxs/reducers';
 
 /* eslint-disable */
 import '!file-loader?name=[name].[ext]!./assets/images/favicon.ico';
@@ -39,18 +41,12 @@ openSansObserver.load().then(() => {
 /**
  * inject store
  */
-const store = finalCreateStore(reducers);
-const history = syncHistoryWithStore(browserHistory, store);
+// const store = finalCreateStore(reducers);
+// const history = syncHistoryWithStore(browserHistory, store);
 
 const render = () => {
     ReactDOM.render(
-        <Provider store={store}>
-            <div>
-                <Router history={history}>
-                    { routes }
-                </Router>
-            </div>
-        </Provider>,
+        <App />,
         document.getElementById('app')
     );
 };
