@@ -1,26 +1,13 @@
 /**
- * app.js
- *
- * This is the entry file for the application, only setup and boilerplate
- * code.
+ * This is the entry file for the application, only setup and boilerplate code.
  */
 
-// Needed for redux-saga es6 generator support
 import 'babel-polyfill';
-
-// Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// import { Provider } from 'react-redux';
-// import { syncHistoryWithStore } from 'react-router-redux';
-// import { Router, browserHistory } from 'react-router';
 import FontFaceObserver from 'fontfaceobserver';
-// import routes from './routes';
 
 import App from './containers/App';
-// import finalCreateStore from './reduxs';
-// import reducers from './reduxs/reducers';
 
 /* eslint-disable */
 import '!file-loader?name=[name].[ext]!./assets/images/favicon.ico';
@@ -37,12 +24,6 @@ openSansObserver.load().then(() => {
 }, () => {
     document.body.classList.remove('fontLoaded');
 });
-
-/**
- * inject store
- */
-// const store = finalCreateStore(reducers);
-// const history = syncHistoryWithStore(browserHistory, store);
 
 const render = () => {
     ReactDOM.render(

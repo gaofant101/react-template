@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Row, Col, Card, Collapse, Spin } from 'antd';
 import styles from './style1.css';
 
@@ -12,7 +12,7 @@ import img007 from './lifeCycle-007.jpg';
 
 const Panel = Collapse.Panel;
 
-export default class LifeCycleStep extends PureComponent {
+export default class LifeCycleStep extends Component {
     constructor(props) {
         super(props);
         this.state = {

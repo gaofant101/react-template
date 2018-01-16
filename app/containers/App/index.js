@@ -1,30 +1,41 @@
 import React from 'react';
-import Loadable from 'react-loadable';
-import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Link,
+} from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import Loading from '../../components/Loading';
+import routes from 'routers';
+import RouteWithSubRoutes from 'components/RouteWithSubRoutes';
 
-const LoadablePrimaryLayout = Loadable({
-    loader: () => import('../../layouts/PrimaryLayout'),
-    loading: Loading,
-});
-const LoadableTopLevelApi = Loadable({
-    loader: () => import('../TopLevelApi'),
-    loading: Loading,
-});
+import finalCreateStore from 'reduxs';
+import reducers from 'reduxs/reducers';
+
+import styles from './style.css';
+
+/**
+ * inject store
+ */
+const store = finalCreateStore(reducers);
 
 const App = () => (
-    <Router>
-        <div>
-            <Link to="/">首页</Link>
-            <Link to="/toplevelapi">toplevelapi</Link>
-            <Switch>
-                <Route path="/" exact component={LoadablePrimaryLayout} />
-                <Route path="/toplevelapi" component={LoadableTopLevelApi} />
-                <Redirect to="/app" />
-            </Switch>
-        </div>
-    </Router>
+    <Provider store={store}>
+        <BrowserRouter>
+            <div className={styles.box}>
+                <Link to="/">Welcome</Link>
+                <Link to="/LifeCycle">LifeCycle</Link>
+                <Link to="/Step">Step</Link>
+                <Link to="/setState">setState</Link>
+                <Link to="/TopLevelApi">TopLevelApi</Link>
+                <Link to="/Redux">Redux</Link>
+                {
+                    routes.map((route, index) => (
+                        <RouteWithSubRoutes key={index.toString()} {...route} />
+                    ))
+                }
+            </div>
+        </BrowserRouter>
+    </Provider>
 );
 
 export default App;

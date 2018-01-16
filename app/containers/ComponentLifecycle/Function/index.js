@@ -1,11 +1,10 @@
-/* eslint no-console: 0 */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Row, Collapse, Button, Spin } from 'antd';
 import styles from './style.css';
 
 const Panel = Collapse.Panel;
 
-export default class LifeCycleFunction extends PureComponent {
+export default class LifeCycleFunction extends Component {
     constructor(props) {
         super(props);
         this.state = {

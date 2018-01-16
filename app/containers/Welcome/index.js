@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import axios from 'axioss';
+import React, { Component } from 'react';
+import axios from 'axiosconfig';
 import styles from './style.css';
 
-export default class HelloAdmin extends PureComponent {
+export default class HelloAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {

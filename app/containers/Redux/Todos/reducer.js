@@ -1,4 +1,4 @@
-import { ADD_TODO } from 'reduxX/constants';
+import { ADD_TODO } from 'reduxs/constants';
 
 const initialState = {
     TodoList: [],

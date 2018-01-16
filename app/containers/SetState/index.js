@@ -1,9 +1,9 @@
 /* eslint no-console: 0 */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Row, Col, Card } from 'antd';
 import styles from './style.css';
 
-export default class ReactSetState extends PureComponent {
+export default class ReactSetState extends Component {
     constructor(props) {
         super(props);
         this.state = {

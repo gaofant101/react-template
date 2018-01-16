@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 
-export default class LeftSider extends React.PureComponent {
+export default class LeftSider extends Component {
     state = {
         current: null,
         openKeys: [],

@@ -1,4 +1,7 @@
 /* 整体布局 */
+.box a{
+    margin: 0 20px;
+}
 .antdlayoutcontent{
     min-height: calc(100vh - 160px);
 }
