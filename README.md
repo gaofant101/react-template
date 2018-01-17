@@ -52,40 +52,30 @@ proxyHost &&　proxyPort
 
 ```
 
-#### 配置`https`服务
-
-Express over HTTPS `http://blog.mgechev.com/2014/02/19/create-https-tls-ssl-application-with-express-nodejs/`
-
 ## 文档
 
-`react` 文档 `https://reactjs.org/`
+```
+react           文档 https://reactjs.org/
 
-`react-router` 文档 `http://reacttraining.cn/web/example/basic`
+react-router    文档 http://reacttraining.cn/web/example/basic
 
-`redux` 文档 `http://cn.redux.js.org/docs/introduction/Motivation.html`
+redux           文档 http://cn.redux.js.org/docs/introduction/Motivation.html
 
-`antd` 文档 `https://ant.design/index-cn`
+antd            文档 https://ant.design/index-cn
 
-`axios` 文档 `https://github.com/axios/axios`
-
-`How to integrate AntD with Webpack2`  `https://github.com/ant-design/ant-design/issues/4491`
+axios           文档 https://github.com/axios/axios
+```
 
 ## 记录
 
-#### `ESLint` 规则
-
-- 规则 `http://blog.guowenfh.com/2016/08/07/ESLint-Rules`
-- `ES6` 箭头函数语法 `http://es6.ruanyifeng.com/#docs/function#箭头函数`
-- `Unexpected block statement surrounding arrow body arrow-body-style` 报错 `https://github.com/eslint/eslint/issues/5498`
-
 #### `webpack`
-- `Webpack3` 新特性 `https://juejin.im/entry/5948b991ac502e006bb3baa8`
-- `Webpack2` 的新特性 `http://www.aliued.com/?p=4060`
-- `WebPack 2: Migrate preLoaders and postLoaders`  `http://stackoverflow.com/questions/40653936/webpack-2-migrate-preloaders-and-postloaders`
 
-#### 记`pro-commit`钩子错误
-
-- `lint-staged` 查看匹配规则 `https://github.com/okonet/lint-staged`
+```
+Webpack3 新特性 https://juejin.im/entry/5948b991ac502e006bb3baa8
+Webpack2 的新特性 http://www.aliued.com/?p=4060
+WebPack2: Migrate preLoaders and postLoaders http://stackoverflow.com/questions/40653936/webpack-2-migrate-preloaders-and-postloaders
+How to integrate AntD with Webpack2  https://github.com/ant-design/ant-design/issues/4491
+```
 
 ## 官方 `CLI`
 
