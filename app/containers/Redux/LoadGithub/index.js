@@ -40,9 +40,10 @@ const mapStateToProps = (state) => ({
     GitHubData: state.loadGit.GitHubData,
 });
 
+const username = 'user github name';
 const mapDispatchToProps = (dispatch) => ({
     onLoadGit: () => {
-        dispatch(loadGitAction('evanhunt'));
+        dispatch(loadGitAction(username));
     },
 });
 

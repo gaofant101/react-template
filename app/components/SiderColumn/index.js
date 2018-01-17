@@ -28,7 +28,6 @@ export default class SiderColumn extends Component {
     }
     onOpenChange = (openKeys) => {
         const latestOpenKey = openKeys.find((key) => this.state.openKeys.indexOf(key) === -1);
-        console.log(latestOpenKey);
         if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
             this.setState({ openKeys });
         } else {
