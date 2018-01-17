@@ -11,15 +11,15 @@ module.exports = {
     // code字体
     '@code-family': 'Courier New',
     // 字体颜色
-    '@text-color': '#333333',
+    // '@text-color': '#333333',
     // 字体大小
-    '@font-size-base': '13px',
+    // '@font-size-base': '13px',
     // 字体大小(加大)
-    '@font-size-lg': '14px',
+    // '@font-size-lg': '14px',
     // sider背景颜色
-    '@layout-sider-background': '#2e3e54',
+    // '@layout-sider-background': '#2e3e54',
     // menu 导航背景颜色
-    '@menu-dark-bg': '#2e3e54',
+    // '@menu-dark-bg': '#2e3e54',
     // menu 子导航背景颜色
-    '@menu-dark-submenu-bg': '#243144',
+    // '@menu-dark-submenu-bg': '#243144',
 }

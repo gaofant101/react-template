@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axiosconfig';
+import { getGithub } from 'services/api';
 import styles from './style.css';
 
 export default class HelloAdmin extends Component {
@@ -16,21 +16,9 @@ export default class HelloAdmin extends Component {
         // componentDidMount
         this.loadAxios();
     }
-    loadGithub = (githubName) => {
-        axios.get(`https://api.github.com/users/${githubName}/repos?type=all&sort=updated?name='welcome'`)
-                .then((data) => {
-                    console.log(data);
-                })
-                .catch((err) => {
-                    throw String(err);
-                });
-    }
     loadAxios = async () => {
-        // Promise.all([this.loadGithub('evanhunt')]).then((data) => {
-        //     console.log(data);
-        // })
-        const githubName = 'evanhunt';
-        const data = await this.loadGithub(githubName);
+        const username = 'evanhunt';
+        const data = await getGithub(username);
         console.log(data);
     }
     render() {

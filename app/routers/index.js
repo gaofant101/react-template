@@ -15,11 +15,11 @@ const routes = [
         component: LoadableWelcome,
     },
     {
-        path: '/LifeCycle',
+        path: '/LifeCycle/Function',
         component: LoadableComponentLifecycleFunction,
     },
     {
-        path: '/Step',
+        path: '/LifeCycle/Step',
         component: LoadableComponentLifecycleStep,
     },
     {

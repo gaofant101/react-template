@@ -18,7 +18,7 @@ export default class ReactSetState extends PureComponent {
         // componentWillMount
     }
     componentDidMount() {
-        console.log(this.props);
+        // console.log(this.props);
     }
     render() {
         return (

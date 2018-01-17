@@ -159,6 +159,7 @@ module.exports = (options) => ({
             containers: path.resolve(__dirname, '../../app/containers'),
             layouts: path.resolve(__dirname, '../../app/layouts'),
             routers: path.resolve(__dirname, '../../app/routers'),
+            services: path.resolve(__dirname, '../../app/services'),
             utils: path.resolve(__dirname, '../../app/utils'),
         },
         extensions: [

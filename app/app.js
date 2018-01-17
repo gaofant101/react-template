@@ -7,6 +7,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FontFaceObserver from 'fontfaceobserver';
 
+import 'assets/style/global.css';
+
 import App from './containers/App';
 
 /* eslint-disable */

@@ -1,5 +1,16 @@
 ## 简介
 
+- [ ] react [16.2.0]()
+- [ ] react-dom [16.2.0]()
+- [ ] prop-types [15.6.0]()
+- [ ] react-router-dom [4.2.2]()
+- [ ] react-redux [5.0.6]()
+- [ ] redux [3.7.2]()
+- [ ] redux-thunk [2.2.0]()
+- [ ] ant-design [3.1.1]()
+- [ ] axios [0.17.0]()
+- [ ] postcss []()
+
 基于 `react-boilerplate` 进行二次开发的 `react-template`
 - 引入 `Ant-Design`
 - 启用 `CSS-MODULE` ,引入 `LESS` ;弃用 `styled-components`
