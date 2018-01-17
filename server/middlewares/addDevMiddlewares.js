@@ -26,7 +26,6 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
         target: `http://${proxyHost}:${proxyPort}`,
         changeOrigin: true,
         logLevel: 'debug',
-        ws: true,
     }));
 
     // Since webpackDevMiddleware uses memory-fs internally to store build
