@@ -1,6 +1,8 @@
 import React from 'react';
 import {
   BrowserRouter,
+  Redirect,
+  Switch,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 // import createHistory from 'history/createBrowserHistory';
@@ -22,11 +24,14 @@ const App = () => (
     <Provider store={store}>
         <BrowserRouter>
             <PrimaryLayout>
-                {
-                    routes.map((route, index) => (
-                        <RouteWithSubRoutes key={index.toString()} {...route} />
-                    ))
-                }
+                <Switch>
+                    {
+                        routes.map((route, index) => (
+                            <RouteWithSubRoutes key={index.toString()} {...route} />
+                        ))
+                    }
+                    <Redirect to="/" />
+                </Switch>
             </PrimaryLayout>
         </BrowserRouter>
     </Provider>

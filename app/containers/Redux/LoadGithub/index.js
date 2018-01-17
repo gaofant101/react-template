@@ -13,7 +13,7 @@ class LoadGithub extends Component {
     }
     componentWillMount() {
         // componentWillMount
-        this.props.onLoadGit();
+        // this.props.onLoadGit();
     }
     componentDidMount() {
         // componentDidMount
@@ -33,7 +33,7 @@ class LoadGithub extends Component {
 
 LoadGithub.propTypes = {
     GitHubData: PropTypes.array,
-    onLoadGit: PropTypes.func,
+    // onLoadGit: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
