@@ -26,7 +26,7 @@ npm run build           打包编译
 #### `Tips`
 
 ```
-npm install 也可以替换成 yarn ,
+npm install 也可以替换成 yarn
 
 或者修改官方的源 npm config set registry http://registry.npm.taobao.org/
 
