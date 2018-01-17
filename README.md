@@ -31,9 +31,9 @@ npm run build           打包编译
 ```
 npm install 也可以替换成 yarn
 
-或者修改官方的源 npm config set registry http://registry.npm.taobao.org/
+taobao源 npm config set registry http://registry.npm.taobao.org/
 
-修改源地址为官方源 npm config set registry https://registry.npmjs.org/
+官方源 npm config set registry https://registry.npmjs.org/
 ```
 
 ## 配置
