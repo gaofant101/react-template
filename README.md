@@ -18,8 +18,11 @@
 
 ```JavaScript
 npm install             下载依赖包
+
 npm run build:dll       生成链接库
+
 npm run dev             启动本地服务
+
 npm run build           打包编译
 ```
 
@@ -72,8 +75,9 @@ axios           文档 https://github.com/axios/axios
 
 ```
 Webpack3 新特性 https://juejin.im/entry/5948b991ac502e006bb3baa8
+
 Webpack2 的新特性 http://www.aliued.com/?p=4060
-WebPack2: Migrate preLoaders and postLoaders http://stackoverflow.com/questions/40653936/webpack-2-migrate-preloaders-and-postloaders
+
 How to integrate AntD with Webpack2  https://github.com/ant-design/ant-design/issues/4491
 ```
 
