@@ -4,49 +4,53 @@
 - [ ] react-dom [16.2.0]()
 - [ ] prop-types [15.6.0]()
 - [ ] react-router-dom [4.2.2]()
-- [ ] react-redux [5.0.6]()
 - [ ] redux [3.7.2]()
+- [ ] react-redux [5.0.6]()
 - [ ] redux-thunk [2.2.0]()
 - [ ] ant-design [3.1.1]()
 - [ ] axios [0.17.0]()
 - [ ] postcss []()
-
-基于 `react-boilerplate` 进行二次开发的 `react-template`
-- 引入 `Ant-Design`
-- 启用 `CSS-MODULE` ,引入 `LESS` ;弃用 `styled-components`
-- 引入 `postcss` 增强性插件
-- 修改 `eslit` 配置, 改变空格风格, 以及引入 `antd` 报错问题
-- 配置 `pre-commit` `git commit` 调用 `eslint` 检测
-- 引入 `http-proxy-middleware` 配置代理
-- 引入 `friendly-errors-webpack-plugin` 让命令行更友好
+- [ ] css-modules
+- [ ] airbnb-eslit
+- [ ] pre-commit
 
 ## 使用
 
-- `npm install` 更新下载模块
-- `npm run build:dll` 生成链接库 || 资源文件有更新时需要重新生成
-- `npm run dev` 启动本地服务
-- `npm run build` 编译发布文件
+```JavaScript
+npm install             下载依赖包
+npm run build:dll       生成链接库
+npm run dev             启动本地服务
+npm run build           打包编译
+```
 
 #### `Tips`
 
-- `npm install` 也可以替换成 `yarn` ,
+```
+npm install 也可以替换成 yarn ,
 
-- 或者修改官方的源 `npm config set registry http://registry.npm.taobao.org/`
+或者修改官方的源 npm config set registry http://registry.npm.taobao.org/
 
-- 修改源地址为官方源 `npm config set registry https://registry.npmjs.org/`
-
+修改源地址为官方源 npm config set registry https://registry.npmjs.org/
+```
 
 ## 配置
 
 #### 修改服务端口   
 
-`server\port.js` -> `3000`
+```JavaScript
+server\port.js -> 3000
+```
 
 #### 修改代理配置
 
-`server\middlewares\addDevMiddlewares.js` -> `proxyHost &&　proxyPort`
+```JavaScript
+server\middlewares\addDevMiddlewares.js
+->
+proxyHost &&　proxyPort
 
-代理设置参考`https://github.com/react-boilerplate/react-boilerplate/pull/679`
+// 代理设置参考https://github.com/react-boilerplate/react-boilerplate/pull/679
+
+```
 
 #### 配置`https`服务
 
@@ -54,15 +58,17 @@ Express over HTTPS `http://blog.mgechev.com/2014/02/19/create-https-tls-ssl-appl
 
 ## 文档
 
-`react-router 文档 https://react-guide.github.io/react-router-cn/docs/Introduction.html`
+`react` 文档 `https://reactjs.org/`
 
-`redux 文档 http://cn.redux.js.org/docs/introduction/Motivation.html`
+`react-router` 文档 `http://reacttraining.cn/web/example/basic`
 
-`antd 文档 https://design.alipay.com/`
+`redux` 文档 `http://cn.redux.js.org/docs/introduction/Motivation.html`
 
-`axios 文档 https://github.com/axios/axios`
+`antd` 文档 `https://ant.design/index-cn`
 
-`How to integrate AntD with Webpack2 https://github.com/ant-design/ant-design/issues/4491`
+`axios` 文档 `https://github.com/axios/axios`
+
+`How to integrate AntD with Webpack2`  `https://github.com/ant-design/ant-design/issues/4491`
 
 ## 记录
 

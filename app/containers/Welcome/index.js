@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { getGithub } from 'services/api';
 import styles from './style.css';
 
 export default class HelloAdmin extends Component {
@@ -14,12 +13,6 @@ export default class HelloAdmin extends Component {
     }
     componentDidMount() {
         // componentDidMount
-        this.loadAxios();
-    }
-    loadAxios = async () => {
-        const username = 'evanhunt';
-        const data = await getGithub(username);
-        console.log(data);
     }
     render() {
         return (

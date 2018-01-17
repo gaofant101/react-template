@@ -5,6 +5,7 @@ import styles from './style.css';
 
 import Todos from './Todos';
 import ShowState from './ShowState';
+import LoadGithub from './LoadGithub';
 import DevTools from '../DevTools';
 
 export default class ReactSetState extends PureComponent {
@@ -37,6 +38,13 @@ export default class ReactSetState extends PureComponent {
                     <Col span={8}>
                         <Card title="ShowState">
                             <ShowState />
+                        </Card>
+                    </Col>
+                </Row>
+                <Row gutter={16} className={styles.marginBtm20}>
+                    <Col span={8}>
+                        <Card title="Add Todos">
+                            <LoadGithub />
                         </Card>
                     </Col>
                 </Row>
