@@ -13,3 +13,8 @@
 .trigger:hover {
     color: #1890ff;
 }
+.user{
+    float: right;
+    height: 100%;
+    padding-right: 20px;
+}

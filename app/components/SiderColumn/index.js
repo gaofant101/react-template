@@ -22,9 +22,9 @@ export default class SiderColumn extends Component {
         const path = window.location.pathname;
         this.setMenuOpen(path);
     }
-    componentWillReceiveProps() {
+    componentWillReceiveProps(nextProps) {
         const path = window.location.pathname;
-        this.setMenuOpen(path);
+        this.setMenuOpen(path, nextProps.collapsed);
     }
     onOpenChange = (openKeys) => {
         const latestOpenKey = openKeys.find((key) => this.state.openKeys.indexOf(key) === -1);
@@ -36,17 +36,26 @@ export default class SiderColumn extends Component {
             });
         }
     }
-    setMenuOpen = (path) => {
+    setMenuOpen = (path, collapsed) => {
         const openKey = [`/${path.split('/')[1]}`];
         const arr = path.split('/');
         arr.shift();
         const current = arr.reduce((key1, key2) =>
             `${key1}/${key2}`
         );
-        this.setState({
-            openKeys: openKey,
+        console.log(collapsed);
+        if (!collapsed) {
+            this.setState(() => ({
+                openKeys: openKey,
+            }));
+        } else {
+            this.setState(() => ({
+                openKeys: [],
+            }));
+        }
+        this.setState(() => ({
             current: `/${current}`,
-        });
+        }));
     }
     rootSubmenuKeys = ['/', '/LifeCycle', '/setState', '/TopLevelApi', '/Redux'];
     handleClick = (e) => {
