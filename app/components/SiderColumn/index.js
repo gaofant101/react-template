@@ -43,7 +43,6 @@ export default class SiderColumn extends Component {
         const current = arr.reduce((key1, key2) =>
             `${key1}/${key2}`
         );
-        console.log(collapsed);
         if (!collapsed) {
             this.setState(() => ({
                 openKeys: openKey,

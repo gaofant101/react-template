@@ -2,19 +2,8 @@
     width: 100%;
     min-height: 100vh;
 }
-.trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color .3s;
-}
-
-.trigger:hover {
-    color: #1890ff;
-}
-.user{
-    float: right;
-    height: 100%;
-    padding-right: 20px;
+.content{
+    margin: 12px;
+    padding: 12;
+    background: #fff;
 }

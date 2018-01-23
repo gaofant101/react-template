@@ -1,0 +1,35 @@
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+.user{
+    float: right;
+    height: 100%;
+    padding-right: 12px;
+}
+.userinfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 12px;
+}
+.userinfo:hover{
+    background: #e6f7ff;
+}
+.usersend{
+    padding-right: 6px;
+}
+.username{
+    padding-left: 10px;
+}
+.dropdowniconset{
+    margin-right: 6px;
+}

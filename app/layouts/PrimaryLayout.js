@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Layout,
-  Icon,
 } from 'antd';
 
 import SiderColumn from 'components/SiderColumn';
+import UserHeader from 'components/UserHeader';
 import styles from './style.css';
 
 const {
-  Header,
   Content,
 } = Layout;
 
@@ -18,9 +17,6 @@ export default class PrimaryLayout extends Component {
         collapsed: false,
     }
     toggle = () => {
-        // this.setState({
-        //     collapsed: !this.state.collapsed,
-        // });
         this.setState((prevState) => ({
             collapsed: !prevState.collapsed,
         }));
@@ -30,19 +26,8 @@ export default class PrimaryLayout extends Component {
             <Layout>
                 <SiderColumn collapsed={this.state.collapsed} />
                 <Layout>
-                    <Header style={{ background: '#fff', padding: 0 }}>
-                        <Icon className={styles.trigger} type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
-                        <div className={styles.user}>
-                            {/* 123 */}
-                        </div>
-                    </Header>
-                    <Content
-                      style={{
-                          margin: '12px',
-                          padding: 12,
-                          background: '#fff',
-                      }}
-                    >
+                    <UserHeader collapsed={this.state.collapsed} toggle={this.toggle} />
+                    <Content className={styles.content}>
                         {this.props.children}
                     </Content>
                 </Layout>
