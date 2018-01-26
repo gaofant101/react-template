@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Layout,
 } from 'antd';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 import SiderColumn from 'components/SiderColumn';
 import UserHeader from 'components/UserHeader';
@@ -28,7 +29,9 @@ export default class PrimaryLayout extends Component {
                 <Layout>
                     <UserHeader collapsed={this.state.collapsed} toggle={this.toggle} />
                     <Content className={styles.content}>
-                        {this.props.children}
+                        <ErrorBoundary>
+                            {this.props.children}
+                        </ErrorBoundary>
                     </Content>
                 </Layout>
             </Layout>

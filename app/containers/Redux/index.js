@@ -1,12 +1,12 @@
 /* eslint no-console: 0 */
 import React, { PureComponent } from 'react';
 import { Row, Col, Card } from 'antd';
+import DevTools from 'components/DevTools';
 import styles from './style.css';
 
 import Todos from './Todos';
 import ShowState from './ShowState';
 import LoadGithub from './LoadGithub';
-import DevTools from '../DevTools';
 
 export default class ReactSetState extends PureComponent {
     constructor(props) {
