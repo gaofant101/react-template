@@ -13,21 +13,24 @@ import styles from './style.css';
 const {
   Header,
 } = Layout;
+
+const { Item, Divider } = Menu;
+
 const menu = (
     <Menu>
-        <Menu.Item key="0" disabled>
+        <Item key="0" disabled>
             <Icon type="user" className={styles.dropdowniconset} />
             用户中心
-        </Menu.Item>
-        <Menu.Item key="1" disabled>
+        </Item>
+        <Item key="1" disabled>
             <Icon type="setting" className={styles.dropdowniconset} />
             设置
-        </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">
+        </Item>
+        <Divider />
+        <Item key="3">
             <Icon type="logout" className={styles.dropdowniconset} />
             登出
-        </Menu.Item>
+        </Item>
     </Menu>
 );
 

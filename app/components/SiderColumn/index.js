@@ -9,6 +9,7 @@ import {
 import styles from './style.css';
 
 const { Sider } = Layout;
+const { Item } = Menu;
 const SubMenu = Menu.SubMenu;
 
 // const SubMenu = Menu.SubMenu;
@@ -76,32 +77,32 @@ export default class SiderColumn extends Component {
                   selectedKeys={[this.state.current]}
                 >
                     <SubMenu key="/" title={<span><Icon type="smile" /><span>首页</span></span>}>
-                        <Menu.Item key="/">
+                        <Item key="/">
                             <Link to="/"><Icon type="bars" />Welcome</Link>
-                        </Menu.Item>
+                        </Item>
                     </SubMenu>
                     <SubMenu key="/LifeCycle" title={<span><Icon type="loading" /><span>生命周期</span></span>}>
-                        <Menu.Item key="/LifeCycle/Function">
+                        <Item key="/LifeCycle/Function">
                             <Link to="/LifeCycle/Function"><Icon type="bars" />LifeCycle</Link>
-                        </Menu.Item>
-                        <Menu.Item key="/LifeCycle/Step">
+                        </Item>
+                        <Item key="/LifeCycle/Step">
                             <Link to="/LifeCycle/Step"><Icon type="bars" />Step</Link>
-                        </Menu.Item>
+                        </Item>
                     </SubMenu>
                     <SubMenu key="/setState" title={<span><Icon type="frown-o" /><span>React.setState</span></span>}>
-                        <Menu.Item key="/setState">
+                        <Item key="/setState">
                             <Link to="/setState"><Icon type="bars" />setState</Link>
-                        </Menu.Item>
+                        </Item>
                     </SubMenu>
                     <SubMenu key="/TopLevelApi" title={<span><Icon type="setting" /><span>TopLevelApi</span></span>}>
-                        <Menu.Item key="/TopLevelApi">
+                        <Item key="/TopLevelApi">
                             <Link to="/TopLevelApi"><Icon type="bars" />TopLevelApi</Link>
-                        </Menu.Item>
+                        </Item>
                     </SubMenu>
                     <SubMenu key="/Redux" title={<span><Icon type="setting" /><span>Redux</span></span>}>
-                        <Menu.Item key="/Redux">
+                        <Item key="/Redux">
                             <Link to="/Redux"><Icon type="bars" />Redux</Link>
-                        </Menu.Item>
+                        </Item>
                     </SubMenu>
                 </Menu>
             </Sider>
