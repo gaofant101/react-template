@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import {
+  Switch,
+} from 'react-router-dom';
 import {
   Layout,
 } from 'antd';
+import {
+  privateRoutes,
+} from 'routers';
+
 import ErrorBoundary from 'components/ErrorBoundary';
 
+import RouteWithSubRoutes from 'components/RouteWithSubRoutes';
 import SiderColumn from 'components/SiderColumn';
 import UserHeader from 'components/UserHeader';
 import styles from './style.css';
@@ -30,7 +38,16 @@ export default class PrimaryLayout extends Component {
                     <UserHeader collapsed={this.state.collapsed} toggle={this.toggle} />
                     <Content className={styles.content}>
                         <ErrorBoundary>
-                            {this.props.children}
+                            <Switch>
+                                {
+                                    privateRoutes.map((route, index) => (
+                                        <RouteWithSubRoutes
+                                          key={index.toString()}
+                                          {...route}
+                                        />
+                                    ))
+                                }
+                            </Switch>
                         </ErrorBoundary>
                     </Content>
                 </Layout>
@@ -38,7 +55,3 @@ export default class PrimaryLayout extends Component {
         );
     }
 }
-
-PrimaryLayout.propTypes = {
-    children: PropTypes.node,
-};

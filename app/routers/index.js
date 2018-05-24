@@ -5,14 +5,19 @@ import {
   LoadableSetState,
   LoadableTopLevelApi,
   LoadableRedux,
+  LoadableLoginPage,
 } from './asyncs';
 
 
-const routes = [
+export const privateRoutes = [
     {
         path: '/',
         exact: true,
         component: LoadableWelcome,
+    },
+    {
+        path: '/login',
+        component: LoadableLoginPage,
     },
     {
         path: '/LifeCycle/Function',
@@ -35,5 +40,3 @@ const routes = [
         component: LoadableRedux,
     },
 ];
-
-export default routes;

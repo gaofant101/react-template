@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -18,22 +18,28 @@ class LoadGithub extends Component {
     componentDidMount() {
         // componentDidMount
     }
+    onload = () => {
+        this.props.onLoadGit();
+    }
     render() {
         return (
-            <ul>
-                {
-                    this.props.GitHubData.map((item, index) =>
-                        <li key={index.toString()}>{item.description}</li>
-                    )
-                }
-            </ul>
+            <Fragment>
+                <button onClick={this.onload}>load</button>
+                <ul>
+                    {
+                        this.props.GitHubData.map((item, index) =>
+                            <li key={index.toString()}>{item.description}</li>
+                        )
+                    }
+                </ul>
+            </Fragment>
         );
     }
 }
 
 LoadGithub.propTypes = {
     GitHubData: PropTypes.array,
-    // onLoadGit: PropTypes.func,
+    onLoadGit: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({

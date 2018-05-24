@@ -7,17 +7,19 @@ import {
   Icon,
 } from 'antd';
 import styles from './style.css';
+import { menu } from './menu';
 
 const { Sider } = Layout;
 const { Item } = Menu;
 const SubMenu = Menu.SubMenu;
 
-// const SubMenu = Menu.SubMenu;
-
 export default class SiderColumn extends Component {
-    state = {
-        current: null,
-        openKeys: ['/'],
+    constructor(props) {
+        super(props);
+        this.state = {
+            current: null,
+            openKeys: ['/'],
+        };
     }
     componentDidMount() {
         const path = window.location.pathname;
@@ -61,6 +63,25 @@ export default class SiderColumn extends Component {
     handleClick = (e) => {
         this.setState({ current: e.key });
     }
+    renderMenu = (data) => (
+        data.map((item) => {
+            if (item.children) {
+                return (
+                    <SubMenu key={item.key} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
+                        {this.renderMenuItem(item.children)}
+                    </SubMenu>
+                );
+            }
+            return <SubMenu key={item.key} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>} />;
+        })
+    );
+    renderMenuItem = (data) => (
+        data.map((item) => (
+            <Item key={item.key}>
+                <Link to={item.key}><Icon type={item.icon} />{item.title}</Link>
+            </Item>
+        ))
+    );
     render() {
         return (
             <Sider
@@ -76,34 +97,7 @@ export default class SiderColumn extends Component {
                   onOpenChange={this.onOpenChange}
                   selectedKeys={[this.state.current]}
                 >
-                    <SubMenu key="/" title={<span><Icon type="smile" /><span>首页</span></span>}>
-                        <Item key="/">
-                            <Link to="/"><Icon type="bars" />Welcome</Link>
-                        </Item>
-                    </SubMenu>
-                    <SubMenu key="/LifeCycle" title={<span><Icon type="loading" /><span>生命周期</span></span>}>
-                        <Item key="/LifeCycle/Function">
-                            <Link to="/LifeCycle/Function"><Icon type="bars" />LifeCycle</Link>
-                        </Item>
-                        <Item key="/LifeCycle/Step">
-                            <Link to="/LifeCycle/Step"><Icon type="bars" />Step</Link>
-                        </Item>
-                    </SubMenu>
-                    <SubMenu key="/setState" title={<span><Icon type="frown-o" /><span>React.setState</span></span>}>
-                        <Item key="/setState">
-                            <Link to="/setState"><Icon type="bars" />setState</Link>
-                        </Item>
-                    </SubMenu>
-                    <SubMenu key="/TopLevelApi" title={<span><Icon type="setting" /><span>TopLevelApi</span></span>}>
-                        <Item key="/TopLevelApi">
-                            <Link to="/TopLevelApi"><Icon type="bars" />TopLevelApi</Link>
-                        </Item>
-                    </SubMenu>
-                    <SubMenu key="/Redux" title={<span><Icon type="setting" /><span>Redux</span></span>}>
-                        <Item key="/Redux">
-                            <Link to="/Redux"><Icon type="bars" />Redux</Link>
-                        </Item>
-                    </SubMenu>
+                    {this.renderMenu(menu)}
                 </Menu>
             </Sider>
         );
@@ -111,7 +105,5 @@ export default class SiderColumn extends Component {
 }
 
 SiderColumn.propTypes = {
-    // path: PropTypes.string,
     collapsed: PropTypes.bool,
-    // location: PropTypes.string,
 };

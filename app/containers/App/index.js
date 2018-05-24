@@ -1,15 +1,16 @@
 import React from 'react';
 import {
-  BrowserRouter,
+  Router,
   Redirect,
   Switch,
+  Route,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
-// import createHistory from 'history/createBrowserHistory';
+import createBrowserHistory from 'history/createBrowserHistory';
 
-import routes from 'routers';
-import RouteWithSubRoutes from 'components/RouteWithSubRoutes';
+import AuthorizedRoute from 'components/AuthorizedRoute';
 import PrimaryLayout from 'layouts/PrimaryLayout';
+import UnauthorizedLayout from 'layouts/UnauthorizedLayout';
 
 import finalCreateStore from 'reduxs';
 import reducers from 'reduxs/reducers';
@@ -18,22 +19,17 @@ import reducers from 'reduxs/reducers';
  * inject store
  */
 const store = finalCreateStore(reducers);
-// const history = createHistory();
+const customHistory = createBrowserHistory();
 
 const App = () => (
     <Provider store={store}>
-        <BrowserRouter>
-            <PrimaryLayout>
-                <Switch>
-                    {
-                        routes.map((route, index) => (
-                            <RouteWithSubRoutes key={index.toString()} {...route} />
-                        ))
-                    }
-                    <Redirect to="/" />
-                </Switch>
-            </PrimaryLayout>
-        </BrowserRouter>
+        <Router history={customHistory}>
+            <Switch>
+                <Route path="/login" exact component={UnauthorizedLayout} />
+                <AuthorizedRoute path="/" component={PrimaryLayout} />
+                <Redirect to="/login" />
+            </Switch>
+        </Router>
     </Provider>
 );
 
