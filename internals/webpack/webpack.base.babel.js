@@ -26,8 +26,8 @@ module.exports = (options) => ({
     module: {
         rules: [
             {
-                enforce: 'pre',
                 test: /\.js$/,
+                enforce: 'pre',
                 exclude: /node_modules/,
                 include: [
                     path.resolve(__dirname, '../../app'),
@@ -79,6 +79,7 @@ module.exports = (options) => ({
                         {
                             loader: 'less-loader',
                             options: {
+                                javascriptEnabled: true,
                                 paths: [path.resolve(__dirname, '../../node_modules')],
                                 modifyVars: theme,
                             },
@@ -97,13 +98,25 @@ module.exports = (options) => ({
                     {
                         loader: 'image-webpack-loader',
                         options: {
-                            progressive: true,
-                            optimizationLevel: 7,
-                            interlaced: false,
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
                             pngquant: {
                                 quality: '65-90',
-                                speed: 4,
+                                speed: 4
                             },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            webp: {
+                                quality: 75,
+                            }
                         },
                     },
                 ],
