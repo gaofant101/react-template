@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {
-  Icon,
-} from 'antd';
+import { Icon } from 'antd';
 
 import { requestLoggedUserAction } from './action';
 import { Logo } from './logo';
 import styles from './style.css';
 
-import NormalLoginForm from './form';
+import WrappedNormalLoginForm from './form';
 
 class LoginPage extends Component {
-    componentWillMount() {
-    }
+    componentWillMount() {}
     componentWillReceiveProps(nextProps) {
         if (nextProps.isAuthed === 'admin') {
             this.props.history.replace('/');
@@ -30,11 +27,14 @@ class LoginPage extends Component {
                             <Logo />
                         </div>
                         <div className={styles.desc}>
-                            Quick setup for new performance orientated, offline–first React.js applications
+                            Quick setup for new performance orientated,
+                            offline–first React.js applications
                         </div>
                     </div>
                     <div className={styles.main}>
-                        <NormalLoginForm requestLoggedUser={requestLoggedUser} />
+                        <WrappedNormalLoginForm
+                            requestLoggedUser={requestLoggedUser}
+                        />
                     </div>
                 </div>
                 <div className={styles.globalFooter}>

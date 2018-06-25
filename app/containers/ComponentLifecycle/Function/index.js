@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Row, Collapse, Button, Spin } from 'antd';
 import styles from './style.css';
 
-const Panel = Collapse.Panel;
+const { Panel } = Collapse;
 
 export default class LifeCycleFunction extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            flag: 'false',
+            // flag: 'false',
             name: 'DevTool console查看组件装载生命周期',
             loading: true,
         };
@@ -42,7 +42,9 @@ export default class LifeCycleFunction extends Component {
          * !!即使属性没有变化,React可能也会调用该方法,父级组件可能会引起组件的渲染
          * 初始化不会调用此方法
          */
-        console.log('生命周期: componentWillReceiveProps 组件准备接收新的属性之前调用');
+        console.log(
+            '生命周期: componentWillReceiveProps 组件准备接收新的属性之前调用',
+        );
     }
     shouldComponentUpdate() {
         /**
@@ -52,7 +54,9 @@ export default class LifeCycleFunction extends Component {
          * 比较新旧属性返回状态,来决定组件是否更新
          * PureComponent 实现了浅比较(如果数据结构深,比较不起作用)
          */
-        console.log('生命周期: shouldComponentUpdate 组件接收新的属性和状态, 组件渲染前调用');
+        console.log(
+            '生命周期: shouldComponentUpdate 组件接收新的属性和状态, 组件渲染前调用',
+        );
         return true;
     }
     componentWillUpdate() {
@@ -63,7 +67,9 @@ export default class LifeCycleFunction extends Component {
          * 不能再这里调用 this.setState()
          * shouldComponentUpdate 返回 flase时, 此方法不会被调用
          */
-        console.log('生命周期: componentWillUpdate 组件接收新的属性和状态, 组件准备渲染前调用');
+        console.log(
+            '生命周期: componentWillUpdate 组件接收新的属性和状态, 组件准备渲染前调用',
+        );
     }
     componentDidUpdate() {
         /**
@@ -72,7 +78,9 @@ export default class LifeCycleFunction extends Component {
          * 初始化的时候不会调用该方法
          * shouldComponentUpdate 返回 false时 此方法不会被调用
          */
-        console.log('生命周期: componentDidUpdate 组件接收新的属性和状态, 组件更新后立即调用');
+        console.log(
+            '生命周期: componentDidUpdate 组件接收新的属性和状态, 组件更新后立即调用',
+        );
     }
     componentWillUnmount() {
         /**
@@ -85,21 +93,30 @@ export default class LifeCycleFunction extends Component {
     }
     handlerClick = () => {
         this.setState({
-            name: this.state.name === 'DevTool console查看组件装载生命周期' ? 'DevTool console查看组件更新生命周期' : 'DevTool console查看组件装载生命周期',
+            name:
+                this.state.name === 'DevTool console查看组件装载生命周期'
+                    ? 'DevTool console查看组件更新生命周期'
+                    : 'DevTool console查看组件装载生命周期',
         });
-    }
+    };
     render() {
         return (
             <div className={styles.box}>
                 <Spin spinning={this.state.loading}>
-                    <Row className={styles.marginBtm20}><Button type="primary" onClick={this.handlerClick}>触发更新</Button></Row>
+                    <Row className={styles.marginBtm20}>
+                        <Button type="primary" onClick={this.handlerClick}>
+                            触发更新
+                        </Button>
+                    </Row>
                     <Row className={styles.marginBtm20}>{this.state.name}</Row>
                     <Row className={styles.marginBtm20}>
                         <Collapse defaultActiveKey={['1']} accordion>
-                            <Panel header="componentWillMount 组件装载前立即调用" key="1">
+                            <Panel
+                                header="componentWillMount 组件装载前立即调用"
+                                key="1"
+                            >
                                 <pre>
-                                    {
-                                    `
+                                    {`
 componentWillMount() {
     /**
      * componentWillMount
@@ -108,14 +125,15 @@ componentWillMount() {
      */
     console.log('生命周期: componentWillMount 组件装载前立即调用');
 }
-                                    `
-                                    }
+                                        `}
                                 </pre>
                             </Panel>
-                            <Panel header="componentDidMount 组件装载后立即调用" key="2">
+                            <Panel
+                                header="componentDidMount 组件装载后立即调用"
+                                key="2"
+                            >
                                 <pre>
-                                    {
-                                    `
+                                    {`
 componentDidMount() {
     /**
      * componentDidMount
@@ -130,14 +148,15 @@ componentDidMount() {
         });
     }, 500);
 }
-                                    `
-                                    }
+                                        `}
                                 </pre>
                             </Panel>
-                            <Panel header="componentWillReceiveProps 组件准备接收新的属性之前调用" key="3">
+                            <Panel
+                                header="componentWillReceiveProps 组件准备接收新的属性之前调用"
+                                key="3"
+                            >
                                 <pre>
-                                    {
-                                    `
+                                    {`
 componentWillReceiveProps() {
     /**
      * componentWillReceiveProps(nextProps)
@@ -147,14 +166,15 @@ componentWillReceiveProps() {
      */
     console.log('生命周期: componentWillReceiveProps 组件准备接收新的属性之前调用');
 }
-                                    `
-                                    }
+                                        `}
                                 </pre>
                             </Panel>
-                            <Panel header="shouldComponentUpdate 件接收新的属性和状态, 组件渲染前调用" key="4">
+                            <Panel
+                                header="shouldComponentUpdate 件接收新的属性和状态, 组件渲染前调用"
+                                key="4"
+                            >
                                 <pre>
-                                    {
-                                    `
+                                    {`
 shouldComponentUpdate() {
     /**
      * shouldComponentUpdate(nextProps, nextState)
@@ -167,14 +187,15 @@ shouldComponentUpdate() {
     console.log('生命周期: shouldComponentUpdate 组件接收新的属性和状态, 组件渲染前调用');
     return true;
 }
-                                    `
-                                    }
+                                        `}
                                 </pre>
                             </Panel>
-                            <Panel header="componentWillUpdate组件接收新的属性和状态, 组件准备渲染前调用" key="5">
+                            <Panel
+                                header="componentWillUpdate组件接收新的属性和状态, 组件准备渲染前调用"
+                                key="5"
+                            >
                                 <pre>
-                                    {
-                                    `
+                                    {`
 componentWillUpdate() {
     /**
      * componentWillUpdate
@@ -186,14 +207,15 @@ componentWillUpdate() {
      */
     console.log('生命周期: componentWillUpdate 组件接收新的属性和状态, 组件准备渲染前调用');
 }
-                                    `
-                                    }
+                                        `}
                                 </pre>
                             </Panel>
-                            <Panel header="componentDidUpdate 组件接收新的属性和状态, 组件更新后立即调用" key="6">
+                            <Panel
+                                header="componentDidUpdate 组件接收新的属性和状态, 组件更新后立即调用"
+                                key="6"
+                            >
                                 <pre>
-                                    {
-                                    `
+                                    {`
 componentDidUpdate() {
     /**
      * componentDidUpdate
@@ -203,14 +225,15 @@ componentDidUpdate() {
      */
     console.log('生命周期: componentDidUpdate 组件接收新的属性和状态, 组件更新后立即调用');
 }
-                                    `
-                                    }
+                                        `}
                                 </pre>
                             </Panel>
-                            <Panel header="componentWillUnmount 组件卸载时调用" key="7">
+                            <Panel
+                                header="componentWillUnmount 组件卸载时调用"
+                                key="7"
+                            >
                                 <pre>
-                                    {
-                                    `
+                                    {`
 componentWillUnmount() {
     /**
      * componentWillUnmount
@@ -220,8 +243,7 @@ componentWillUnmount() {
      */
     console.log('生命周期: componentWillUnmount 组件卸载时调用');
 }
-                                    `
-                                    }
+                                        `}
                                 </pre>
                             </Panel>
                         </Collapse>

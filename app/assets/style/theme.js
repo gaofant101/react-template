@@ -3,6 +3,7 @@
  * [ant-design 修改主题]
  * @default.less -> https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
  */
+
 module.exports = {
     // 默认主题
     // '@primary-color': '#1DA57A',
@@ -22,4 +23,4 @@ module.exports = {
     // '@menu-dark-bg': '#2e3e54',
     // menu 子导航背景颜色
     // '@menu-dark-submenu-bg': '#243144',
-}
+};

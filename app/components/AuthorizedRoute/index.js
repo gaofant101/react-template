@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 const AuthorizedRoute = ({ component: Component, isAuthed, ...rest }) => (
     <Route
-      {...rest}
-      render={(props) =>
-          isAuthed === 'admin' ? (
-              <Component {...props} />
-          ) : (
-              <Redirect to="/login" />
-          )
-      }
+        {...rest}
+        render={(props) =>
+            isAuthed === 'admin' ? (
+                <Component {...props} />
+            ) : (
+                <Redirect to="/login" />
+            )
+        }
     />
 );
 

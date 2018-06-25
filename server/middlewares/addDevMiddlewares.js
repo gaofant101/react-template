@@ -2,11 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const proxy = require('http-proxy-middleware');
 
 function createWebpackMiddleware(compiler, publicPath) {
     return webpackDevMiddleware(compiler, {
-        noInfo: true,
+        logLevel: 'warn',
         publicPath,
         silent: true,
         stats: 'errors-only',
@@ -15,30 +14,28 @@ function createWebpackMiddleware(compiler, publicPath) {
 
 module.exports = function addDevMiddlewares(app, webpackConfig) {
     const compiler = webpack(webpackConfig);
-    const middleware = createWebpackMiddleware(compiler, webpackConfig.output.publicPath);
+    const middleware = createWebpackMiddleware(
+        compiler,
+        webpackConfig.output.publicPath,
+    );
 
     app.use(middleware);
     app.use(webpackHotMiddleware(compiler));
-
-    const proxyHost = 'ip';
-    const proxyPort = 'port';
-    app.use('/api', proxy({
-        target: `http://${proxyHost}:${proxyPort}`,
-        changeOrigin: true,
-        logLevel: 'debug',
-    }));
 
     // Since webpackDevMiddleware uses memory-fs internally to store build
     // artifacts, we use it instead
     const fs = middleware.fileSystem;
 
     app.get('*', (req, res) => {
-        fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
-            if (err) {
-                res.sendStatus(404);
-            } else {
-                res.send(file.toString());
-            }
-        });
+        fs.readFile(
+            path.join(compiler.outputPath, 'index.html'),
+            (err, file) => {
+                if (err) {
+                    res.sendStatus(404);
+                } else {
+                    res.send(file.toString());
+                }
+            },
+        );
     });
 };

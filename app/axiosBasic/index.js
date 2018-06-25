@@ -20,16 +20,14 @@ import config from './config';
 //     504: '网关超时',
 // };
 
-axios.interceptors.request.use((configs) =>
-    configs
-, (error) =>
-    Promise.reject(error)
+axios.interceptors.request.use(
+    (configs) => configs,
+    (error) => Promise.reject(error),
 );
 
-axios.interceptors.response.use((response) =>
-    response
-, (error) =>
-    Promise.reject(error)
+axios.interceptors.response.use(
+    (response) => response,
+    (error) => Promise.reject(error),
 );
 /**
  * [axios 请求前]
@@ -40,8 +38,9 @@ const checkStatus = (response) => {
     if (response.status === 200 || response.status === 304) {
         return response;
     }
-    return Promise.reject('请求失败');
+    throw String('error');
 };
+
 /**
  * [axios 接受数据]
  * @param  {[type]} res [description]
@@ -66,8 +65,9 @@ export default {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
             },
-        }).then(checkStatus)
-        .then(checkCode);
+        })
+            .then(checkStatus)
+            .then(checkCode);
     },
     post(url, data) {
         return axios({
@@ -77,9 +77,11 @@ export default {
             timeout: config.timeout,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'Content-Type':
+                    'application/x-www-form-urlencoded; charset=UTF-8',
             },
-        }).then(checkStatus)
-        .then(checkCode);
+        })
+            .then(checkStatus)
+            .then(checkCode);
     },
 };

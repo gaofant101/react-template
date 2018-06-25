@@ -1,14 +1,14 @@
 ## 简介
 
-- [ ] react [16.2.0]()
-- [ ] react-dom [16.2.0]()
-- [ ] prop-types [15.6.0]()
-- [ ] react-router-dom [4.2.2]()
-- [ ] redux [3.7.2]()
-- [ ] react-redux [5.0.6]()
-- [ ] redux-thunk [2.2.0]()
-- [ ] ant-design [3.1.1]()
-- [ ] axios [0.17.0]()
+- [ ] react [16.4.1]()
+- [ ] react-dom [16.4.1]()
+- [ ] prop-types [15.6.1]()
+- [ ] react-router-dom [4.3.1]()
+- [ ] redux [4.0.0]()
+- [ ] react-redux [5.0.7]()
+- [ ] redux-thunk [2.3.0]()
+- [ ] ant-design [3.6.4]()
+- [ ] axios [0.18.0]()
 - [ ] postcss []()
 - [ ] css-modules
 - [ ] airbnb-eslit
@@ -17,16 +17,16 @@
 ## 使用
 
 ```shell
-# 下载
+# 下载插件
 npm install
 
-# 缓存
+# 添加缓存
 npm run build:dll
 
-# 开发
-npm run dev
+# 开发环境
+npm start
 
-# 发布
+# 编译发布
 npm run build
 ```
 

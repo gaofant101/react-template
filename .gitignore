@@ -1,5 +1,6 @@
 # Don't check auto-generated stuff into git
 coverage
+build
 node_modules
 stats.json
 
@@ -7,4 +8,3 @@ stats.json
 .DS_Store
 npm-debug.log
 .idea
-yarn-error.log

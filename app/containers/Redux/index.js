@@ -12,7 +12,7 @@ export default class ReactSetState extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            num: 0,
+            // num: 0,
         };
     }
     componentWillMount() {

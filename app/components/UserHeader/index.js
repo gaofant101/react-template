@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  Layout,
-  Icon,
-  Menu,
-  Dropdown,
-  Avatar,
-} from 'antd';
+import { Layout, Icon, Menu, Dropdown, Avatar } from 'antd';
 
 import { requestLogOutUserAction } from 'containers/LoginPage/action';
 import styles from './style.css';
 
-const {
-  Header,
-} = Layout;
+const { Header } = Layout;
 
 const { Item, Divider } = Menu;
 
@@ -22,8 +14,7 @@ class UserHeader extends Component {
     // constructor(props) {
     //     super(props);
     // }
-    componentWillMount() {
-    }
+    componentWillMount() {}
     componentWillReceiveProps(nextProps) {
         if (nextProps.isAuthed === 'refuse') {
             this.props.history.replace('/login');
@@ -53,12 +44,19 @@ class UserHeader extends Component {
         const { collapsed, toggle } = this.props;
         return (
             <Header style={{ background: '#fff', padding: 0 }}>
-                <Icon className={styles.trigger} type={collapsed ? 'menu-unfold' : 'menu-fold'} onClick={toggle} />
+                <Icon
+                    className={styles.trigger}
+                    type={collapsed ? 'menu-unfold' : 'menu-fold'}
+                    onClick={toggle}
+                />
                 <div className={styles.user}>
                     <Dropdown overlay={menu}>
                         <span className={styles.userinfo}>
                             <span className={styles.usersend}>你好, </span>
-                            <Avatar size="small" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                            <Avatar
+                                size="small"
+                                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                            />
                             <span className={styles.username}>管理员</span>
                         </span>
                     </Dropdown>

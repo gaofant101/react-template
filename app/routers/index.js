@@ -1,13 +1,12 @@
 import {
-  LoadableWelcome,
-  LoadableComponentLifecycleFunction,
-  LoadableComponentLifecycleStep,
-  LoadableSetState,
-  LoadableTopLevelApi,
-  LoadableRedux,
-  LoadableLoginPage,
+    LoadableWelcome,
+    LoadableComponentLifecycleFunction,
+    LoadableComponentLifecycleStep,
+    LoadableSetState,
+    LoadableTopLevelApi,
+    LoadableRedux,
+    LoadableLoginPage,
 } from './asyncs';
-
 
 export const privateRoutes = [
     {

@@ -8,7 +8,7 @@ class LoadGithub extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            num: 0,
+            // num: 0,
         };
     }
     componentWillMount() {
@@ -20,17 +20,15 @@ class LoadGithub extends Component {
     }
     onload = () => {
         this.props.onLoadGit();
-    }
+    };
     render() {
         return (
             <Fragment>
                 <button onClick={this.onload}>load</button>
                 <ul>
-                    {
-                        this.props.GitHubData.map((item, index) =>
-                            <li key={index.toString()}>{item.description}</li>
-                        )
-                    }
+                    {this.props.GitHubData.map((item, index) => (
+                        <li key={index.toString()}>{item.description}</li>
+                    ))}
                 </ul>
             </Fragment>
         );

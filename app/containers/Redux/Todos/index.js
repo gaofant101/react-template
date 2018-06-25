@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { addTodo } from './actions';
 
 import { Todo } from './Todo';
-import { AddTodo } from './AddTodo';
+import AddTodo from './AddTodo';
 
 class Todos extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            num: 0,
+            // num: 0,
         };
     }
     componentWillMount() {
@@ -34,7 +34,7 @@ Todos.propTypes = {
     TodoList: PropTypes.arrayOf(
         PropTypes.shape({
             text: PropTypes.string,
-        })
+        }),
     ),
     onAddTodo: PropTypes.func,
 };

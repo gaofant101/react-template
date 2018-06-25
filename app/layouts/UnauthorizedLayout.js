@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import LoginPage from 'containers/LoginPage';
 import styles from './style.css';
-
 
 const UnauthorizedLayout = () => (
     <div className={styles.login}>
