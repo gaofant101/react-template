@@ -35,3 +35,13 @@ export const LoadableRedux = Loadable({
     loader: () => import('containers/Redux'),
     loading: Loading,
 });
+
+export const LoadableContext = Loadable({
+    loader: () => import('containers/Context'),
+    loading: Loading,
+});
+
+export const LoadableErrorBoundary = Loadable({
+    loader: () => import('containers/ErrorBoundary'),
+    loading: Loading,
+});

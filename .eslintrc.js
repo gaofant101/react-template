@@ -5,7 +5,9 @@ const prettierOptions = JSON.parse(fs.readFileSync('./.prettierrc', 'utf8'));
 module.exports = {
     parser: 'babel-eslint',
     extends: [
-        'airbnb', 'prettier', 'prettier/react'
+        'airbnb',
+        'prettier',
+        'prettier/react',
     ],
     plugins: [
         'prettier',
@@ -45,7 +47,7 @@ module.exports = {
         'import/no-unresolved': 2,
         'import/no-webpack-loader-syntax': 0,
         'import/prefer-default-export': 0,
-        indent: [
+        'indent': [
             2,
             4, {
                 SwitchCase: 1

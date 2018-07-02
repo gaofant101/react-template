@@ -15,19 +15,19 @@ export const menu = [
     },
     {
         index: '1',
-        key: '/LifeCycle',
+        key: '/lifecycle',
         icon: 'loading',
         title: '生命周期',
         children: [
             {
                 index: '1-0',
-                key: '/LifeCycle/Function',
+                key: '/lifecycle/function',
                 icon: 'bars',
                 title: 'LifeCycle',
             },
             {
                 index: '1-1',
-                key: '/LifeCycle/Step',
+                key: '/lifecycle/step',
                 icon: 'bars',
                 title: 'Step',
             },
@@ -49,13 +49,13 @@ export const menu = [
     },
     {
         index: '3',
-        key: '/TopLevelApi',
+        key: '/toplevelapi',
         icon: 'setting',
         title: 'TopLevelApi',
         children: [
             {
                 index: '3-0',
-                key: '/TopLevelApi',
+                key: '/toplevelapi',
                 icon: 'bars',
                 title: 'TopLevelApi',
             },
@@ -63,15 +63,43 @@ export const menu = [
     },
     {
         index: '4',
-        key: '/Redux',
-        icon: 'setting',
+        key: '/redux',
+        icon: 'tool',
         title: 'Redux',
         children: [
             {
                 index: '4-0',
-                key: '/Redux',
+                key: '/redux',
                 icon: 'bars',
                 title: 'Redux',
+            },
+        ],
+    },
+    {
+        index: '5',
+        key: '/context',
+        icon: 'fork',
+        title: 'Context',
+        children: [
+            {
+                index: '5-0',
+                key: '/context',
+                icon: 'bars',
+                title: 'Context',
+            },
+        ],
+    },
+    {
+        index: '6',
+        key: '/error-boundary',
+        icon: 'warning',
+        title: 'ErrorBoundary',
+        children: [
+            {
+                index: '6-0',
+                key: '/error-boundary',
+                icon: 'bars',
+                title: 'ErrorBoundary',
             },
         ],
     },

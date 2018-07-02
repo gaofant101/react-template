@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
+
 import styles from './style.css';
 import { menu } from './menu';
 
 const { Sider } = Layout;
 const { Item, SubMenu } = Menu;
 
-export default class SiderColumn extends Component {
+export default class SiderColumn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

@@ -4,6 +4,7 @@
     text-align: center;
     padding-top: 100px;
     animation: fadein .5s ease-in .5s both;
+    cursor: pointer;
 }
 @keyframes fadein {
     0%{

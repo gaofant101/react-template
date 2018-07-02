@@ -41,6 +41,9 @@ export default class LifeCycleStep extends Component {
                         [ 原文 ] React 源码剖析系列 － 生命周期的管理艺术
                     </a>
                 </Row>
+                <Row className={styles.marginBtm20}>
+                    这篇文章适用于react 15.x 版本, 16.x版本生命周期将慢慢改变.
+                </Row>
                 <Spin spinning={this.state.loading}>
                     <Row className={styles.marginBtm20}>
                         <Collapse defaultActiveKey={['1']} accordion>

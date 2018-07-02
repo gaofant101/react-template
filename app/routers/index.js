@@ -6,6 +6,8 @@ import {
     LoadableTopLevelApi,
     LoadableRedux,
     LoadableLoginPage,
+    LoadableContext,
+    LoadableErrorBoundary,
 } from './asyncs';
 
 export const privateRoutes = [
@@ -19,23 +21,31 @@ export const privateRoutes = [
         component: LoadableLoginPage,
     },
     {
-        path: '/LifeCycle/Function',
+        path: '/lifecycle/function',
         component: LoadableComponentLifecycleFunction,
     },
     {
-        path: '/LifeCycle/Step',
+        path: '/lifecycle/step',
         component: LoadableComponentLifecycleStep,
     },
     {
-        path: '/setState',
+        path: '/setstate',
         component: LoadableSetState,
     },
     {
-        path: '/TopLevelApi',
+        path: '/toplevelapi',
         component: LoadableTopLevelApi,
     },
     {
-        path: '/Redux',
+        path: '/redux',
         component: LoadableRedux,
+    },
+    {
+        path: '/context',
+        component: LoadableContext,
+    },
+    {
+        path: '/error-boundary',
+        component: LoadableErrorBoundary,
     },
 ];

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './style.css';
 
+/**
+ * 错误边界
+ * 此项目中属于示例, 并不适合作用到正式项目中
+ */
 export default class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);

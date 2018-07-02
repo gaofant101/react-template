@@ -1,26 +1,26 @@
-## 简介
+## 版本
 
-- [ ] react [16.4.1]()
-- [ ] react-dom [16.4.1]()
-- [ ] prop-types [15.6.1]()
-- [ ] react-router-dom [4.3.1]()
-- [ ] redux [4.0.0]()
-- [ ] react-redux [5.0.7]()
-- [ ] redux-thunk [2.3.0]()
-- [ ] ant-design [3.6.4]()
-- [ ] axios [0.18.0]()
-- [ ] postcss []()
-- [ ] css-modules
-- [ ] airbnb-eslit
-- [ ] pre-commit
+- react [16.4.1]()
+- react-dom [16.4.1]()
+- prop-types [15.6.1]()
+- react-router-dom [4.3.1]()
+- redux [4.0.0]()
+- react-redux [5.0.7]()
+- redux-thunk [2.3.0]()
+- ant-design [3.6.4]()
+- axios [0.18.0]()
+- postcss []()
+- css-modules
+- airbnb-eslit
+- pre-commit
 
 ## 使用
 
 ```shell
-# 下载插件
+# 下载依赖插件
 npm install
 
-# 添加缓存
+# 建立缓存
 npm run build:dll
 
 # 开发环境
@@ -32,46 +32,32 @@ npm run build
 
 #### `Tips`
 
+```shell
+同一份示例代码 webpack 不同版本编译时间
+# webpack4.x
+webpack build in ~9600ms
+
+# webpack3.x
+webpack build in ~25000ms
 ```
-npm install || yarn install
 
-TaoBao源 npm config set registry http://registry.npm.taobao.org/
-
-官方源 npm config set registry https://registry.npmjs.org/
-```
-
-## 文档
+## `doc`
 
 ```
 react           文档 https://reactjs.org/
 
-react-router    文档 http://reacttraining.cn/web/example/basic
+react-router    文档 https://reacttraining.com/react-router/
 
-redux           文档 http://cn.redux.js.org/docs/introduction/Motivation.html
+redux           文档 https://cn.redux.js.org/
 
-antd            文档 https://ant.design/index-cn
-
-axios           文档 https://github.com/axios/axios
+antd            文档 https://ant.design/
 ```
 
-## 记录
-
-#### `webpack`
-
-```
-Webpack3 新特性 https://juejin.im/entry/5948b991ac502e006bb3baa8
-
-Webpack2 的新特性 http://www.aliued.com/?p=4060
-
-How to integrate AntD with Webpack2  https://github.com/ant-design/ant-design/issues/4491
-```
 
 ## `react-boilerplate CLI`
 
 
 [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate)
-
-<img src="https://raw.githubusercontent.com/react-boilerplate/react-boilerplate-brand/master/assets/banner-metal-optimized.jpg" alt="react boilerplate banner" align="center" />
 
 
 ## License

@@ -14,7 +14,6 @@ class UserHeader extends Component {
     // constructor(props) {
     //     super(props);
     // }
-    componentWillMount() {}
     componentWillReceiveProps(nextProps) {
         if (nextProps.isAuthed === 'refuse') {
             this.props.history.replace('/login');
@@ -55,7 +54,7 @@ class UserHeader extends Component {
                             <span className={styles.usersend}>你好, </span>
                             <Avatar
                                 size="small"
-                                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                src="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
                             />
                             <span className={styles.username}>管理员</span>
                         </span>

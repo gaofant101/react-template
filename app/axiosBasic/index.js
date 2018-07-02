@@ -1,5 +1,4 @@
 import axios from 'axios';
-import qs from 'qs';
 import config from './config';
 
 // const codeMessage = {
@@ -73,7 +72,7 @@ export default {
         return axios({
             method: 'post',
             url,
-            data: qs.stringify(data),
+            data,
             timeout: config.timeout,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
