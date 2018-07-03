@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Layout, Icon, Menu, Dropdown, Avatar } from 'antd';
@@ -10,7 +10,7 @@ const { Header } = Layout;
 
 const { Item, Divider } = Menu;
 
-class UserHeader extends Component {
+class UserHeader extends React.Component {
     // constructor(props) {
     //     super(props);
     // }

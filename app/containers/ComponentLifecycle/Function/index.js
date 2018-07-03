@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Row, Collapse, Button } from 'antd';
 import styles from './style.css';
 
 const { Panel } = Collapse;
 
-export default class LifeCycleFunction extends Component {
+export default class LifeCycleFunction extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

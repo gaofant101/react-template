@@ -9,7 +9,8 @@ export const todos = (state = initialState, action) => {
         case ADD_TODO:
             return Object.assign({}, state, {
                 TodoList: [
-                    ...state.TodoList, {
+                    ...state.TodoList,
+                    {
                         id: Date.now(),
                         text: action.text,
                     },

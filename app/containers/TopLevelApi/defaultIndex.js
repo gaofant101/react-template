@@ -1,5 +1,5 @@
 import Tree from './Tree';
-import TreeNode from './TreeNodec';
+import TreeNode from './TreeNode';
 Tree.TreeNode = TreeNode;
 
 export default Tree;

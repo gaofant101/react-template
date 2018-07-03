@@ -4,13 +4,9 @@ import styles from './style.css';
 
 export const Todo = ({ TodoList }) => (
     <ul className={styles.list}>
-        {
-            TodoList.map((item, index) => (
-                <li key={`${item.id}-${index.toString()}`}>
-                    {item.text}
-                </li>
-            ))
-        }
+        {TodoList.map((item, index) => (
+            <li key={`${item.id}-${index.toString()}`}>{item.text}</li>
+        ))}
     </ul>
 );
 

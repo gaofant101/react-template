@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './style.css';
 
-export default class HelloAdmin extends Component {
+export default class HelloAdmin extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

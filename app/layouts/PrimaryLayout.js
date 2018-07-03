@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 import { Switch } from 'react-router-dom';
 import { Layout } from 'antd';
@@ -13,7 +13,7 @@ import styles from './style.css';
 
 const { Content } = Layout;
 
-export default class PrimaryLayout extends Component {
+export default class PrimaryLayout extends React.Component {
     state = {
         collapsed: false,
     };
