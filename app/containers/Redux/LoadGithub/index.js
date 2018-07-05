@@ -11,10 +11,6 @@ class LoadGithub extends Component {
             // num: 0,
         };
     }
-    componentWillMount() {
-        // componentWillMount
-        // this.props.onLoadGit();
-    }
     componentDidMount() {
         // componentDidMount
     }

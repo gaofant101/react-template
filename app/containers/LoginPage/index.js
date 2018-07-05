@@ -11,7 +11,6 @@ import styles from './style.css';
 import WrappedNormalLoginForm from './form';
 
 class LoginPage extends Component {
-    componentWillMount() {}
     componentWillReceiveProps(nextProps) {
         if (nextProps.isAuthed === 'admin') {
             this.props.history.replace('/');

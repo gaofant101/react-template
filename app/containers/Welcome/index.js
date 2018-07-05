@@ -8,9 +8,6 @@ export default class HelloAdmin extends React.Component {
             // username: '',
         };
     }
-    componentWillMount() {
-        // componentWillMount
-    }
     componentDidMount() {
         // componentDidMount
     }

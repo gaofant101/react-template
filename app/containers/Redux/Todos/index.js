@@ -14,9 +14,6 @@ class Todos extends Component {
             // num: 0,
         };
     }
-    componentWillMount() {
-        // componentWillMount
-    }
     componentDidMount() {
         // componentDidMount
     }

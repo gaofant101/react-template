@@ -15,9 +15,6 @@ export default class ReactSetState extends PureComponent {
             // num: 0,
         };
     }
-    componentWillMount() {
-        // componentWillMount
-    }
     componentDidMount() {
         // console.log(this.props);
     }

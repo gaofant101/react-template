@@ -20,9 +20,6 @@ export default class LifeCycleStep extends React.Component {
             // num: 0,
         };
     }
-    componentWillMount() {
-        // 1
-    }
     componentDidMount() {
         setTimeout(() => {
             this.setState({

@@ -7,7 +7,6 @@ export default class ReactSetState extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            num: 0,
             list: ['State.', 'Should.', 'Be.', 'Synchronous.'],
             cpList: [],
             cpListAsync: [],
@@ -15,35 +14,8 @@ export default class ReactSetState extends Component {
             selectionAsync: '',
         };
     }
-    componentWillMount() {
-        this.setState({
-            num: this.state.num + 1,
-        });
-        console.log(this.state.num);
-        this.setState({
-            num: this.state.num + 1,
-        });
-        console.log(this.state.num);
-        setTimeout(() => {
-            this.setState({
-                num: this.state.num + 1,
-            });
-            console.log(this.state.num);
-        });
-        setTimeout(() => {
-            this.setState({
-                num: this.state.num + 1,
-            });
-            console.log(this.state.num);
-        });
-        this.setState({
-            selection: this.state.list[0],
-            selectionAsync: this.state.list[0],
-        });
-    }
-    componentDidMount() {
-        // 1
-    }
+
+    componentDidMount() {}
     onSelectAsync = (item) => {
         this.setState({
             selectionAsync: item,

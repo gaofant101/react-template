@@ -14,10 +14,6 @@ export default class TopLevelApi extends Component {
             // num: 0,
         };
     }
-    componentWillMount() {
-        // componentWillMount
-        console.log(treeData);
-    }
     componentDidMount() {
         // componentDidMount
     }
