@@ -82,8 +82,6 @@ module.exports = {
         'react/require-extension': 0,
         'react/self-closing-comp': 0,
         'react/sort-comp': 0,
-        'react/no-did-mount-set-state': 'off',
-        'react/no-did-mount-set-state': 0,
         // 'redux-saga/no-yield-in-race': 2,
         // 'redux-saga/yield-effects': 2,
         'require-yield': 0

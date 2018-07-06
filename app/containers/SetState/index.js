@@ -7,6 +7,7 @@ export default class ReactSetState extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            num: 0,
             list: ['State.', 'Should.', 'Be.', 'Synchronous.'],
             cpList: [],
             cpListAsync: [],
@@ -15,31 +16,32 @@ export default class ReactSetState extends Component {
         };
     }
 
-    componentDidMount() {}
+    componentDidMount() {
+        const { num } = this.state;
+        this.setState({
+            num: 3,
+        });
+        console.log(num);
+    }
+
     onSelectAsync = (item) => {
+        const { cpListAsync, selectionAsync } = this.state;
+        const newcpListAsync = cpListAsync.concat(selectionAsync);
         this.setState({
             selectionAsync: item,
-        });
-        this.setState({
-            cpListAsync: this.state.cpListAsync.concat(
-                this.state.selectionAsync,
-            ),
+            cpListAsync: newcpListAsync,
         });
     };
+
     onSelect = (item) => {
-        this.setState(
-            {
-                selection: item,
-            },
-            () => {
-                this.setState({
-                    cpList: this.state.cpList.concat(this.state.selection),
-                });
-            },
-        );
+        const { cpList } = this.state;
+        this.setState(() => ({
+            cpList: cpList.concat(item),
+        }));
     };
+
     render() {
-        const { list, cpListAsync, cpList } = this.state;
+        const { list, cpListAsync, cpList, selection } = this.state;
         return (
             <div className={styles.box}>
                 <Row className={styles.marginBtm20}>
@@ -83,14 +85,12 @@ export default class ReactSetState extends Component {
                         <Card title="异步state运行结果">
                             <pre>
                                 {`
-onSelectAsync = (item) => {
-    this.setState({
-        selectionAsync: item,
-    });
-    this.setState({
-        cpListAsync: this.state.cpListAsync.concat(this.state.selectionAsync),
-    });
-}
+const { cpListAsync, selectionAsync } = this.state;
+const newcpListAsync = cpListAsync.concat(selectionAsync);
+this.setState({
+    selectionAsync: item,
+    cpListAsync: newcpListAsync,
+});
                                 `}
                             </pre>
                         </Card>
@@ -103,7 +103,7 @@ onSelectAsync = (item) => {
                                 {list.map((item) => (
                                     <li
                                         className={
-                                            item === this.state.selection
+                                            item === selection
                                                 ? styles.selected
                                                 : ''
                                         }
@@ -132,15 +132,10 @@ onSelectAsync = (item) => {
                         <Card title="异步state回调运行结果">
                             <pre>
                                 {`
-onSelect = (item) => {
-    this.setState({
-        selection: item,
-    }, () => {
-        this.setState({
-            cpList: this.state.cpList.concat(this.state.selection),
-        });
-    });
-}
+const { cpList } = this.state;
+this.setState(() => ({
+    cpList: cpList.concat(item),
+}));
                                     `}
                             </pre>
                         </Card>
