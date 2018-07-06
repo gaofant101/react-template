@@ -14,14 +14,17 @@ class Todos extends Component {
             // num: 0,
         };
     }
+
     componentDidMount() {
         // componentDidMount
     }
+
     render() {
+        const { onAddTodo, TodoList } = this.props;
         return (
             <div>
-                <AddTodo onSubmitForm={this.props.onAddTodo} />
-                <Todo TodoList={this.props.TodoList} />
+                <AddTodo onSubmitForm={onAddTodo} />
+                <Todo TodoList={TodoList} />
             </div>
         );
     }

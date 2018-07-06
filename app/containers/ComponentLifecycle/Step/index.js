@@ -20,6 +20,7 @@ export default class LifeCycleStep extends React.Component {
             // num: 0,
         };
     }
+
     componentDidMount() {
         setTimeout(() => {
             this.setState({
@@ -27,7 +28,9 @@ export default class LifeCycleStep extends React.Component {
             });
         }, 100);
     }
+
     render() {
+        const { loading } = this.state;
         return (
             <div className={styles.box}>
                 <Row className={styles.marginBtm20}>
@@ -41,7 +44,7 @@ export default class LifeCycleStep extends React.Component {
                 <Row className={styles.marginBtm20}>
                     这篇文章适用于react 15.x 版本, 16.x版本生命周期将慢慢改变.
                 </Row>
-                <Spin spinning={this.state.loading}>
+                <Spin spinning={loading}>
                     <Row className={styles.marginBtm20}>
                         <Collapse defaultActiveKey={['1']} accordion>
                             <Panel header="React 生命周期" key="1">

@@ -26,7 +26,9 @@ class NormalLoginForm extends React.Component {
             formBtnLoading: false,
         };
     }
+
     handleSubmit = (e) => {
+        const { form, requestLoggedUser } = this.props;
         e.preventDefault();
         this.setState(
             {
@@ -34,7 +36,7 @@ class NormalLoginForm extends React.Component {
             },
             () => {
                 setTimeout(() => {
-                    this.props.form.validateFields((err, values) => {
+                    form.validateFields((err, values) => {
                         if (!err) {
                             console.log('Received values of form: ', values);
                         }
@@ -62,7 +64,7 @@ class NormalLoginForm extends React.Component {
                                 values.captcha &&
                                 values.lenght === 4)
                         ) {
-                            this.props.requestLoggedUser();
+                            requestLoggedUser();
                             this.setState({
                                 alertErrorType: '',
                                 alertErrorText: '',
@@ -76,11 +78,13 @@ class NormalLoginForm extends React.Component {
             },
         );
     };
+
     tabsCallback = (key) => {
         this.setState({
             tapsKey: key,
         });
     };
+
     render() {
         const {
             tapsKey,
@@ -88,7 +92,8 @@ class NormalLoginForm extends React.Component {
             alertErrorText,
             formBtnLoading,
         } = this.state;
-        const { getFieldDecorator } = this.props.form;
+        const { form } = this.props;
+        const { getFieldDecorator } = form;
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <Tabs defaultActiveKey="1" onChange={this.tabsCallback}>

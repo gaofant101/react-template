@@ -11,6 +11,7 @@ export default class LifeCycleFunction extends React.Component {
             name: 'DevTool console查看组件装载生命周期',
         };
     }
+
     static getDerivedStateFromProps() {
         /**
          * static getDerivedStateFromProps(props, state)
@@ -29,6 +30,7 @@ export default class LifeCycleFunction extends React.Component {
         console.log('组件初次装载, 或者`props` 要更新时');
         return null;
     }
+
     componentDidMount() {
         /**
          * componentDidMount
@@ -38,6 +40,7 @@ export default class LifeCycleFunction extends React.Component {
          */
         console.log('组件初次装载完成 \n \n');
     }
+
     shouldComponentUpdate() {
         /**
          * shouldComponentUpdate(nextProps, nextState)
@@ -49,6 +52,7 @@ export default class LifeCycleFunction extends React.Component {
         console.log('组件状态改变, 准备更新');
         return true;
     }
+
     getSnapshotBeforeUpdate() {
         /**
          * getSnapshotBeforeUpdate(prevProps, prevState)
@@ -81,6 +85,7 @@ export default class LifeCycleFunction extends React.Component {
         console.log('VDOM 即将变化');
         return null;
     }
+
     componentDidUpdate() {
         /**
          * componentDidUpdate(prevProps, prevState, snapshot)
@@ -90,6 +95,7 @@ export default class LifeCycleFunction extends React.Component {
          */
         console.log('组件更新完成 \n \n');
     }
+
     componentWillUnmount() {
         /**
          * componentWillUnmount
@@ -99,6 +105,7 @@ export default class LifeCycleFunction extends React.Component {
          */
         console.log('组件准备卸载和销毁');
     }
+
     componentDidCatch() {
         /**
          * componentDidCatch(error, info)
@@ -110,15 +117,19 @@ export default class LifeCycleFunction extends React.Component {
         // logErrorToMyService(error, info);
         console.log('组件放生错误');
     }
+
     handlerClick = () => {
+        const { name } = this.state;
         this.setState({
             name:
-                this.state.name === 'DevTool console查看组件装载生命周期'
+                name === 'DevTool console查看组件装载生命周期'
                     ? 'DevTool console查看组件更新生命周期'
                     : 'DevTool console查看组件装载生命周期',
         });
     };
+
     render() {
+        const { name } = this.state;
         return (
             <div className={styles.box}>
                 <Row className={styles.marginBtm20}>
@@ -126,7 +137,7 @@ export default class LifeCycleFunction extends React.Component {
                         触发更新
                     </Button>
                 </Row>
-                <Row className={styles.marginBtm20}>{this.state.name}</Row>
+                <Row className={styles.marginBtm20}>{name}</Row>
                 <Row className={styles.marginBtm20}>
                     <Collapse defaultActiveKey={['1']} accordion>
                         <Panel

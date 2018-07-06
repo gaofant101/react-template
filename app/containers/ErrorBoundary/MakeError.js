@@ -7,18 +7,20 @@ export default class MakeError extends React.Component {
             error: false,
         };
     }
+
     handleClick = () => {
         this.setState({
             error: true,
         });
     };
+
     render() {
         const { error } = this.state;
         if (error) {
             throw new Error('I crashed!');
         }
         return (
-            <button onClick={this.handleClick}>
+            <button type="button" onClick={this.handleClick}>
                 click me, trigger the bug
             </button>
         );

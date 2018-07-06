@@ -5,6 +5,7 @@ export default class TreeNode extends React.PureComponent {
     renderTreeNode = (node) =>
         // 渲染子节点
         node;
+
     renderChildren = (props) =>
         /**
          * 判断有没有子类Children
@@ -12,15 +13,15 @@ export default class TreeNode extends React.PureComponent {
          * 没有返回null
          */
         props.children ? (
-            <ul>
-                {React.Children.map(this.props.children, this.renderTreeNode)}
-            </ul>
+            <ul> {React.Children.map(props.children, this.renderTreeNode)} </ul>
         ) : null;
+
     render() {
+        const { title } = this.props;
         const newChildren = this.renderChildren(this.props);
         return (
             <li>
-                {this.props.title}
+                {title}
                 {newChildren}
             </li>
         );
@@ -29,5 +30,4 @@ export default class TreeNode extends React.PureComponent {
 
 TreeNode.propTypes = {
     title: PropTypes.node,
-    children: PropTypes.node,
 };

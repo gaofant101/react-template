@@ -15,13 +15,17 @@ class UserHeader extends React.Component {
     //     super(props);
     // }
     componentWillReceiveProps(nextProps) {
+        const { history } = this.props;
         if (nextProps.isAuthed === 'refuse') {
-            this.props.history.replace('/login');
+            history.replace('/login');
         }
     }
+
     callback = () => {
-        this.props.requestLogOutUser();
+        const { requestLogOutUser } = this.props;
+        requestLogOutUser();
     };
+
     render() {
         const menu = (
             <Menu onClick={this.callback}>

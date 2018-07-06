@@ -6,6 +6,7 @@ const ThemedButton = (props) => (
     <ThemeContext.Consumer>
         {(theme) => (
             <button
+                type="button"
                 className={styles.btn}
                 {...props}
                 style={{

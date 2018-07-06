@@ -14,11 +14,13 @@ export default class Context extends React.Component {
             theme: themes.light,
         };
     }
+
     toggleTheme = () => {
         this.setState((state) => ({
             theme: state.theme === themes.dark ? themes.light : themes.dark,
         }));
     };
+
     render() {
         const { theme } = this.state;
         return (

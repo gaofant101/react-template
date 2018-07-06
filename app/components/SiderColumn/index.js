@@ -17,26 +17,31 @@ export default class SiderColumn extends React.Component {
             openKeys: ['/'],
         };
     }
+
     componentDidMount() {
         const path = window.location.pathname;
         this.setMenuOpen(path);
     }
+
     componentWillReceiveProps(nextProps) {
         const path = window.location.pathname;
         this.setMenuOpen(path, nextProps.collapsed);
     }
-    onOpenChange = (openKeys) => {
-        const latestOpenKey = openKeys.find(
-            (key) => this.state.openKeys.indexOf(key) === -1,
+
+    onOpenChange = (openKey) => {
+        const { openKeys } = this.state;
+        const latestOpenKey = openKey.find(
+            (key) => openKeys.indexOf(key) === -1,
         );
         if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-            this.setState({ openKeys });
+            this.setState({ openKeys: openKey });
         } else {
             this.setState({
                 openKeys: latestOpenKey ? [latestOpenKey] : [],
             });
         }
     };
+
     setMenuOpen = (path, collapsed) => {
         const openKey = [`/${path.split('/')[1]}`];
         const arr = path.split('/');
@@ -55,6 +60,7 @@ export default class SiderColumn extends React.Component {
             current: `/${current}`,
         }));
     };
+
     rootSubmenuKeys = [
         '/',
         '/LifeCycle',
@@ -62,9 +68,11 @@ export default class SiderColumn extends React.Component {
         '/TopLevelApi',
         '/Redux',
     ];
+
     handleClick = (e) => {
         this.setState({ current: e.key });
     };
+
     renderMenu = (data) =>
         data.map((item) => {
             if (item.children) {
@@ -94,22 +102,26 @@ export default class SiderColumn extends React.Component {
                 />
             );
         });
+
     renderMenuItem = (data) =>
         data.map((item) => (
             <Item key={item.key}>
                 <Link to={item.key}><Icon type={item.icon} />{item.title}</Link> {/* eslint-disable-line */}
             </Item>
         ));
+
     render() {
+        const { openKeys, current } = this.state;
+        const { collapsed } = this.props;
         return (
-            <Sider trigger={null} collapsible collapsed={this.props.collapsed}>
+            <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className={styles.logo} />
                 <Menu
                     theme="dark"
                     mode="inline"
-                    openKeys={this.state.openKeys}
+                    openKeys={openKeys}
                     onOpenChange={this.onOpenChange}
-                    selectedKeys={[this.state.current]}
+                    selectedKeys={[current]}
                 >
                     {this.renderMenu(menu)}
                 </Menu>

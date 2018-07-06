@@ -4,10 +4,12 @@ import styles from './style.css';
 
 export default class Tree extends React.PureComponent {
     renderTreeNode = (node) => node;
+
     render() {
+        const { children } = this.props;
         return (
             <ul className={styles.tree}>
-                {React.Children.map(this.props.children, this.renderTreeNode)}
+                {React.Children.map(children, this.renderTreeNode)}
             </ul>
         );
     }

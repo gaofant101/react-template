@@ -11,18 +11,25 @@ class LoadGithub extends Component {
             // num: 0,
         };
     }
+
     componentDidMount() {
         // componentDidMount
     }
+
     onload = () => {
-        this.props.onLoadGit();
+        const { onLoadGit } = this.props;
+        onLoadGit();
     };
+
     render() {
+        const { GitHubData } = this.props;
         return (
             <Fragment>
-                <button onClick={this.onload}>load</button>
+                <button type="button" onClick={this.onload}>
+                    load
+                </button>
                 <ul>
-                    {this.props.GitHubData.map((item, index) => (
+                    {GitHubData.map((item, index) => (
                         <li key={index.toString()}>{item.description}</li>
                     ))}
                 </ul>

@@ -9,9 +9,11 @@ class ShowState extends Component {
             // num: 0,
         };
     }
+
     componentDidMount() {
         // componentDidMount
     }
+
     render() {
         const { TodoList } = this.props;
         return (

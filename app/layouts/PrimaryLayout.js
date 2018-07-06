@@ -17,20 +17,20 @@ export default class PrimaryLayout extends React.Component {
     state = {
         collapsed: false,
     };
+
     toggle = () => {
         this.setState((prevState) => ({
             collapsed: !prevState.collapsed,
         }));
     };
+
     render() {
+        const { collapsed } = this.state;
         return (
             <Layout>
-                <SiderColumn collapsed={this.state.collapsed} />
+                <SiderColumn collapsed={collapsed} />
                 <Layout>
-                    <UserHeader
-                        collapsed={this.state.collapsed}
-                        toggle={this.toggle}
-                    />
+                    <UserHeader collapsed={collapsed} toggle={this.toggle} />
                     <Content className={styles.content}>
                         <ErrorBoundary>
                             <Switch>

@@ -12,10 +12,12 @@ import WrappedNormalLoginForm from './form';
 
 class LoginPage extends Component {
     componentWillReceiveProps(nextProps) {
+        const { history } = this.props;
         if (nextProps.isAuthed === 'admin') {
-            this.props.history.replace('/');
+            history.replace('/');
         }
     }
+
     render() {
         const { requestLoggedUser } = this.props;
         return (

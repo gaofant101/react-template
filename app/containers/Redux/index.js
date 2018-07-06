@@ -15,9 +15,11 @@ export default class ReactSetState extends PureComponent {
             // num: 0,
         };
     }
+
     componentDidMount() {
         // console.log(this.props);
     }
+
     render() {
         return (
             <div className={styles.box}>
