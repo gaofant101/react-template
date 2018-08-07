@@ -45,7 +45,7 @@ class LoginPage extends Component {
                         <span>条款</span>
                     </div>
                     <div className={styles.copyright}>
-                        Copyright<Icon type="copyright" />2018 react-boilerplate
+                        Copyright<Icon type="copyright" />2018 react-template
                     </div>
                 </div>
             </div>

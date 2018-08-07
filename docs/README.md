@@ -56,16 +56,6 @@ Run `npm start` to see your app at `localhost:3000`
 
 2.  Upload the contents of the `build` folder to your web server's root folder.
 
-### Structure
-
-The [`app/`](../../../tree/master/app) directory contains your entire application code, including CSS,
-JavaScript, HTML and tests.
-
-The rest of the folders and files only exist to make your life easier, and
-should not need to be touched.
-
-_(If they do have to be changed, please [submit an issue](https://github.com/react-boilerplate/react-boilerplate/issues)!)_
-
 ### CSS
 
 Utilising [tagged template literals](https://www.styled-components.com/docs/advanced#tagged-template-literals)

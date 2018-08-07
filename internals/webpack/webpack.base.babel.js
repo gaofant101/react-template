@@ -113,13 +113,13 @@ module.exports = (options) => ({
             {
                 test: /\.(jpg|png|gif)$/,
                 use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            // Inline files smaller than 10 kB
-                            limit: 10 * 1024,
-                        },
-                    },
+                    // {
+                    //     loader: 'url-loader',
+                    //     options: {
+                    //         // Inline files smaller than 10 kB
+                    //         limit: 10 * 1024,
+                    //     },
+                    // },
                     {
                         loader: 'image-webpack-loader',
                         options: {
@@ -142,11 +142,8 @@ module.exports = (options) => ({
                             },
                         },
                     },
+                    'file-loader',
                 ],
-            },
-            {
-                test: /\.html$/,
-                use: 'html-loader',
             },
             {
                 test: /\.(mp4|webm)$/,
@@ -156,6 +153,10 @@ module.exports = (options) => ({
                         limit: 10000,
                     },
                 },
+            },
+            {
+                test: /\.html$/,
+                use: 'html-loader',
             },
         ],
     },

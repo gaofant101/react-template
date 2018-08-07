@@ -12,7 +12,7 @@
 
 ## Next Generation CSS
 
-This boilerplate uses [`styled-components`](https://github.com/styled-components/styled-components) :nail_care:
+This template uses [`styled-components`](https://github.com/styled-components/styled-components) :nail_care:
 for styling react components. `styled-components` allows you to write actual CSS inside your JavaScript,
 enabling you to use the [full power of CSS](https://github.com/styled-components/styled-components/blob/master/docs/css-we-support.md) :muscle:
 without mapping between styles and components.
@@ -24,11 +24,11 @@ Watch this video for a comparison and to see how it enforces best practices!
 
 ### Linting
 
-To complement `styled-components`, this boilerplate also has a CSS linting setup. It uses `stylelint` which will help you stay consistent with modern CSS standards. Read about it [here](linting.md).
+To complement `styled-components`, this template also has a CSS linting setup. It uses `stylelint` which will help you stay consistent with modern CSS standards. Read about it [here](linting.md).
 
 ### sanitize.css
 
-In addition, this boilerplate also uses
+In addition, this template also uses
 [`sanitize.css`](https://github.com/jonathantneal/sanitize.css)
 to make browsers render all elements more consistently and in line with modern standards,
 it's a modern alternative to CSS resets. More info available on the [`sanitize.css` page](sanitize.md).

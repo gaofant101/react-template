@@ -53,7 +53,7 @@ export default connect(
 
 If you have a `selectors.js` file next to the reducer which's part of the state
 you want to select, add your selector to said file. If you don't have one yet,
-add a new one into your container folder and fill it with this boilerplate code:
+add a new one into your container folder and fill it with this template code:
 
 ```JS
 import { createSelector } from 'reselect';
