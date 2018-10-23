@@ -1,7 +1,6 @@
 /**
  * COMMON WEBPACK CONFIGURATION
  */
-
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -11,20 +10,18 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // see https://github.com/webpack/loader-utils/issues/56 parseQuery() will be replaced with getOptions()
 // in the next major version of loader-utils.'
 process.noDeprecation = true;
-
-const theme = require(path.resolve(process.cwd(), 'app/assets/style/theme.js'));
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = (options) => ({
     mode: options.mode,
     entry: options.entry,
     output: Object.assign(
         {
-            // Compile into js/build.js
             path: path.resolve(process.cwd(), 'build'),
             publicPath: '/',
         },
         options.output,
-    ), // Merge with env dependent settings
+    ),
     optimization: options.optimization,
     module: {
         rules: [
@@ -32,41 +29,21 @@ module.exports = (options) => ({
                 test: /\.js$/,
                 enforce: 'pre',
                 exclude: /node_modules/,
-                include: [path.resolve(__dirname, '../../app')],
+                include: [path.resolve(process.cwd(), 'app')],
                 use: {
                     loader: 'eslint-loader',
                     options: {
                         cache: true,
-                        // formatter: eslintfriendlyformatter,
                     },
                 },
             },
             {
-                test: /\.js$/, // Transform all .js files required somewhere with Babel
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: options.babelQuery,
                 },
-            },
-            {
-                // Preprocess our own .css files
-                // This is the place to add your own loaders (e.g. sass/less etc.)
-                // for a list of loaders, see https://webpack.js.org/loaders/#styling
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            mportLoaders: 1,
-                            localIdentName: '[local]__[hash:base64:5]',
-                        },
-                    },
-                    'postcss-loader',
-                ],
             },
             {
                 // Preprocess 3rd party .css files located in node_modules
@@ -76,21 +53,19 @@ module.exports = (options) => ({
             },
             {
                 test: /\.less$/,
-                include: /node_modules/,
+                exclude: /node_modules/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {
-                        loader: 'less-loader',
+                        loader: 'css-loader',
                         options: {
-                            javascriptEnabled: true,
-                            // paths: [
-                            //     path.resolve(__dirname, 'node_modules'),
-                            // ],
-                            modifyVars: theme,
+                            modules: true,
+                            mportLoaders: 1,
+                            localIdentName: '[local]__[hash:base64:5]',
                         },
                     },
+                    'postcss-loader',
+                    'less-loader',
                 ],
             },
             {
@@ -113,13 +88,13 @@ module.exports = (options) => ({
             {
                 test: /\.(jpg|png|gif)$/,
                 use: [
-                    // {
-                    //     loader: 'url-loader',
-                    //     options: {
-                    //         // Inline files smaller than 10 kB
-                    //         limit: 10 * 1024,
-                    //     },
-                    // },
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            // Inline files smaller than 10 kB
+                            limit: 10 * 1024,
+                        },
+                    },
                     {
                         loader: 'image-webpack-loader',
                         options: {
@@ -142,8 +117,11 @@ module.exports = (options) => ({
                             },
                         },
                     },
-                    'file-loader',
                 ],
+            },
+            {
+                test: /\.html$/,
+                use: 'html-loader',
             },
             {
                 test: /\.(mp4|webm)$/,
@@ -154,13 +132,14 @@ module.exports = (options) => ({
                     },
                 },
             },
-            {
-                test: /\.html$/,
-                use: 'html-loader',
-            },
         ],
     },
     plugins: options.plugins.concat([
+        new webpack.ProvidePlugin({
+            // make fetch available
+            fetch: 'exports-loader?self.fetch!whatwg-fetch',
+        }),
+
         // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
         // inside your code for any environment checks; UglifyJS will automatically
         // drop any unreachable code.
@@ -178,20 +157,19 @@ module.exports = (options) => ({
     ]),
     resolve: {
         modules: ['node_modules', 'app'],
-        alias: {
-            moment$: 'moment/moment.js',
-            assets: path.resolve(__dirname, '../../app/assets'),
-            axiosBasic: path.resolve(__dirname, '../../app/axiosBasic'),
-            reduxs: path.resolve(__dirname, '../../app/reduxs'),
-            components: path.resolve(__dirname, '../../app/components'),
-            containers: path.resolve(__dirname, '../../app/containers'),
-            layouts: path.resolve(__dirname, '../../app/layouts'),
-            routers: path.resolve(__dirname, '../../app/routers'),
-            services: path.resolve(__dirname, '../../app/services'),
-            utils: path.resolve(__dirname, '../../app/utils'),
-        },
         extensions: ['.js', '.jsx', '.react.js'],
         mainFields: ['browser', 'jsnext:main', 'main'],
+        alias: {
+            moment$: 'moment/moment.js',
+            '@assets': path.resolve(process.cwd(), 'app/assets'),
+            '@reduxs': path.resolve(process.cwd(), 'app/reduxs'),
+            '@components': path.resolve(process.cwd(), 'app/components'),
+            '@containers': path.resolve(process.cwd(), 'app/containers'),
+            '@layouts': path.resolve(process.cwd(), 'app/layouts'),
+            '@routers': path.resolve(process.cwd(), 'app/routers'),
+            '@services': path.resolve(process.cwd(), 'app/services'),
+            '@utils': path.resolve(process.cwd(), 'app/utils'),
+        },
     },
     devtool: options.devtool,
     target: 'web', // Make web variables accessible to webpack, e.g. window

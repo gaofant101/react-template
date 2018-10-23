@@ -1,7 +1,7 @@
 /* eslint no-console: 0 */
 import React, { Component } from 'react';
 import { Row, Col, Card } from 'antd';
-import styles from './style.css';
+import styles from './style.less';
 
 export default class ReactSetState extends Component {
     constructor(props) {
@@ -49,9 +49,9 @@ export default class ReactSetState extends Component {
                         href="https://medium.com/react-ecosystem/how-to-handle-state-in-react-6f2d3cd73a0c"
                         target="_blank"
                     >
-                        [ 原文 ] <code>React</code>源码剖析系列解密<code>
-                            setState
-                        </code>
+                        [ 原文 ]<code>React</code>
+                        源码剖析系列解密
+                        <code>setState</code>
                     </a>
                 </Row>
                 <Row gutter={16} className={styles.marginBtm20}>

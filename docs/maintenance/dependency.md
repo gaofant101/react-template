@@ -37,6 +37,12 @@ Confirm/adjust eslint-config-airbnb compatible [dependency versions](https://www
 
 `npm info "eslint-config-airbnb@latest" peerDependencies`
 
+### Pinned Version Numbers
+
+`react-boilerplate` does not use "^", "~", etc., and these should be removed from `package.json`, if present. See [#598](https://github.com/react-boilerplate/react-boilerplate/issues/598) for more details.
+
+At this point, you should copy and paste the version diff from the terminal into your `Update Log`.
+
 ## Correct Errors and Rollback Dependencies
 
 Run `yarn` to install updated versions and then start the example app by running `npm start`. Make sure that the project is running smoothly. If not, track down the dependencies that are causing problems and try to roll them back one by one and check if the example application is running.
@@ -210,6 +216,43 @@ react-test-renderer                                     15.5.4
 - Incompatible per `npm info "eslint-config-airbnb@latest" peerDependencies` adjust eslint-config-airbnb compatible dependency versions. see: https://www.npmjs.com/package/eslint-config-airbnb
 
   **_eslint 3.13.1 → 3.15.0 <--- rolled back_**
+
+- Error observed in Travis CI build
+
+```bash
+   ERROR in ./~/react-router-scroll/lib/StateStorage.js
+   Module not found: Error: Can't resolve 'history/lib/DOMStateStorage' in '
+   /home/travis/build/gihrig/react-boilerplate/node_modules/react-router-scroll/lib'
+    @ ./~/react-router-scroll/lib/StateStorage.js 5:23-61
+    @ ./~/react-router-scroll/lib/ScrollBehaviorContext.js
+    @ ./~/react-router-scroll/lib/useScroll.js
+    @ ./~/react-router-scroll/lib/index.js
+    @ ./app/app.js
+    @ multi ./app/app.js
+```
+
+- `history` Incompatible
+
+  react-boilerplate@3.4.0 /Users/glen/Documents/JavaScript/Research/react-bp
+  └── UNMET PEER DEPENDENCY history@4.5.1
+
+  npm ERR! peer dep missing: history@^2.0.0 || ^3.0.0, required by react-router-scroll@0.4.1
+
+  **_history 3.2.1 → 4.5.1 <--- rolled back_**
+
+Addressed here https://github.com/imagemin/imagemin-pngquant/issues/32 **_Needs Testing_**
+
+- Error: (some OS X installations only, not version specific)
+
+  Addressed here https://github.com/imagemin/imagemin-pngquant/issues/32, but throws warnings (below)
+
+  In ./app/components/Header/banner.jpg
+  Module build failed: Error: dyld: Library not loaded: /usr/local/opt/libpng/lib/libpng16.16.dylib
+  Referenced from: ~/react-boilerplate/node_modules/mozjpeg/vendor/cjpeg
+  Reason: image not found
+
+  **_image-webpack-loader 2.0.0 → 3.0.0 <--- rolled back_**
+  see: https://github.com/mxstbr/react-boilerplate/pull/1322#issuecomment-266264527 and #1335
 
 - Warning: Observed on `npm start`
 

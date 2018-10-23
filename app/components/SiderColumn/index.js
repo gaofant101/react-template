@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 
-import styles from './style.css';
+import styles from './style.less';
 import { menu } from './menu';
 
 const { Sider } = Layout;

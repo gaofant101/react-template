@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Collapse, Button } from 'antd';
-import styles from './style.css';
+import styles from './style.less';
 
 const { Panel } = Collapse;
 

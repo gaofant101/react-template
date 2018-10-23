@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spin } from 'antd';
 
-import styles from './style.css';
+import styles from './style.less';
 
 const Loading = () => (
     <div className={styles.loading}>

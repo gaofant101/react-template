@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Collapse, Spin } from 'antd';
-import styles from './style1.css';
+import styles from './style.less';
 
 // import img001 from './lifeCycle-001.jpg';
 import img002 from './lifeCycle-002.jpg';

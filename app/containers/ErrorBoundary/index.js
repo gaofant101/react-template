@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Card } from 'antd';
-import styles from './style.css';
+import styles from './style.less';
 
 import ErrorBoundary from './ErrorBoundary';
 import MakeError from './MakeError';

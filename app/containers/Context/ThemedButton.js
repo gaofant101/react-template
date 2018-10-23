@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './style.css';
+import styles from './style.less';
 import { ThemeContext } from './context';
 
 const ThemedButton = (props) => (

@@ -6,7 +6,7 @@ import { Icon } from 'antd';
 
 import { requestLoggedUserAction } from './action';
 import { Logo } from './logo';
-import styles from './style.css';
+import styles from './style.less';
 
 import WrappedNormalLoginForm from './form';
 
@@ -45,7 +45,9 @@ class LoginPage extends Component {
                         <span>条款</span>
                     </div>
                     <div className={styles.copyright}>
-                        Copyright<Icon type="copyright" />2018 react-template
+                        Copyright
+                        <Icon type="copyright" />
+                        2018 react-template
                     </div>
                 </div>
             </div>

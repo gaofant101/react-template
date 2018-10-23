@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './style.css';
+import styles from './style.less';
 
 export default class HelloAdmin extends React.Component {
     constructor(props) {
@@ -11,12 +11,12 @@ export default class HelloAdmin extends React.Component {
 
     componentDidMount() {
         this.setState(() => ({
-            username: 'React 16.4',
+            username: 'React 16.5',
         }));
     }
 
     clickMe = () => {
-        console.log("i'm click");
+        console.log('comeback hoho22');
     };
 
     render() {

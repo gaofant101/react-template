@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card } from 'antd';
 import Tree from './defaultIndex';
-import styles from './style.css';
+import styles from './style.less';
 
 import { treeData } from './treeList';
 const { TreeNode } = Tree;
@@ -100,7 +100,7 @@ export default Tree;
                                 {`
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import styles from './style.css';
+import styles from '';
 
 export default class Tree extends PureComponent {
     renderTreeNode = (node) =>

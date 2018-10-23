@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { Row, Col, Card } from 'antd';
 
-import styles from './style.css';
+import styles from './style.less';
 import Toolbar from './Toolbar';
 
 import { themes, ThemeContext } from './context';

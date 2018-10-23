@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Layout, Icon, Menu, Dropdown, Avatar } from 'antd';
 
 import { requestLogOutUserAction } from 'containers/LoginPage/action';
-import styles from './style.css';
+import styles from './style.less';
 
 const { Header } = Layout;
 

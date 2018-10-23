@@ -31,7 +31,7 @@ some examples! (Read [this comparison](https://stackoverflow.com/questions/34930
 Sagas are associated with a container, just like actions, constants, selectors
 and reducers. If your container already has a `saga.js` file, simply add your
 saga to that. If your container does not yet have a `saga.js` file, add one with
-this template structure:
+this boilerplate structure:
 
 ```JS
 import { takeLatest, call, put, select } from 'redux-saga/effects';

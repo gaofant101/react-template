@@ -2,6 +2,21 @@
 
 ## Table of Contents
 
+- [General](general)
+  - [**CLI Commands**](general/commands.md)
+  - [Introduction ](general/introduction.md)
+  - [Tool Configuration](general/files.md)
+  - [Server Configurations](general/server-configs.md)
+  - [Deployment](general/deployment.md) _(currently Heroku and AWS S3 specific)_
+  - [Debugging](general/debugging.md)
+  - [FAQ](general/faq.md)
+  - [Gotchas](general/gotchas.md)
+  - [Remove](general/remove.md)
+  - [Extracting components](general/components.md)
+- [Testing](testing)
+  - [Unit Testing](testing/unit-testing.md)
+  - [Component Testing](testing/component-testing.md)
+  - [Remote Testing](testing/remote-testing.md)
 - [Styling (CSS)](css/README.md)
   - [Next Generation CSS](css/README.md#next-generation-css)
   - [CSS Support](css/README.md#css-we-support)
@@ -24,6 +39,12 @@
 
 ### Quickstart
 
+1.  First, let's kick the tyres by launching the sample _Repospective_ app
+    bundled with this project to demo some of its best features:
+
+    ```Shell
+    npm run setup && npm start
+    ```
 
 1.  Open [localhost:3000](http://localhost:3000) to see it in action.
 
@@ -56,6 +77,16 @@ Run `npm start` to see your app at `localhost:3000`
 
 2.  Upload the contents of the `build` folder to your web server's root folder.
 
+### Structure
+
+The [`app/`](../../../tree/master/app) directory contains your entire application code, including CSS,
+JavaScript, HTML and tests.
+
+The rest of the folders and files only exist to make your life easier, and
+should not need to be touched.
+
+_(If they do have to be changed, please [submit an issue](https://github.com/react-boilerplate/react-boilerplate/issues)!)_
+
 ### CSS
 
 Utilising [tagged template literals](https://www.styled-components.com/docs/advanced#tagged-template-literals)
@@ -79,3 +110,18 @@ JavaScript side of things.
 
 We use [react-helmet](https://github.com/nfl/react-helmet) for managing document head tags. Examples on how to
 write head tags can be found [here](https://github.com/nfl/react-helmet#examples).
+
+### Testing
+
+For a thorough explanation of the testing procedure, see the
+[testing documentation](./testing/README.md)!
+
+#### Browser testing
+
+`npm run start:tunnel` makes your locally-running app globally available on the web
+via a temporary URL: great for testing on different devices, client demos, etc!
+
+#### Unit testing
+
+Unit tests live in `test/` directories right next to the components being tested
+and are run with `npm run test`.

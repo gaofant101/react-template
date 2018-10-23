@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './style.css';
+import styles from './style.less';
 
 export default class AddTodo extends Component {
     render() {

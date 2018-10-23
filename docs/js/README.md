@@ -2,7 +2,7 @@
 
 ## State management
 
-This template manages application state using [Redux](redux.md), makes it
+This boilerplate manages application state using [Redux](redux.md), makes it
 immutable with [`ImmutableJS`](immutablejs.md) and keeps access performant
 via [`reselect`](reselect.md).
 

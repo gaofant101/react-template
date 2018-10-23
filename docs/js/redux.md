@@ -45,11 +45,11 @@ that's necessary.
 
 To get you started on a login flow, there's a great example [here](https://github.com/tinavanschelt/recycled-login-flow).
 
-**Note:** Based off of react-template **v3.4**
+**Note:** Based off of react-boilerplate **v3.4**
 
 ## Removing redux
 
-There are a few reasons why we chose to bundle redux with React template, the
+There are a few reasons why we chose to bundle redux with React Boilerplate, the
 biggest being that it is widely regarded as the current best Flux implementation
 in terms of architecture, support and documentation.
 
@@ -73,7 +73,7 @@ See above.
 
 ### I prefer `(Alt|MobX|SomethingElse)`!
 
-React template is a baseline for _your_ app: go for it!
+React Boilerplate is a baseline for _your_ app: go for it!
 
 If you feel that we should take a closer look at supporting your preference
 out of the box, please let us know.

@@ -11,7 +11,7 @@ import {
     Checkbox,
     Alert,
 } from 'antd';
-import styles from './style.css';
+import styles from './style.less';
 
 const FormItem = Form.Item;
 const { TabPane } = Tabs;

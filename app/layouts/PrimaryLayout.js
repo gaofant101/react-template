@@ -9,7 +9,7 @@ import ErrorBoundary from 'components/ErrorBoundary';
 import RouteWithSubRoutes from 'components/RouteWithSubRoutes';
 import SiderColumn from 'components/SiderColumn';
 import UserHeader from 'components/UserHeader';
-import styles from './style.css';
+import styles from './style.less';
 
 const { Content } = Layout;
 

@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import { Row, Col, Card } from 'antd';
 import DevTools from 'components/DevTools';
-import styles from './style.css';
+import styles from './style.less';
 
 import Todos from './Todos';
 import ShowState from './ShowState';
@@ -25,7 +25,8 @@ export default class ReactSetState extends PureComponent {
             <div className={styles.box}>
                 <Row className={styles.marginBtm20}>
                     <a href="http://cn.redux.js.org/index.html" target="_blank">
-                        [ 原文 ] <code>Redux</code>文档
+                        [ 原文 ]<code>Redux</code>
+                        文档
                     </a>
                 </Row>
                 <Row gutter={16} className={styles.marginBtm20}>
