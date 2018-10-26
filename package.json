@@ -1,10 +1,10 @@
 {
     "name": "react-template",
     "version": "3.1.0",
-    "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+    "description": "A flexible and easy-to-use engineering template with performance and best practices",
     "repository": {
         "type": "git",
-        "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+        "url": "git@github.com:neilgao000/react-template.git"
     },
     "engines": {
         "npm": ">=5",
@@ -22,7 +22,6 @@
         "prebuild": "npm run build:clean",
         "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
         "build:clean": "rimraf ./build",
-        "build:dll": "node ./internals/scripts/dependencies.js",
         "start": "cross-env NODE_ENV=development node server",
         "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
         "start:production": "npm run test && npm run build && npm run start:prod",
