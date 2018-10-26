@@ -4,14 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
-// const TerserPlugin = require('terser-webpack-plugin');
-// const CompressionPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = require('./webpack.base.babel')({
     mode: 'production',
 
     entry: [
-        // require.resolve('react-app-polyfill/ie11'),
+        require.resolve('react-app-polyfill/ie11'),
         path.join(process.cwd(), 'app/app.js'),
     ],
 
@@ -23,23 +24,24 @@ module.exports = require('./webpack.base.babel')({
     optimization: {
         minimize: true,
         minimizer: [
-            // new TerserPlugin({
-            //     terserOptions: {
-            //         warnings: false,
-            //         compress: {
-            //             comparisons: false,
-            //         },
-            //         parse: {},
-            //         mangle: true,
-            //         output: {
-            //             comments: false,
-            //             ascii_only: true,
-            //         },
-            //     },
-            //     parallel: true,
-            //     cache: true,
-            //     sourceMap: true,
-            // }),
+            new TerserPlugin({
+                terserOptions: {
+                    warnings: false,
+                    compress: {
+                        comparisons: false,
+                    },
+                    parse: {},
+                    mangle: true,
+                    output: {
+                        comments: false,
+                        ascii_only: true,
+                    },
+                },
+                parallel: true,
+                cache: true,
+                sourceMap: true,
+            }),
+            new OptimizeCSSAssetsPlugin({}),
         ],
         nodeEnv: 'production',
         sideEffects: true,
@@ -97,12 +99,12 @@ module.exports = require('./webpack.base.babel')({
             },
             safeToUseOptionalCaches: true,
         }),
-        // new CompressionPlugin({
-        //     algorithm: 'gzip',
-        //     test: /\.js$|\.css$|\.html$/,
-        //     threshold: 10240,
-        //     minRatio: 0.8,
-        // }),
+        new CompressionPlugin({
+            algorithm: 'gzip',
+            test: /\.js$|\.css$|\.html$/,
+            threshold: 10240,
+            minRatio: 0.8,
+        }),
         new WebpackPwaManifest({
             name: 'React Template',
             short_name: 'React TP',
@@ -113,7 +115,7 @@ module.exports = require('./webpack.base.babel')({
             ios: true,
             icons: [
                 {
-                    src: path.resolve('app/images/icon-512x512.png'),
+                    src: path.resolve('app/assets/images/icon-512x512.png'),
                     sizes: [
                         72,
                         96,

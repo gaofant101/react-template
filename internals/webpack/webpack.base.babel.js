@@ -45,7 +45,10 @@ module.exports = (options) => ({
                 // Preprocess 3rd party .css files located in node_modules
                 test: /\.css/,
                 include: /node_modules/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                ],
             },
             {
                 test: /\.less$/,
@@ -57,7 +60,7 @@ module.exports = (options) => ({
                         options: {
                             modules: true,
                             mportLoaders: 1,
-                            localIdentName: '[local]__[hash:base64:5]',
+                            localIdentName: '[local]_[hash:base64:5]',
                         },
                     },
                     'postcss-loader',

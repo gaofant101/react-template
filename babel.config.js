@@ -18,6 +18,7 @@ module.exports = {
             'import',
             {
                 libraryName: 'antd',
+                libraryDirectory: 'lib',
                 style: 'css',
             },
             'ant',
@@ -31,7 +32,6 @@ module.exports = {
                 'transform-react-remove-prop-types',
                 '@babel/plugin-transform-react-inline-elements',
                 '@babel/plugin-transform-react-constant-elements',
-                'transform-react-remove-prop-types',
             ],
         },
         test: {

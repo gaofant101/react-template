@@ -10,7 +10,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 module.exports = require('./webpack.base.babel')({
     mode: 'development',
     entry: [
-        // require.resolve('react-app-polyfill/ie11'),
+        require.resolve('react-app-polyfill/ie11'),
         'webpack-hot-middleware/client?reload=true',
         path.join(process.cwd(), 'app/app.js'),
     ],
