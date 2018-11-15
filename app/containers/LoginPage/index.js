@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Icon } from 'antd';
+import Wrapper from './Wrapper';
+import Content from './Content';
+import GlobalFooter from './GlobalFooter';
 
 import { requestLoggedUserAction } from './action';
 import { Logo } from './logo';
-import styles from './style.less';
+// import styles from './style.less';
 
 import WrappedNormalLoginForm from './form';
 
@@ -21,36 +24,40 @@ class LoginPage extends Component {
     render() {
         const { requestLoggedUser } = this.props;
         return (
-            <div className={styles.container}>
-                <div className={styles.content}>
-                    <div className={styles.top}>
-                        <div className={styles.head}>
+            <Wrapper>
+                <Content>
+                    {/* <div className={styles.top}> */}
+                    <div>
+                        {/* <div className={styles.head}> */}
+                        <div>
                             <Logo />
                         </div>
-                        <div className={styles.desc}>
-                            Quick setup for new performance orientated,
-                            offline–first React.js applications
+                        {/* <div className={styles.desc}> */}
+                        <div>
+                            Quick setup for new performance orientated, offline–first React.js
+                            applications
                         </div>
                     </div>
-                    <div className={styles.main}>
-                        <WrappedNormalLoginForm
-                            requestLoggedUser={requestLoggedUser}
-                        />
+                    {/* <div className={styles.main}> */}
+                    <div>
+                        <WrappedNormalLoginForm requestLoggedUser={requestLoggedUser} />
                     </div>
-                </div>
-                <div className={styles.globalFooter}>
-                    <div className={styles.link}>
+                </Content>
+                <GlobalFooter>
+                    {/* <div className={styles.link}> */}
+                    <div>
                         <span>帮助</span>
                         <span>隐私</span>
                         <span>条款</span>
                     </div>
-                    <div className={styles.copyright}>
+                    {/* <div className={styles.copyright}> */}
+                    <div>
                         Copyright
                         <Icon type="copyright" />
                         2018 react-template
                     </div>
-                </div>
-            </div>
+                </GlobalFooter>
+            </Wrapper>
         );
     }
 }

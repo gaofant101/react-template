@@ -1,36 +1,30 @@
 import React from 'react';
 import { Row, Col, Card } from 'antd';
-import styles from './style.less';
+import Wrapper from './Wrapper';
+import Spacing from './Spacing';
 
 import ErrorBoundary from './ErrorBoundary';
 import MakeError from './MakeError';
 
-// export default class ShowErrorBoundary extends React.PureComponent {
-//     render() {
-//         return (
-//             <ErrorBoundary>
-//                 <MakeError />
-//             </ErrorBoundary>
-//         );
-//     }
-// }
-
 const ShowErrorBoundary = () => (
-    <div className={styles.box}>
+    <Wrapper>
         <Row gutter={8}>
             <Col span={12}>
-                <Card title="index.js" className={styles.cardUse}>
-                    <pre>
-                        {`
+                <Spacing>
+                    <Card title="index.js">
+                        <pre>
+                            {`
 <ErrorBoundary>
     <MakeError />
 </ErrorBoundary>
-                        `}
-                    </pre>
-                </Card>
-                <Card title="ErrorBoundary" className={styles.cardUse}>
-                    <pre>
-                        {`
+                            `}
+                        </pre>
+                    </Card>
+                </Spacing>
+                <Spacing>
+                    <Card title="ErrorBoundary">
+                        <pre>
+                            {`
 componentDidCatch(error, info) {
     // Display fallback UI
     this.setState({ hasError: true });
@@ -45,12 +39,14 @@ render() {
     }
     return this.props.children;
 }
-                        `}
-                    </pre>
-                </Card>
-                <Card title="MakeError" className={styles.cardUse}>
-                    <pre>
-                        {`
+                            `}
+                        </pre>
+                    </Card>
+                </Spacing>
+                <Spacing>
+                    <Card title="MakeError">
+                        <pre>
+                            {`
 const { error } = this.state;
 if (error) {
     throw new Error('I crashed!');
@@ -60,9 +56,10 @@ return (
         click me, trigger the bug
     </button>
 );
-                        `}
-                    </pre>
-                </Card>
+                            `}
+                        </pre>
+                    </Card>
+                </Spacing>
             </Col>
             <Col span={12}>
                 <Card title="显示">
@@ -75,7 +72,7 @@ return (
                 </Card>
             </Col>
         </Row>
-    </div>
+    </Wrapper>
 );
 
 export default ShowErrorBoundary;

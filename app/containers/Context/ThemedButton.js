@@ -1,13 +1,12 @@
 import React from 'react';
-import styles from './style.less';
+import Button from './Button';
 import { ThemeContext } from './context';
 
 const ThemedButton = (props) => (
     <ThemeContext.Consumer>
         {(theme) => (
-            <button
+            <Button
                 type="button"
-                className={styles.btn}
                 {...props}
                 style={{
                     backgroundColor: theme.background,
@@ -15,7 +14,7 @@ const ThemedButton = (props) => (
                 }}
             >
                 {`${Object.keys(theme)[0]}: ${theme.background}`}
-            </button>
+            </Button>
         )}
     </ThemeContext.Consumer>
 );

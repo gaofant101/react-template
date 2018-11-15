@@ -3,8 +3,6 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const devMode = process.env.NODE_ENV !== 'production';
 
 process.noDeprecation = true;
 
@@ -45,27 +43,7 @@ module.exports = (options) => ({
                 // Preprocess 3rd party .css files located in node_modules
                 test: /\.css/,
                 include: /node_modules/,
-                use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                ],
-            },
-            {
-                test: /\.less$/,
-                exclude: /node_modules/,
-                use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            mportLoaders: 1,
-                            localIdentName: '[local]_[hash:base64:5]',
-                        },
-                    },
-                    'postcss-loader',
-                    'less-loader',
-                ],
+                use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(eot|otf|ttf|woff|woff2)$/,
@@ -138,12 +116,6 @@ module.exports = (options) => ({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
             },
-        }),
-        new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
-            filename: '[name].[hash].css',
-            chunkFilename: '[id].[hash].css',
         }),
     ]),
     resolve: {

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style.less';
 
 export const Todo = ({ TodoList }) => (
-    <ul className={styles.list}>
+    <ul>
         {TodoList.map((item, index) => (
             <li key={`${item.id}-${index.toString()}`}>{item.text}</li>
         ))}

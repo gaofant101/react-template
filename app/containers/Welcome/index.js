@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './style.less';
+// import styles from './style.less';
 
 export default class HelloAdmin extends React.Component {
     constructor(props) {
@@ -22,11 +22,7 @@ export default class HelloAdmin extends React.Component {
     render() {
         const { username } = this.state;
         return (
-            <div
-                className={styles.hello}
-                onClick={this.clickMe}
-                role="presentation"
-            >
+            <div onClick={this.clickMe} role="presentation">
                 <h1>Holle {username}</h1>
             </div>
         );

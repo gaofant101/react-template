@@ -1,51 +1,49 @@
-import {
-    LoadableWelcome,
-    LoadableComponentLifecycleFunction,
-    LoadableComponentLifecycleStep,
-    LoadableSetState,
-    LoadableTopLevelApi,
-    LoadableRedux,
-    LoadableLoginPage,
-    LoadableContext,
-    LoadableErrorBoundary,
-} from './asyncs';
+import Welcome from '@containers/Welcome/Loadable';
+import ComponentLifecycleFunction from '@containers/ComponentLifecycle/Function/Loadable';
+import ComponentLifecycleStep from '@containers/ComponentLifecycle/Step/Loadable';
+import SetState from '@containers/SetState/Loadable';
+import TopLevelApi from '@containers/TopLevelApi/Loadable';
+import Redux from '@containers/Redux/Loadable';
+import LoginPage from '@containers/LoginPage/Loadable';
+import Context from '@containers/Context/Loadable';
+import ErrorBoundary from '@containers/ErrorBoundary/Loadable';
 
 export const privateRoutes = [
     {
         path: '/',
         exact: true,
-        component: LoadableWelcome,
+        component: Welcome,
     },
     {
         path: '/login',
-        component: LoadableLoginPage,
+        component: LoginPage,
     },
     {
         path: '/lifecycle/function',
-        component: LoadableComponentLifecycleFunction,
+        component: ComponentLifecycleFunction,
     },
     {
         path: '/lifecycle/step',
-        component: LoadableComponentLifecycleStep,
+        component: ComponentLifecycleStep,
     },
     {
         path: '/setstate',
-        component: LoadableSetState,
+        component: SetState,
     },
     {
         path: '/toplevelapi',
-        component: LoadableTopLevelApi,
+        component: TopLevelApi,
     },
     {
         path: '/redux',
-        component: LoadableRedux,
+        component: Redux,
     },
     {
         path: '/context',
-        component: LoadableContext,
+        component: Context,
     },
     {
         path: '/error-boundary',
-        component: LoadableErrorBoundary,
+        component: ErrorBoundary,
     },
 ];

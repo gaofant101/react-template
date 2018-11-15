@@ -1,17 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    Form,
-    Tabs,
-    Row,
-    Col,
-    Icon,
-    Input,
-    Button,
-    Checkbox,
-    Alert,
-} from 'antd';
-import styles from './style.less';
+import { Form, Tabs, Row, Col, Icon, Input, Button, Checkbox, Alert } from 'antd';
+// import styles from './style.less';
 
 const FormItem = Form.Item;
 const { TabPane } = Tabs;
@@ -60,9 +50,7 @@ class NormalLoginForm extends React.Component {
                                 values.userName === 'admin' &&
                                 values.password &&
                                 values.password === 'admin') ||
-                            (values.mobilenumber &&
-                                values.captcha &&
-                                values.lenght === 4)
+                            (values.mobilenumber && values.captcha && values.lenght === 4)
                         ) {
                             requestLoggedUser();
                             this.setState({
@@ -86,12 +74,7 @@ class NormalLoginForm extends React.Component {
     };
 
     render() {
-        const {
-            tapsKey,
-            alertErrorType,
-            alertErrorText,
-            formBtnLoading,
-        } = this.state;
+        const { tapsKey, alertErrorType, alertErrorText, formBtnLoading } = this.state;
         const { form } = this.props;
         const { getFieldDecorator } = form;
         return (
@@ -99,12 +82,7 @@ class NormalLoginForm extends React.Component {
                 <Tabs defaultActiveKey="1" onChange={this.tabsCallback}>
                     <TabPane tab="账户密码登录" key="1">
                         {alertErrorType === 'username' && tapsKey === '1' ? (
-                            <Alert
-                                message={alertErrorText}
-                                type="error"
-                                showIcon
-                                className={styles.alerterror}
-                            />
+                            <Alert message={alertErrorText} type="error" showIcon />
                         ) : null}
                         <FormItem>
                             {getFieldDecorator('userName', {
@@ -118,10 +96,7 @@ class NormalLoginForm extends React.Component {
                                 <Input
                                     size="large"
                                     prefix={
-                                        <Icon
-                                            type="user"
-                                            style={{ color: 'rgba(0,0,0,.25)' }}
-                                        />
+                                        <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
                                     }
                                     placeholder="admin"
                                 />,
@@ -139,10 +114,7 @@ class NormalLoginForm extends React.Component {
                                 <Input
                                     size="large"
                                     prefix={
-                                        <Icon
-                                            type="lock"
-                                            style={{ color: 'rgba(0,0,0,.25)' }}
-                                        />
+                                        <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
                                     }
                                     type="password"
                                     placeholder="admin"
@@ -152,20 +124,14 @@ class NormalLoginForm extends React.Component {
                     </TabPane>
                     <TabPane tab="手机号登录" key="2">
                         {alertErrorType === 'mobile' && tapsKey === '2' ? (
-                            <Alert
-                                message={alertErrorText}
-                                type="error"
-                                showIcon
-                                className={styles.alerterror}
-                            />
+                            <Alert message={alertErrorText} type="error" showIcon />
                         ) : null}
                         <FormItem>
                             {getFieldDecorator('mobilenumber', {
                                 rules: [
                                     {
                                         required: true,
-                                        message:
-                                            'Please input your mobile number!',
+                                        message: 'Please input your mobile number!',
                                         pattern: /^1\d{10}$/,
                                     },
                                 ],
@@ -173,10 +139,7 @@ class NormalLoginForm extends React.Component {
                                 <Input
                                     size="large"
                                     prefix={
-                                        <Icon
-                                            type="mobile"
-                                            style={{ color: 'rgba(0,0,0,.25)' }}
-                                        />
+                                        <Icon type="mobile" style={{ color: 'rgba(0,0,0,.25)' }} />
                                     }
                                     placeholder="mobile number"
                                 />,
@@ -189,8 +152,7 @@ class NormalLoginForm extends React.Component {
                                         rules: [
                                             {
                                                 required: true,
-                                                message:
-                                                    'Please input your captcha!',
+                                                message: 'Please input your captcha!',
                                                 pattern: /\d{4}$/,
                                             },
                                         ],
@@ -201,8 +163,7 @@ class NormalLoginForm extends React.Component {
                                                 <Icon
                                                     type="mail"
                                                     style={{
-                                                        color:
-                                                            'rgba(0,0,0,.25)',
+                                                        color: 'rgba(0,0,0,.25)',
                                                     }}
                                                 />
                                             }
@@ -211,12 +172,7 @@ class NormalLoginForm extends React.Component {
                                     )}
                                 </Col>
                                 <Col span={8} offset={1}>
-                                    <Button
-                                        size="large"
-                                        className={styles.getCaptcha}
-                                    >
-                                        获取验证码
-                                    </Button>
+                                    <Button size="large">获取验证码</Button>
                                 </Col>
                             </Row>
                         </FormItem>
@@ -239,9 +195,7 @@ class NormalLoginForm extends React.Component {
                     >
                         登录
                     </Button>
-                    <a href="/login" className={styles.registerLink}>
-                        注册账号
-                    </a>
+                    <a href="/login">注册账号</a>
                 </FormItem>
             </Form>
         );

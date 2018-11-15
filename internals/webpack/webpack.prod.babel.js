@@ -6,15 +6,11 @@ const OfflinePlugin = require('offline-plugin');
 const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = require('./webpack.base.babel')({
     mode: 'production',
 
-    entry: [
-        require.resolve('react-app-polyfill/ie11'),
-        path.join(process.cwd(), 'app/app.js'),
-    ],
+    entry: [require.resolve('react-app-polyfill/ie11'), path.join(process.cwd(), 'app/app.js')],
 
     output: {
         filename: '[name].[chunkhash].js',
@@ -41,7 +37,6 @@ module.exports = require('./webpack.base.babel')({
                 cache: true,
                 sourceMap: true,
             }),
-            new OptimizeCSSAssetsPlugin({}),
         ],
         nodeEnv: 'production',
         sideEffects: true,
@@ -116,19 +111,7 @@ module.exports = require('./webpack.base.babel')({
             icons: [
                 {
                     src: path.resolve('app/assets/images/icon-512x512.png'),
-                    sizes: [
-                        72,
-                        96,
-                        120,
-                        128,
-                        144,
-                        152,
-                        167,
-                        180,
-                        192,
-                        384,
-                        512,
-                    ],
+                    sizes: [72, 96, 120, 128, 144, 152, 167, 180, 192, 384, 512],
                 },
             ],
         }),
@@ -141,7 +124,6 @@ module.exports = require('./webpack.base.babel')({
     ],
 
     performance: {
-        assetFilter: (assetFilename) =>
-            !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
+        assetFilter: (assetFilename) => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
     },
 });

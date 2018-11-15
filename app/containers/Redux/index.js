@@ -2,7 +2,8 @@
 import React, { PureComponent } from 'react';
 import { Row, Col, Card } from 'antd';
 import DevTools from 'components/DevTools';
-import styles from './style.less';
+import Wrapper from './Wrapper';
+import Spacing from './Spacing';
 
 import Todos from './Todos';
 import ShowState from './ShowState';
@@ -22,34 +23,40 @@ export default class ReactSetState extends PureComponent {
 
     render() {
         return (
-            <div className={styles.box}>
-                <Row className={styles.marginBtm20}>
-                    <a href="http://cn.redux.js.org/index.html" target="_blank">
-                        [ 原文 ]<code>Redux</code>
-                        文档
-                    </a>
-                </Row>
-                <Row gutter={16} className={styles.marginBtm20}>
-                    <Col span={8}>
-                        <Card title="Add Todos">
-                            <Todos />
-                        </Card>
-                    </Col>
-                    <Col span={8}>
-                        <Card title="ShowState">
-                            <ShowState />
-                        </Card>
-                    </Col>
-                </Row>
-                <Row gutter={16} className={styles.marginBtm20}>
-                    <Col span={8}>
-                        <Card title="Add Todos">
-                            <LoadGithub />
-                        </Card>
-                    </Col>
-                </Row>
+            <Wrapper>
+                <Spacing>
+                    <Row>
+                        <a href="http://cn.redux.js.org/index.html" target="_blank">
+                            [ 原文 ]<code>Redux</code>
+                            文档
+                        </a>
+                    </Row>
+                </Spacing>
+                <Spacing>
+                    <Row gutter={16}>
+                        <Col span={8}>
+                            <Card title="Add Todos">
+                                <Todos />
+                            </Card>
+                        </Col>
+                        <Col span={8}>
+                            <Card title="ShowState">
+                                <ShowState />
+                            </Card>
+                        </Col>
+                    </Row>
+                </Spacing>
+                <Spacing>
+                    <Row gutter={16}>
+                        <Col span={8}>
+                            <Card title="Add Todos">
+                                <LoadGithub />
+                            </Card>
+                        </Col>
+                    </Row>
+                </Spacing>
                 <DevTools />
-            </div>
+            </Wrapper>
         );
     }
 }

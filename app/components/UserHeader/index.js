@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Layout, Icon, Menu, Dropdown, Avatar } from 'antd';
-
 import { requestLogOutUserAction } from 'containers/LoginPage/action';
-import styles from './style.less';
+import Trigger from './Trigger';
+import Users from './Users';
+import UserInfo from './UserInfo';
 
 const { Header } = Layout;
 
@@ -30,16 +31,16 @@ class UserHeader extends React.Component {
         const menu = (
             <Menu onClick={this.callback}>
                 <Item key="0" disabled>
-                    <Icon type="user" className={styles.dropdowniconset} />
+                    <Icon type="user" />
                     用户中心
                 </Item>
                 <Item key="1" disabled>
-                    <Icon type="setting" className={styles.dropdowniconset} />
+                    <Icon type="setting" />
                     设置
                 </Item>
                 <Divider />
                 <Item key="3">
-                    <Icon type="logout" className={styles.dropdowniconset} />
+                    <Icon type="logout" />
                     登出
                 </Item>
             </Menu>
@@ -47,23 +48,21 @@ class UserHeader extends React.Component {
         const { collapsed, toggle } = this.props;
         return (
             <Header style={{ background: '#fff', padding: 0 }}>
-                <Icon
-                    className={styles.trigger}
-                    type={collapsed ? 'menu-unfold' : 'menu-fold'}
-                    onClick={toggle}
-                />
-                <div className={styles.user}>
+                <Trigger>
+                    <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} onClick={toggle} />
+                </Trigger>
+                <Users>
                     <Dropdown overlay={menu}>
-                        <span className={styles.userinfo}>
-                            <span className={styles.usersend}>你好, </span>
+                        <UserInfo>
+                            <span>你好, </span>
                             <Avatar
                                 size="small"
                                 src="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
                             />
-                            <span className={styles.username}>管理员</span>
-                        </span>
+                            <span>管理员</span>
+                        </UserInfo>
                     </Dropdown>
-                </div>
+                </Users>
             </Header>
         );
     }

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
+import { privateRoutes } from '@routers';
 
-import styles from './style.less';
+import Logo from './Logo';
 import { menu } from './menu';
 
 const { Sider } = Layout;
@@ -30,9 +31,7 @@ export default class SiderColumn extends React.Component {
 
     onOpenChange = (openKey) => {
         const { openKeys } = this.state;
-        const latestOpenKey = openKey.find(
-            (key) => openKeys.indexOf(key) === -1,
-        );
+        const latestOpenKey = openKey.find((key) => openKeys.indexOf(key) === -1);
         if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
             this.setState({ openKeys: openKey });
         } else {
@@ -61,13 +60,7 @@ export default class SiderColumn extends React.Component {
         }));
     };
 
-    rootSubmenuKeys = [
-        '/',
-        '/LifeCycle',
-        '/setState',
-        '/TopLevelApi',
-        '/Redux',
-    ];
+    rootSubmenuKeys = [].concat(privateRoutes.map((item) => item.path));
 
     handleClick = (e) => {
         this.setState({ current: e.key });
@@ -115,7 +108,7 @@ export default class SiderColumn extends React.Component {
         const { collapsed } = this.props;
         return (
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className={styles.logo} />
+                <Logo />
                 <Menu
                     theme="dark"
                     mode="inline"

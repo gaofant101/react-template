@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { addTodo } from './actions';
-
 import { Todo } from './Todo';
 import AddTodo from './AddTodo';
 

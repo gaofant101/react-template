@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './style.less';
+import Form from './Form';
 
 export default class AddTodo extends Component {
     render() {
         const { onSubmitForm } = this.props;
         return (
-            <form
+            <Form
                 onSubmit={(e) => {
                     onSubmitForm(e);
                     this.input.value = '';
                 }}
-                className={styles.todosform}
             >
                 <input
                     type="text"
@@ -22,7 +21,7 @@ export default class AddTodo extends Component {
                     }}
                 />
                 <button type="submit">提交</button>
-            </form>
+            </Form>
         );
     }
 }

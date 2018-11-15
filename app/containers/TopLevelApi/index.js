@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { Row, Col, Card } from 'antd';
 import Tree from './defaultIndex';
-import styles from './style.less';
+import Wrapper from './Wrapper';
+import Spacing from './Spacing';
 
 import { treeData } from './treeList';
 const { TreeNode } = Tree;
@@ -34,20 +35,20 @@ export default class TopLevelApi extends Component {
 
     render() {
         return (
-            <div className={styles.box}>
-                <Row className={styles.marginBtm20}>
-                    <a
-                        href="https://reactjs.org/docs/react-api.html"
-                        target="_blank"
-                    >
-                        [ 原文 ] React Top-Level API
-                    </a>
-                </Row>
-                <Row gutter={16} className={styles.marginBtm20}>
-                    <Col span={12}>
-                        <Card title="示例">
-                            <pre>
-                                {`
+            <Wrapper>
+                <Spacing>
+                    <Row>
+                        <a href="https://reactjs.org/docs/react-api.html" target="_blank">
+                            [ 原文 ] React Top-Level API
+                        </a>
+                    </Row>
+                </Spacing>
+                <Spacing>
+                    <Row gutter={16}>
+                        <Col span={12}>
+                            <Card title="示例">
+                                <pre>
+                                    {`
 import Tree from './defaultIndex';
 import { treeData } from './treeList';
 
@@ -69,35 +70,37 @@ treeLoop = (data) => data.map((item) => {
     {this.treeLoop(treeData)}
 </Tree>
 ...
-                                    `}
-                            </pre>
-                        </Card>
-                    </Col>
-                    <Col span={12}>
-                        <Card title="效果">
-                            <Tree>{this.treeLoop(treeData)}</Tree>
-                        </Card>
-                    </Col>
-                </Row>
-                <Row gutter={16} className={styles.marginBtm20}>
-                    <Col span={8}>
-                        <Card title="代码示例 defaultIndex">
-                            <pre>
-                                {`
+                                        `}
+                                </pre>
+                            </Card>
+                        </Col>
+                        <Col span={12}>
+                            <Card title="效果">
+                                <Tree>{this.treeLoop(treeData)}</Tree>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Spacing>
+                <Spacing>
+                    <Row gutter={16}>
+                        <Col span={8}>
+                            <Card title="代码示例 defaultIndex">
+                                <pre>
+                                    {`
 import Tree from './Tree';
 import TreeNode from './TreeNodec';
 Tree.TreeNode = TreeNode;
 
 export default Tree;
 
-                                    `}
-                            </pre>
-                        </Card>
-                    </Col>
-                    <Col span={8}>
-                        <Card title="代码示例 Tree">
-                            <pre>
-                                {`
+                                        `}
+                                </pre>
+                            </Card>
+                        </Col>
+                        <Col span={8}>
+                            <Card title="代码示例 Tree">
+                                <pre>
+                                    {`
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from '';
@@ -107,7 +110,7 @@ export default class Tree extends PureComponent {
         node
     render() {
         return (
-            <ul className={styles.tree}>
+            <ul>
                 {React.Children.map(this.props.children, this.renderTreeNode)}
             </ul>
         );
@@ -118,14 +121,14 @@ Tree.propTypes = {
     children: PropTypes.node,
 };
 
-                                `}
-                            </pre>
-                        </Card>
-                    </Col>
-                    <Col span={8}>
-                        <Card title="代码示例 TreeNode">
-                            <pre>
-                                {`
+                                    `}
+                                </pre>
+                            </Card>
+                        </Col>
+                        <Col span={8}>
+                            <Card title="代码示例 TreeNode">
+                                <pre>
+                                    {`
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
@@ -156,12 +159,13 @@ TreeNode.propTypes = {
     children: PropTypes.node,
 };
 
-                                `}
-                            </pre>
-                        </Card>
-                    </Col>
-                </Row>
-            </div>
+                                    `}
+                                </pre>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Spacing>
+            </Wrapper>
         );
     }
 }

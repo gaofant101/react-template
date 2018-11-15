@@ -1,15 +1,12 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import { privateRoutes } from 'routers';
 
-import ErrorBoundary from 'components/ErrorBoundary';
-
 import RouteWithSubRoutes from 'components/RouteWithSubRoutes';
 import SiderColumn from 'components/SiderColumn';
 import UserHeader from 'components/UserHeader';
-import styles from './style.less';
+import Wrapper from './Wrapper';
 
 const { Content } = Layout;
 
@@ -31,18 +28,15 @@ export default class PrimaryLayout extends React.Component {
                 <SiderColumn collapsed={collapsed} />
                 <Layout>
                     <UserHeader collapsed={collapsed} toggle={this.toggle} />
-                    <Content className={styles.content}>
-                        <ErrorBoundary>
+                    <Wrapper>
+                        <Content>
                             <Switch>
                                 {privateRoutes.map((route, index) => (
-                                    <RouteWithSubRoutes
-                                        key={index.toString()}
-                                        {...route}
-                                    />
+                                    <RouteWithSubRoutes key={index.toString()} {...route} />
                                 ))}
                             </Switch>
-                        </ErrorBoundary>
-                    </Content>
+                        </Content>
+                    </Wrapper>
                 </Layout>
             </Layout>
         );
