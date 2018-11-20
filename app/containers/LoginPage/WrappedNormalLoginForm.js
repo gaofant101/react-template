@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Tabs, Row, Col, Icon, Input, Button, Checkbox, Alert } from 'antd';
-// import styles from './style.less';
+import ForgotPwd from './ForgotPwd';
+import LoginButton from './LoginButton';
 
 const FormItem = Form.Item;
 const { TabPane } = Tabs;
@@ -183,19 +184,8 @@ class NormalLoginForm extends React.Component {
                         valuePropName: 'checked',
                         initialValue: true,
                     })(<Checkbox>自动登录</Checkbox>)}
-                    <a className="login-form-forgot" href="/login">
-                        忘记密码
-                    </a>
-                    <Button
-                        size="large"
-                        type="primary"
-                        htmlType="submit"
-                        className="login-form-button"
-                        loading={formBtnLoading}
-                    >
-                        登录
-                    </Button>
-                    <a href="/login">注册账号</a>
+                    <ForgotPwd ahref="/login">忘记密码</ForgotPwd>
+                    <LoginButton formBtnLoading={formBtnLoading}>登录</LoginButton>
                 </FormItem>
             </Form>
         );

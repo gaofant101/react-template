@@ -1,5 +1,6 @@
 import React from 'react';
-// import styles from './style.less';
+import { getApiIO } from '@services/api';
+import Wrapper from './Wrapper';
 
 export default class HelloAdmin extends React.Component {
     constructor(props) {
@@ -13,6 +14,9 @@ export default class HelloAdmin extends React.Component {
         this.setState(() => ({
             username: 'React 16.5',
         }));
+        getApiIO().then((res) => {
+            console.log(res.data);
+        });
     }
 
     clickMe = () => {
@@ -22,9 +26,9 @@ export default class HelloAdmin extends React.Component {
     render() {
         const { username } = this.state;
         return (
-            <div onClick={this.clickMe} role="presentation">
+            <Wrapper onClick={this.clickMe} role="presentation">
                 <h1>Holle {username}</h1>
-            </div>
+            </Wrapper>
         );
     }
 }

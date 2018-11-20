@@ -4,7 +4,6 @@ import { Row, Col, Card } from 'antd';
 import Wrapper from './Wrapper';
 import Spacing from './Spacing';
 import Li from './Li';
-// import styles from './style.css';
 
 export default class ReactSetState extends Component {
     constructor(props) {

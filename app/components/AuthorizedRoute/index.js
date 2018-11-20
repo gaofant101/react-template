@@ -7,11 +7,7 @@ const AuthorizedRoute = ({ component: Component, isAuthed, ...rest }) => (
     <Route
         {...rest}
         render={(props) =>
-            isAuthed === 'admin' ? (
-                <Component {...props} />
-            ) : (
-                <Redirect to="/login" />
-            )
+            isAuthed === 'admin' ? <Component {...props} /> : <Redirect to="/login" />
         }
     />
 );

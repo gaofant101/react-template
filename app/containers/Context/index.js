@@ -1,9 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { Row, Col, Card } from 'antd';
 import Wrapper from './Wrapper';
 import Spacing from './Spacing';
-// import Button from './Button';
 
 import Toolbar from './Toolbar';
 

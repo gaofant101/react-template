@@ -1,7 +1,7 @@
 export function getAuthority() {
-    return localStorage.getItem('react-template-authority') || 'admin';
+    return sessionStorage.getItem('react-template-authority') || 'admin';
 }
 
 export function setAuthority(authority) {
-    return localStorage.setItem('react-template-authority', authority);
+    return sessionStorage.setItem('react-template-authority', authority);
 }

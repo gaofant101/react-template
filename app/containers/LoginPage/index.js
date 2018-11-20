@@ -5,13 +5,18 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd';
 import Wrapper from './Wrapper';
 import Content from './Content';
+import LoginHead from './LoginHead';
+import LoginDesc from './LoginDesc';
+import LoginMain from './LoginMain';
+import LoginLink from './LoginLink';
+import LoginCopyright from './LoginCopyright';
 import GlobalFooter from './GlobalFooter';
 
 import { requestLoggedUserAction } from './action';
 import { Logo } from './logo';
 // import styles from './style.less';
 
-import WrappedNormalLoginForm from './form';
+import WrappedNormalLoginForm from './WrappedNormalLoginForm';
 
 class LoginPage extends Component {
     componentWillReceiveProps(nextProps) {
@@ -26,36 +31,28 @@ class LoginPage extends Component {
         return (
             <Wrapper>
                 <Content>
-                    {/* <div className={styles.top}> */}
-                    <div>
-                        {/* <div className={styles.head}> */}
-                        <div>
-                            <Logo />
-                        </div>
-                        {/* <div className={styles.desc}> */}
-                        <div>
-                            Quick setup for new performance orientated, offline–first React.js
-                            applications
-                        </div>
-                    </div>
-                    {/* <div className={styles.main}> */}
-                    <div>
+                    <LoginHead>
+                        <Logo />
+                    </LoginHead>
+                    <LoginDesc>
+                        Quick setup for new performance orientated, offline–first React.js
+                        applications
+                    </LoginDesc>
+                    <LoginMain>
                         <WrappedNormalLoginForm requestLoggedUser={requestLoggedUser} />
-                    </div>
+                    </LoginMain>
                 </Content>
                 <GlobalFooter>
-                    {/* <div className={styles.link}> */}
-                    <div>
+                    <LoginLink>
                         <span>帮助</span>
                         <span>隐私</span>
                         <span>条款</span>
-                    </div>
-                    {/* <div className={styles.copyright}> */}
-                    <div>
+                    </LoginLink>
+                    <LoginCopyright>
                         Copyright
                         <Icon type="copyright" />
                         2018 react-template
-                    </div>
+                    </LoginCopyright>
                 </GlobalFooter>
             </Wrapper>
         );
