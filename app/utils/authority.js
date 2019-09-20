@@ -1,7 +1,6 @@
-export function getAuthority() {
-    return sessionStorage.getItem('react-template-authority') || 'admin';
-}
+export const getAuthenticated = () => sessionStorage.getItem('isAuthenticated');
 
-export function setAuthority(authority) {
-    return sessionStorage.setItem('react-template-authority', authority);
-}
+export const setAuthenticated = (bool) => {
+    const state = bool === 'true' ? 'true' : 'false';
+    return sessionStorage.setItem('isAuthenticated', state);
+};

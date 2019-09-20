@@ -1,31 +1,25 @@
 import React from 'react';
-import { Router, Redirect, Switch, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { Switch, Route } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Main from '@layouts/Main';
 
-import AuthorizedRoute from 'components/AuthorizedRoute';
-import PrimaryLayout from 'layouts/PrimaryLayout';
-import UnauthorizedLayout from 'layouts/UnauthorizedLayout';
-
-import finalCreateStore from 'reduxs';
-import reducers from 'reduxs/reducers';
-
-/**
- * inject store
- */
-const store = finalCreateStore(reducers);
-const customHistory = createBrowserHistory();
+import PriveLayout from '@layouts/PriveLayout';
+import { privateRoutes, publicRoutes } from '@routers';
 
 const App = () => (
-    <Provider store={store}>
-        <Router history={customHistory}>
-            <Switch>
-                <Route path="/login" exact component={UnauthorizedLayout} />
-                <AuthorizedRoute path="/" component={PrimaryLayout} />
-                <Redirect to="/login" />
-            </Switch>
-        </Router>
-    </Provider>
+    <React.Fragment>
+        <CssBaseline />
+        <Switch>
+            {publicRoutes.map((route) => (
+                <Route key={`public-route-${route.path}`} {...route} />
+            ))}
+            <Main>
+                {privateRoutes.map((route) => (
+                    <PriveLayout key={`private-route-${route.path}`} {...route} />
+                ))}
+            </Main>
+        </Switch>
+    </React.Fragment>
 );
 
 export default App;

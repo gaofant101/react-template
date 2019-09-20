@@ -1,11 +1,18 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 
-import { todos } from '../containers/Redux/Todos/reducer';
-import { loadGit } from '../containers/Redux/LoadGithub/reducer';
-import { loggedUserReducer } from '../containers/LoginPage/reducer';
+import history from '@utils/history';
+import { loginReducer } from '@containers/Login/reducer';
+import { drawerReducer } from '@layouts/Menu/reducer';
 
-export default combineReducers({
-    todos,
-    loadGit,
-    loggedUserReducer,
-});
+const createRootReducer = (injectedReducers = {}) => {
+    const rootReducer = combineReducers({
+        router: connectRouter(history),
+        login: loginReducer,
+        drawer: drawerReducer,
+        ...injectedReducers,
+    });
+    return rootReducer;
+};
+
+export default createRootReducer;

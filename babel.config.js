@@ -8,22 +8,7 @@ module.exports = {
         ],
         '@babel/preset-react',
     ],
-    plugins: [
-        '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-syntax-dynamic-import',
-        '@babel/plugin-transform-react-jsx-source',
-        '@babel/plugin-proposal-json-strings',
-        '@babel/plugin-transform-runtime',
-        [
-            'import',
-            {
-                libraryName: 'antd',
-                libraryDirectory: 'lib',
-                style: 'css',
-            },
-            'ant',
-        ],
-    ],
+    plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-syntax-dynamic-import'],
     env: {
         production: {
             only: ['app'],
@@ -35,11 +20,7 @@ module.exports = {
             ],
         },
         test: {
-            plugins: [
-                '@babel/plugin-transform-modules-commonjs',
-                'dynamic-import-node',
-                'dynamic-import-node-babel-7',
-            ],
+            plugins: ['@babel/plugin-transform-modules-commonjs', 'dynamic-import-node'],
         },
     },
 };

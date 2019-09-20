@@ -7,23 +7,38 @@ import '@babel/polyfill';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FontFaceObserver from 'fontfaceobserver';
+import { ConnectedRouter } from 'connected-react-router';
+import { Provider } from 'react-redux';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import blue from '@material-ui/core/colors/blue';
 
+import configureStore from '@reduxs/configureStore';
+import history from '@utils/history';
 import App from 'containers/App';
-
 import '!file-loader?name=[name].[ext]!assets/images/favicon.ico';
-import 'file-loader?name=[name].[ext]!./.htaccess'; // eslint-disable-line import/extensions
 
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
-openSansObserver.load().then(() => {
-    document.body.classList.add('fontLoaded');
+const theme = createMuiTheme({
+    palette: {
+        primary: blue,
+    },
 });
+
+// Create redux store with history
+const initialState = {};
+const store = configureStore(initialState, history);
 
 const MOUNT_NODE = document.getElementById('app');
 const render = () => {
-    ReactDOM.render(<App />, MOUNT_NODE);
+    ReactDOM.render(
+        <Provider store={store}>
+            <ConnectedRouter history={history}>
+                <MuiThemeProvider theme={theme}>
+                    <App />
+                </MuiThemeProvider>
+            </ConnectedRouter>
+        </Provider>,
+        MOUNT_NODE,
+    );
 };
 render();
 
