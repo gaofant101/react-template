@@ -5,10 +5,12 @@ import { Route, Redirect } from 'react-router-dom';
 
 const PriveLayout = ({ component: Component, isAuthenticated, ...rest }) => (
     <Route
-        {...rest}
+        key={`private-route-${rest.path}`}
+        path={rest.path}
+        exact={rest.exact}
         render={(props) =>
             isAuthenticated === 'true' ? (
-                <Component {...props} />
+                <Component />
             ) : (
                 <Redirect
                     to={{

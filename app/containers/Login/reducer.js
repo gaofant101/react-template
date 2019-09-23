@@ -11,16 +11,10 @@ export const loginReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_LOGIN_STATUS:
             setAuthenticated('true');
-            return Object.assign({}, state, {
-                pending: true,
-                isAuthenticated: 'true',
-            });
+            return { ...state, pending: true, isAuthenticated: 'true' };
         case SET_LOGOUT_STATUS:
             setAuthenticated('false');
-            return Object.assign({}, state, {
-                pending: true,
-                isAuthenticated: 'false',
-            });
+            return { ...state, pending: true, isAuthenticated: 'false' };
         default:
             return state;
     }

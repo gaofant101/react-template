@@ -86,7 +86,7 @@ const PrimaryAppBar = ({ open, drawerOpen, drawerClose }) => {
     };
 
     return (
-        <React.Fragment>
+        <React.Fragment key="layouts/Header/index">
             <AppBar position="fixed" className={classes.grow}>
                 <Toolbar>
                     <IconButton

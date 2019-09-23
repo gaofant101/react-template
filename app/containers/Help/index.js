@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import debounce from 'lodash/debounce';
 
-const GoLogin = React.forwardRef((props, ref) => <Link innerRef={ref} to="/login" {...props} />);
+const GoLogin = React.forwardRef((props, ref) => <Link innerRef={ref} to="/login" />);
 
 const Help = () => {
     const [count, setCount] = useState(0);

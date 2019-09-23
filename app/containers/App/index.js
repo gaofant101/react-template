@@ -7,15 +7,25 @@ import PriveLayout from '@layouts/PriveLayout';
 import { privateRoutes, publicRoutes } from '@routers';
 
 const App = () => (
-    <React.Fragment>
+    <React.Fragment key="containers/app/index">
         <CssBaseline />
         <Switch>
             {publicRoutes.map((route) => (
-                <Route key={`public-route-${route.path}`} {...route} />
+                <Route
+                    key={`public-route-${route.path}`}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                />
             ))}
             <Main>
                 {privateRoutes.map((route) => (
-                    <PriveLayout key={`private-route-${route.path}`} {...route} />
+                    <PriveLayout
+                        key={`private-route-${route.path}`}
+                        path={route.path}
+                        exact={route.exact}
+                        component={route.component}
+                    />
                 ))}
             </Main>
         </Switch>
