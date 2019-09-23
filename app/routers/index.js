@@ -1,7 +1,7 @@
 import Index from '@containers/Index/Loadable';
 import Help from '@containers/Help';
 import Login from '@containers/Login';
-
+1
 export const privateRoutes = [
     {
         path: '/',
