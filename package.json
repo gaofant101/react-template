@@ -52,7 +52,11 @@
             "git add --force"
         ]
     },
-    "pre-commit": "lint:staged",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint:staged"
+        }
+    },
     "dependencies": {
         "@babel/polyfill": "7.6.0",
         "@material-ui/core": "4.4.3",
@@ -116,6 +120,7 @@
         "file-loader": "4.2.0",
         "html-loader": "0.5.5",
         "html-webpack-plugin": "3.2.0",
+        "husky": "3.0.5",
         "image-webpack-loader": "6.0.0",
         "imports-loader": "0.8.0",
         "jest-cli": "24.9.0",
