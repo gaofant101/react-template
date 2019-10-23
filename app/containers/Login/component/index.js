@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,15 +6,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import Fade from '@material-ui/core/Fade';
+
 import isEmpty from 'lodash/isEmpty';
+import request from '@utils/request';
+import encrypt from '@utils/encrypt';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -46,26 +48,68 @@ const MadeWithLove = () => (
     </Typography>
 );
 
+const TipsLabel = (message) => (
+    <Typography variant="body1" color="error">
+        {message === null ? '请输入正确用户名和密码' : message}
+    </Typography>
+);
+
+// 2019-10-23 高凡
+// 获取验证码
+const getVerCode = async () =>
+    request('api/sendVerifyCode/getVerifyCode', {
+        method: 'GET',
+    }).then((res) => {
+        if (res.code === 200) {
+            return res.message;
+        }
+        return null;
+    });
+
 const LoginPage = (props) => {
     const { isAuthenticated, requestLogin, history } = props;
     const classes = useStyles();
     const { from } = history.location.state || { from: { pathname: '/' } };
+    const userNameRef = useRef(null);
+    const userPwdRef = useRef(null);
+    const userCodeRef = useRef(null);
 
+    // 定义表单
     const [formdata, setFormdata] = useState({
-        email: '',
+        account: '',
         password: '',
+        code: '',
     });
 
+    // 定义表单验证状态
     const [formvalidator, setFormvalidator] = useState({
-        email: false,
+        account: false,
         password: false,
+        code: false,
     });
+
+    // 定义错误状态
+    const [isErrorState, setErrorState] = useState({
+        state: false,
+        message: null,
+    });
+
+    // 定义验证码图片
+    const [verCodeSrc, setVerCodeSrc] = useState(null);
 
     const formChange = (e) => {
         setFormdata({
             ...formdata,
             [e.currentTarget.name]: e.currentTarget.value,
         });
+
+        if (e.currentTarget.name === 'password') {
+            setFormdata({
+                ...formdata,
+                password: encrypt(e.currentTarget.value),
+            });
+        }
+
         setFormvalidator({
             ...formvalidator,
             [e.currentTarget.name]: isEmpty(e.currentTarget.value),
@@ -74,13 +118,74 @@ const LoginPage = (props) => {
 
     const login = () => {
         if (
-            !isEmpty(formdata.email) &&
+            !isEmpty(formdata.account) &&
             !isEmpty(formdata.password) &&
-            (!formvalidator.email && !formvalidator.password)
+            !isEmpty(formdata.code) &&
+            (!formvalidator.account && !formvalidator.password && !formvalidator.code)
         ) {
-            requestLogin();
+            request('api/login', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(formdata),
+            }).then((res) => {
+                if (res.code === 200) {
+                    requestLogin();
+                } else {
+                    // 提示错误
+                    setErrorState({
+                        state: true,
+                        message: res.message,
+                    });
+                    // 清除文本框内容&&清空formdata里面的值
+                    userPwdRef.current.focus();
+                    userPwdRef.current.value = '';
+                    userCodeRef.current.value = '';
+                    setFormdata({
+                        ...formdata,
+                        password: '',
+                        code: '',
+                    });
+                    // 重新请求code
+                    handleVerCode();
+                }
+            });
         }
     };
+
+    // 输入验证码过后回车登录
+    const enterLogin = (e) => {
+        if (e.keyCode === 13) {
+            login();
+        }
+    };
+
+    // 获取code
+    const handleVerCode = () => {
+        getVerCode().then((res) => {
+            setVerCodeSrc(`data:image/png;base64,${res}`);
+        });
+    };
+
+    // 2019-10-16 高凡
+    // 通过调用接口，检查登录状态
+    const checkLoginState = () => {
+        request('api/info', {
+            method: 'POST',
+        }).then((res) => {
+            if (res.code === 200) {
+                requestLogin();
+            }
+        });
+    };
+
+    // 在第一次加载的时候尝试是否登录
+    // 调用 handleVerCode 方法
+    useEffect(() => {
+        handleVerCode();
+        checkLoginState();
+    }, [checkLoginState]);
 
     if (isAuthenticated === 'true') {
         return <Redirect to={from} />;
@@ -97,32 +202,70 @@ const LoginPage = (props) => {
                         <TextField
                             required
                             fullWidth
+                            inputRef={userNameRef}
                             margin="normal"
                             variant="outlined"
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
+                            id="account"
+                            label="用户名"
+                            name="account"
+                            autoComplete="account"
                             autoFocus
                             onBlur={formChange}
-                            error={formvalidator.email}
+                            error={formvalidator.account}
                         />
                         <TextField
                             required
                             fullWidth
+                            inputRef={userPwdRef}
                             margin="normal"
                             variant="outlined"
                             name="password"
-                            label="password"
+                            label="密码"
                             type="password"
-                            autoComplete="current-password"
                             onBlur={formChange}
                             error={formvalidator.password}
                         />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="记住我"
-                        />
+                        <Grid container className={classes.root} spacing={2}>
+                            <Grid item xs={12}>
+                                <Grid container justify="center">
+                                    <Grid item xs={8}>
+                                        <TextField
+                                            required
+                                            inputRef={userCodeRef}
+                                            margin="normal"
+                                            variant="outlined"
+                                            name="code"
+                                            label="验证码"
+                                            onChange={formChange}
+                                            error={formvalidator.code}
+                                            onKeyUp={enterLogin}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Box mt={2}>
+                                            {verCodeSrc !== null ? (
+                                                <Box>
+                                                    <img
+                                                        src={verCodeSrc}
+                                                        height="50"
+                                                        alt="验证码"
+                                                        role="presentation"
+                                                        onClick={handleVerCode}
+                                                    />
+                                                </Box>
+                                            ) : null}
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        {isErrorState.state ? (
+                            <Box mt={1}>
+                                <Fade in timeout={1}>
+                                    {TipsLabel(isErrorState.message)}
+                                </Fade>
+                            </Box>
+                        ) : null}
                         <Box mt={2}>
                             <Button
                                 fullWidth

@@ -26,9 +26,6 @@ module.exports = (options) => ({
                 include: [path.resolve(process.cwd(), 'app')],
                 use: {
                     loader: 'eslint-loader',
-                    options: {
-                        cache: true,
-                    },
                 },
             },
             {

@@ -97,7 +97,7 @@ const PrimaryAppBar = ({ open, drawerOpen, drawerClose }) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        React Template
+                        安全运营平台
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
