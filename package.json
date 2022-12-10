@@ -63,7 +63,7 @@
         "connected-react-router": "6.5.2",
         "cross-env": "6.0.0",
         "crypto-js": "3.1.9-1",
-        "express": "4.17.1",
+        "express": "4.17.3",
         "history": "4.10.1",
         "immer": "4.0.0",
         "ip": "1.1.5",
